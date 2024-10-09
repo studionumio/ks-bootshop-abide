@@ -59,6 +59,11 @@
             "pb": 3
           }
         },
+        "subscription_VFjGeh": {
+          "type": "subscription",
+          "settings": {
+          }
+        },
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f": {
           "type": "options",
           "settings": {
@@ -195,6 +200,7 @@
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "095886ab-f46a-4a25-9d3d-e7c79235921b",
+        "subscription_VFjGeh",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
