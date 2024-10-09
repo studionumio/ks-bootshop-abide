@@ -9,13 +9,13 @@
 */
 {
   "current": {
-    "color_primary": "#0d6efd",
-    "color_secondary": "#455a64",
+    "color_primary": "#0a733b",
+    "color_secondary": "#e68300",
     "color_body_bg": "#ffffff",
     "color_body_color": "#212529",
     "container_max_width": 1350,
     "border_radius": 0.3,
-    "logo": "shopify://shop_images/logo.png",
+    "logo": "shopify://shop_images/Abide_Logo.png",
     "favicon": "shopify://shop_images/favicon.png",
     "font_body": "sans-serif",
     "font_headings": "poppins_n6",
