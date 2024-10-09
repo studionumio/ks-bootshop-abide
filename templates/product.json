@@ -58,6 +58,11 @@
             "pb": 3
           }
         },
+        "fd_product_groups_product_group_BW6dAR": {
+          "type": "shopify://apps/fd-product-groups/blocks/product-group/c4faf6e2-c14b-4cc5-ad31-cf86b1c483fb",
+          "settings": {
+          }
+        },
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f": {
           "type": "options",
           "settings": {
@@ -194,6 +199,7 @@
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "095886ab-f46a-4a25-9d3d-e7c79235921b",
+        "fd_product_groups_product_group_BW6dAR",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
@@ -234,10 +240,16 @@
             "class_button": "storeify-btn-custom",
             "form_id": ""
           }
+        },
+        "fd_product_groups_product_group_MnLyRA": {
+          "type": "shopify://apps/fd-product-groups/blocks/product-group/c4faf6e2-c14b-4cc5-ad31-cf86b1c483fb",
+          "settings": {
+          }
         }
       },
       "block_order": [
-        "s_request_a_quote_hide_price_button_block_e4YU7M"
+        "s_request_a_quote_hide_price_button_block_e4YU7M",
+        "fd_product_groups_product_group_MnLyRA"
       ],
       "settings": {
       }
