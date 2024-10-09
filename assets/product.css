@@ -2,7 +2,13 @@
   © 2024 KondaSoft
   https://www.kondasoft.com
 */
+@media (min-width: 1200px) {
+.col-desktop-9 {
+  width: 40%;
+}
 
+
+}
 /*
   General
 */
