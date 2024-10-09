@@ -6,6 +6,10 @@
   endif
 %}
 
+{% liquid 
+  assign block = section.blocks | where: 'type', 'othersizes' | first
+%}
+
 {% capture empty_state %}
   {% unless request.page_type == 'product' %}
     {% for num in (1..section.settings.limit) %}
