@@ -222,7 +222,7 @@
       "type": "other-sizes",
       "disabled": true,
       "custom_css": [
-        "container {max-width: 400px;}"
+        ".container {max-width: 200px;}"
       ],
       "settings": {
         "bg_color": "bg-body",
