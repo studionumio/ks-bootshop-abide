@@ -1,0 +1,52 @@
+<script>
+  async function initProductRecommendations ()  {
+    const sectionId = '{{ section.id }}'
+    const baseUrl = '{{ routes.product_recommendations_url }}'
+    const productId = {{ product.id }}
+    const limit = {{ section.settings.limit }}
+    const intent = '{{ section.settings.recommended_mode_intent }}'
+    
+    const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=${intent}`
+
+    const response = await fetch(url)
+    const data = await response.text()
+
+    // console.log(url)
+    // console.log(data)
+
+    document.querySelector('#featured-products-{{ section.id }}')
+      .closest('.shopify-section').outerHTML = data
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    initProductRecommendations()
+  })
+
+  document.addEventListener('shopify:section:load', (e) => {
+    if (e.target.querySelector('.featured-products')) {
+      initProductRecommendations()
+    }
+  })  
+</script>
+
+
+<div 
+    class="container"
+    style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
+    {% render 'section-header' %}
+    <div class="container">
+      <div>
+        {% if section.settings.recommended_mode and request.path contains 'recommendations' %}
+          {% for product in recommendations.products %}   
+              {% render 'product-card', product: product %}
+          {% endfor %}
+        {% elsif products == blank %}
+          {{ empty_state }}
+        {% else %}
+          {% for product in products limit: section.settings.limit %} 
+              {% render 'product-card', product: product %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
