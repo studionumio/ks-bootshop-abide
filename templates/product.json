@@ -62,7 +62,7 @@
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f": {
           "type": "options",
           "settings": {
-            "options_style": "buttons",
+            "options_style": "select",
             "color_swatches": "Color, color",
             "pt": 0,
             "pb": 3
@@ -82,7 +82,7 @@
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554": {
           "type": "atc_button",
           "settings": {
-            "show_qty_field": true,
+            "show_qty_field": false,
             "show_dynamic_buttons": false,
             "atc_btn_color": "btn-primary",
             "atc_btn_size": "btn-lg",
