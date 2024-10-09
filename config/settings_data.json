@@ -114,12 +114,6 @@
           "subscription_policy_url": ""
         }
       },
-      "5518565996801478076": {
-        "type": "shopify://apps/fd-product-groups/blocks/app-embed/c4faf6e2-c14b-4cc5-ad31-cf86b1c483fb",
-        "disabled": false,
-        "settings": {
-        }
-      },
       "10557767768680663964": {
         "type": "shopify://apps/recurpay-subscriptions-app/blocks/recurpay-widget/c600a513-dad8-4030-8697-de47c18881f2",
         "disabled": false,
