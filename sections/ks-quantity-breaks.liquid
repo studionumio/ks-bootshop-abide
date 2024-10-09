@@ -1,6 +1,546 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{% liquid 
+  # KS Quantity Breaks
+  # © 2024 KondaSoft
+  # https://www.kondasoft.com
+%}
+
+{% liquid 
+  assign current_variant = product.selected_or_first_available_variant
+%}
+
+{%- stylesheet -%}
+  #ks-qty-breaks {
+    max-width: 44rem;
+    transition: all .2s
   }
+
+  #ks-qty-breaks-title {
+    margin: 0 0 10px;
+  }
+
+  #ks-qty-breaks ul { 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #ks-qty-breaks ul li {    
+    position: relative;
+  }
+
+  #ks-qty-breaks ul li input {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  } 
+
+  #ks-qty-breaks ul li input + label {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(var(--color-foreground), .1);
+    border-radius: 0;
+    padding: 6px 8px 6px 32px;
+    margin: 8px 0;
+    transition: all .2s ease-out;
+  }
+
+  #ks-qty-breaks ul li input + label:hover,
+  #ks-qty-breaks ul li input + label:focus {
+    background-color: rgba(var(--color-foreground), .05);
+  }
+
+  #ks-qty-breaks ul li input:checked + label {
+    background-color: rgba(var(--color-foreground), .05);
+    border-color: rgba(var(--color-foreground), 1);
+  }
+
+  #ks-qty-breaks ul li input + label span {
+  }
+
+  .ks-qty-breaks-label-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: normal;
+  }
+
+  .ks-qty-breaks-label-title {
+    font-weight: bold; 
+  }
+
+  .ks-qty-breaks-label-subtitle {
+    font-size: .9em;
+    opacity: .8;
+  }
+
+  .ks-qty-breaks-label-badge {
+    background-color: rgba(var(--color-foreground), 1);
+    color: rgba(var(--color-background), 1);
+    line-height: normal;
+    padding: 1px 5px 2px;
+    margin: 0 0 0 10px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .animate__animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  .animate__shakeX {
+    -webkit-animation-name: shakeX;
+    animation-name: shakeX
+  } 
+
+  @keyframes shakeX {
+    0%,to {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0)
+    }
+    10%, 30%, 50%, 70%, 90% {
+      -webkit-transform: translate3d(-10px,0,0);
+      transform: translate3d(-10px,0,0)
+    }
+    20%, 40%, 60%, 80% {
+      -webkit-transform: translate3d(10px,0,0);
+      transform: translate3d(10px,0,0)
+    }
+  }
+
+  .animate__flash {
+    -webkit-animation-name: flash;
+    animation-name: flash
+  }
+
+  @keyframes flash {
+    0%, 50%, to {
+      opacity: 1
+    }
+    25%, 75% {
+      opacity: 0
+    }
+  }
+
+  .animate__heartBeat {
+    -webkit-animation-name: heartBeat;
+    animation-name: heartBeat;
+    -webkit-animation-duration: 1.3s;
+    animation-duration: 1.3s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out
+  }
+
+  @keyframes heartBeat {
+    0% {
+      -webkit-transform: scale(1);
+      transform: scale(1)
+    }
+    14% {
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3)
+    }
+    28% {
+      -webkit-transform: scale(1);
+      transform: scale(1)
+    }
+    42% {
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3)
+    }
+    70% {
+      -webkit-transform: scale(1);
+      transform: scale(1)
+    }
+  }
+
+  .animate__tada {
+    -webkit-animation-name: tada;
+    animation-name: tada
+  }
+
+  @keyframes tada {
+    0% {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1)
+    }
+    10%, 20% {
+      -webkit-transform: scale3d(.9,.9,.9) rotate(-3deg);
+      transform: scale3d(.9,.9,.9) rotate(-3deg)
+    }
+    30%, 50%, 70%, 90% {
+      -webkit-transform: scale3d(1.1,1.1,1.1) rotate(3deg);
+      transform: scale3d(1.1,1.1,1.1) rotate(3deg)
+    }
+    40%, 60%, 80% {
+      -webkit-transform: scale3d(1.1,1.1,1.1) rotate(-3deg);
+      transform: scale3d(1.1,1.1,1.1) rotate(-3deg)
+    }
+    to {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1)
+    }
+  }
+
+{%- endstylesheet -%}
+
+<style>
+  #ks-qty-breaks-title {
+    text-align: {{ section.settings.title_text_align }}
+  }
+
+  #ks-qty-breaks ul li input + label {
+    border-color: rgba(var(--color-foreground), {{ section.settings.item_border_opacity | append: '%' }});
+    border-radius: {{ section.settings.item_border_radius | append: 'px' }};
+  } 
+
+  .ks-qty-breaks-label-badge {
+    border-radius: {{ section.settings.item_border_radius | append: 'px' }};
+  }
+</style>
+
+{%- javascript -%}
+  const injectQtyBreaks = () => {
+    const wrapper = document.querySelector('#ks-qty-breaks-hidden')
+
+    const productInfo = document.querySelector('product-info')
+    const productFormQty = productInfo.querySelector('.product-form__quantity')
+    
+    productInfo.querySelector('#ks-qty-breaks')?.remove()
+    
+    document.querySelector(wrapper.dataset.injectElement).insertAdjacentHTML(wrapper.dataset.injectElementPosition, `
+      ${wrapper.innerHTML}
+    `)
+
+    if (!productFormQty) {
+      productInfo.querySelector('.product-form__buttons').insertAdjacentHTML('beforebegin', `
+        <input type="hidden" name="quantity" value="1">  
+      `)
+    }
+
+    document.querySelectorAll('#ks-qty-breaks input').forEach(input => { 
+      input.addEventListener('change', () => {
+        productInfo.querySelector('[name="quantity"]').value = input.value
+
+        productInfo.querySelectorAll('.quantity__button.disabled').forEach(btn => {
+          btn.classList.remove('disabled')
+        })
+
+        if (wrapper.dataset.btnAnimate.length) {
+          setTimeout(() => {
+            productInfo.querySelector('button[name="add"]').classList.add('animate__animated', wrapper.dataset.btnAnimate)
+          }, 250)
+
+          setTimeout(() => {
+            productInfo.querySelector('button[name="add"]').classList.remove('animate__animated', wrapper.dataset.btnAnimate)
+          }, 1500)
+        }
+      })
+    })
+    
+    productInfo.querySelector('.quantity__input')?.addEventListener('change', () => {
+      document.querySelectorAll('#ks-qty-breaks input').forEach(input => {
+        input.checked = false
+      })
+    })
+  }
+  injectQtyBreaks()
+
+  const listenVariantChanges = () => {
+    document.querySelectorAll('variant-selects [name]').forEach(elem => {
+      elem.addEventListener('change', () => { 
+        document.querySelector('#ks-qty-breaks').style.opacity = '.2'
+
+        setTimeout(async () => { 
+          const respoonse = await fetch(window.location.href)
+          const text = await respoonse.text()
+          const newDocument = new DOMParser().parseFromString(text, 'text/html')
+
+          document.querySelector('#ks-qty-breaks-hidden')
+            .replaceWith(newDocument.querySelector('#ks-qty-breaks-hidden'))
+          
+          injectQtyBreaks()
+        }, 500)
+      })
+    })
+  }
+  listenVariantChanges()
+{%- endjavascript -%}
+
+<div 
+  id="ks-qty-breaks-hidden"
+  data-btn-animate="{{ section.settings.btn_animate }}"
+  data-inject-element="{{ section.settings.inject_element }}"
+  data-inject-element-position="{{ section.settings.inject_element_position }}"
+  hidden>
+  <div 
+    id="ks-qty-breaks"
+    style="
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    ">
+    <h3 
+      id="ks-qty-breaks-title"
+      class="{{ section.settings.title_size }}">
+      {{ section.settings.title }}
+    </h3>
+    <ul aria-labelledby="ks-qty-breaks-title">
+      {% for block in section.blocks %}
+        <li>
+          {% liquid 
+            assign item_price = 100 | minus: block.settings.discount | divided_by: 100.0 | times: current_variant.price | money_without_trailing_zeros
+            assign total_price = 100 | minus: block.settings.discount | divided_by: 100.0 | times: current_variant.price | times: block.settings.qty | money_without_trailing_zeros
+
+            assign qty_replace = '<span class="ks-qty-breaks-label-qty">' | append: block.settings.qty | append: '</span>'
+            assign discount_replace = '<span class="ks-qty-breaks-label-discount">' | append: block.settings.discount | append: '%</span>'
+            assign item_price_replace = '<span class="ks-qty-breaks-label-item-price">' | append: item_price | append: '</span>'
+            assign total_price_replace = '<span class="ks-qty-breaks-label-total-price">' | append: total_price | append: '</span>'
+          %}
+          <input 
+            id="ks-qty-breaks-{{ forloop.index }}"
+            class="" 
+            type="radio"
+            value="{{ block.settings.qty }}"
+            name="ks-qty-breaks">
+          <label for="ks-qty-breaks-{{ forloop.index }}">
+            <div class="ks-qty-breaks-label-inner">
+              <div class="ks-qty-breaks-label-left">
+                <div class="ks-qty-breaks-label-title">
+                  {{ block.settings.title | replace: '[qty]', qty_replace | replace: '[discount]', discount_replace | replace: '[item_price]', item_price_replace | replace: '[total_price]', total_price_replace }}
+                </div>
+                <div class="ks-qty-breaks-label-subtitle">
+                  {{ block.settings.subtitle | replace: '[qty]', qty_replace | replace: '[discount]', discount_replace | replace: '[item_price]', item_price_replace | replace: '[total_price]', total_price_replace }}
+                </div>
+              </div>
+              <div class="ks-qty-breaks-label-right">
+                <div class="ks-qty-breaks-label-badge">
+                  {{ block.settings.badge | replace: '[qty]', qty_replace | replace: '[discount]', discount_replace | replace: '[item_price]', item_price_replace | replace: '[total_price]', total_price_replace }}
+                </div>
+              </div>
+            </div>
+          </label>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KS - Quantity Breaks",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Buy more & save up to 20%"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "text_alignment",
+      "id": "title_text_align",
+      "label": "Title text-align",
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "btn_animate",
+      "label": "\"Add to cart\" button animation",
+      "options": [
+        { "value": "", "label": "None" },
+        { "value": "animate__shakeX", "label": "shakeX" },
+        { "value": "animate__flash", "label": "flash" },
+        { "value": "animate__heartBeat", "label": "heartBeat" },
+        { "value": "animate__tada", "label": "tada" }
+      ],
+      "default": "animate__tada"
+    },
+    {
+      "type": "range",
+      "id": "item_border_opacity",
+      "label": "Item border opacity",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "step": 10,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "label": "Item border radius",
+      "min": 0,
+      "max": 24,
+      "default": 6,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Element to inject"
+    },
+    {
+      "type": "text",
+      "id": "inject_element",
+      "label": "Element to inject",
+      "default": "product-info .product-form__quantity"
+    },
+    {
+      "type": "select",
+      "id": "inject_element_position",
+      "label": "Inject position",
+      "options": [
+        { "value": "beforebegin", "label": "beforebegin" },
+        { "value": "afterbegin", "label": "afterbegin" },
+        { "value": "beforeend", "label": "beforeend" },
+        { "value": "afterend", "label": "afterend" }
+      ],
+      "default": "beforebegin"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Get Support",
+      "info": "Please use our [Community Forum](https://community.kondasoft.com) to get help from our support team."
+    },
+    {
+      "type": "header",
+      "content": "Shopify Snippets",
+      "info": "Check out our other [Shopify Snippets](https://www.kondasoft.com/collections/shopify-snippets)"
+    },
+    {
+      "type": "header",
+      "content": "Shopify Themes",
+      "info": "Want to WOW your customers?! Check out our [Shopify Themes](https://www.kondasoft.com/collections/shopify-themes)."
+    },
+    {
+      "type": "paragraph",
+      "content": "© 2024 KondaSoft.com"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Tier",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Config"
+        },
+        {
+          "type": "range",
+          "id": "qty",
+          "label": "Quantity",
+          "min": 1,
+          "max": 100,
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "discount",
+          "label": "Discount",
+          "min": 0,
+          "max": 100,
+          "default": 5,
+          "unit": "%",
+          "info": "You must create the [automatic discount](https://admin.shopify.com//discounts) with this value for the discount to apply to the cart"
+        },
+        {
+          "type": "header",
+          "content": "Text",
+          "info": "Available placeholders are [qty], [item_price], [total_price], [discount]"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Buy [qty], only [item_price] per item"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Total price: [total_price]"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Save [discount]"
+        }
+      ]
+    }
+  ],
+  "templates": ["product"],
+  "presets": [
+    {
+      "name": "KS - Quantity Breaks",
+      "blocks": [
+        {
+          "type": "tier",
+          "settings": {
+            "qty": 2,
+            "discount": 10
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "qty": 3,
+            "discount": 20
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "qty": 5,
+            "discount": 40
+          }
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
