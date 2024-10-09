@@ -100,12 +100,18 @@
 
     ],
     "blocks": {
-      "10557767768680663964": {
-        "type": "shopify://apps/recurpay-subscriptions-app/blocks/recurpay-widget/c600a513-dad8-4030-8697-de47c18881f2",
+      "1768834845299682660": {
+        "type": "shopify://apps/subscriptions/blocks/app-embed-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
         "disabled": false,
         "settings": {
-          "multiply_price_with_quantity": false,
-          "show_price_in_frequency_dropdown": true
+          "color_text_title": "#6D7175",
+          "color_text_body": "#6D7175",
+          "dividers_color": "#8F8D8D",
+          "bacgkround_color": "#FFFFFF",
+          "border_thickness": 1,
+          "border_radius": 0,
+          "supporting_text_title": "Purchase options",
+          "subscription_policy_url": ""
         }
       }
     }
