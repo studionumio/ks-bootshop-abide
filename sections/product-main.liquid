@@ -74,9 +74,7 @@
           </div>
         </div>
         <div class="col-desktop-9">
-            {% liquid
-    render 'featured-products-snippet'
-  %}
+              {% render 'product-block-othersizes' %}
      
           
         </div>
@@ -86,6 +84,10 @@
 </section>
 
 {% schema %}
+
+
+
+  
 {
   "name": "Product main",
   "settings": [
@@ -1154,4 +1156,6 @@
     }
   ]
 }
+
+  
 {% endschema %}
