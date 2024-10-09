@@ -19,7 +19,7 @@
             "img_border": "img-thumbnail",
             "effect": "slide",
             "speed": 300,
-            "controls_color": "body-color",
+            "controls_color": "secondary",
             "pagination_type": "bullets",
             "scrollbar": true,
             "show_thumbs": "show",
