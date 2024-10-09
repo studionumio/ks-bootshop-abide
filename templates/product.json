@@ -51,7 +51,6 @@
         },
         "095886ab-f46a-4a25-9d3d-e7c79235921b": {
           "type": "price",
-          "disabled": true,
           "settings": {
             "font_size": "fs-lg",
             "badge_discount_type": "percentage",
