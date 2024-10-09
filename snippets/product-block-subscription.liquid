@@ -1,0 +1,9 @@
+ {% liquid 
+  assign pt = block.settings.pt | prepend: 'pt-'
+  assign pb = block.settings.pb | prepend: 'pb-'
+%}
+<div 
+  class="product-block-collapse {{ pt }} {{ pb }}" 
+  {{ block.shopify_attributes }}>
+<div class="subscriptions_app_embed_block"></div>
+</div>
