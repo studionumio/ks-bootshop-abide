@@ -182,7 +182,7 @@
         "liquid_iDU3Rg": {
           "type": "liquid",
           "settings": {
-            "liquid": "",
+            "liquid": "{% for product in recommendations.products %}   \n              {% render 'product-card', product: product %}\n          {% endfor %}",
             "pt": 3,
             "pb": 3
           }
