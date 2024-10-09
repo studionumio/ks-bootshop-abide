@@ -110,8 +110,14 @@
           "bacgkround_color": "#ffffff",
           "border_thickness": 1,
           "border_radius": 0,
-          "supporting_text_title": "Purchase options",
+          "supporting_text_title": "",
           "subscription_policy_url": ""
+        }
+      },
+      "5518565996801478076": {
+        "type": "shopify://apps/fd-product-groups/blocks/app-embed/c4faf6e2-c14b-4cc5-ad31-cf86b1c483fb",
+        "disabled": false,
+        "settings": {
         }
       }
     }
