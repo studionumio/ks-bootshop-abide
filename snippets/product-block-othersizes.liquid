@@ -1,12 +1,13 @@
+{% if section.settings.recommended_mode and request.page_type == 'product' %}
 <script>
   async function initProductRecommendations ()  {
     const sectionId = '{{ section.id }}'
     const baseUrl = '{{ routes.product_recommendations_url }}'
     const productId = {{ product.id }}
     const limit = {{ section.settings.limit }}
-    const intent = 'related'
+    const intent = '{{ section.settings.recommended_mode_intent }}'
     
-    const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=$related`
+    const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=${intent}`
 
     const response = await fetch(url)
     const data = await response.text()
@@ -28,6 +29,7 @@
     }
   })  
 </script>
+{% endif %}
 
 
 <div 
