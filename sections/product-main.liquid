@@ -103,20 +103,14 @@
           </div>
         </div>
          <div class="col-desktop-9">
-          
-
-  <div 
-    class="container"
-    style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
-    {% render 'section-header' %}
-    <div class="container">
-      <div>
+        
+    <div class="container" style="width: 400px;">
       {% for product in recommendations.products %}   
               {% render 'product-card', product: product %}
           {% endfor %}
-      </div>
+  
     </div>
-  </div>
+
         </div>
       </div>
     </div>
