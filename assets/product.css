@@ -7,11 +7,13 @@
   width: 50%;
 }
 .abide-product-price-final-sale {
-  color: var(--bs-body-color);
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .abide-product-price-compare {
   text-decoration: line-through;
+  color: var(--bs-body-color);
 }
 
 .abide-badge {
