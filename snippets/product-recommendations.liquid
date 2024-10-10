@@ -5,7 +5,7 @@
     <p>No related products found. Check out some of our other popular products:</p>
     <ul>
       {% for product in collections['your-fallback-collection'].products limit: 4 %}
-        <li><a href="{{ product.url }}">{{ product.custom["size"] }}</a></li>
+        <li><a href="{{ product.url }}">{{ product.custom.size }}</a></li>
       {% endfor %}
     </ul>
   </div>
