@@ -1,0 +1,64 @@
+<!-- HTML container for product recommendations -->
+<div id="product-recommendations-container">
+  <h4>Related Products</h4>
+  <div id="product-recommendations-grid" class="grid"></div>
+</div>
+
+<!-- JavaScript to fetch and display recommendations -->
+<script>
+  async function fetchProductRecommendations() {
+    const baseUrl = '/recommendations/products'; // Shopify's recommendation API
+    const productId = {{ product.id }}; // Current product ID
+    const limit = 4; // Number of recommended products to show
+
+    const url = `${baseUrl}?product_id=${productId}&limit=${limit}`;
+    
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      // Check if recommendations exist
+      if (data && data.products && data.products.length > 0) {
+        const recommendationsContainer = document.getElementById('product-recommendations-grid');
+        
+        // Generate HTML for recommended products
+        data.products.forEach(product => {
+          const productHtml = `
+            <div class="product-item">
+              <a href="${product.url}">
+                <img src="${product.featured_image}" alt="${product.title}">
+                <p>${product.title}</p>
+                <p>${product.price | money}</p>
+              </a>
+            </div>`;
+          
+          recommendationsContainer.innerHTML += productHtml;
+        });
+      } else {
+        document.getElementById('product-recommendations-container').style.display = 'none'; // Hide section if no recommendations
+      }
+    } catch (error) {
+      console.error('Failed to load product recommendations:', error);
+    }
+  }
+
+  // Fetch recommendations after the page is fully loaded
+  document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
+</script>
+
+<style>
+  /* Add basic styles for product recommendations */
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .product-item {
+    flex: 1 1 22%;
+    text-align: center;
+  }
+  .product-item img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
