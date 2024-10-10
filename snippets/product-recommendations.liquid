@@ -1,5 +1,5 @@
 <div id="product-recommendations-container">
-  <h4>Other Sizes Available:</h4>
+  <h4>Related Products</h4>
   <ul id="product-recommendations-list" class="list"></ul>
   <div id="no-recommendations" style="display: none;">
     <p>No related products found. Check out some of our other popular products:</p>
@@ -13,10 +13,10 @@
 
 <script>
   async function fetchProductRecommendations() {
-    const baseUrl = '/recommendations/products.json'; // Shopify's recommendation API
+    const baseUrl = '/recommendations/products.json'; // Shopify's recommendation API in JSON format
     const productId = {{ product.id }}; // Current product ID
-    const limit = 4; // Number of related products to show
-    const intent = 'related'; // Recommendation intent
+    const limit = 4; // Number of recommended products to show
+    const intent = 'related'; // Recommendation intent (can also be 'complementary')
 
     const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`;
     
@@ -24,15 +24,21 @@
       const response = await fetch(url);
       const data = await response.json(); // Parse JSON response
 
+      // Log the full API response for debugging
+      console.log('API response:', data);
+
       if (data && data.products && data.products.length > 0) {
         const recommendationsList = document.getElementById('product-recommendations-list');
         
-        // Display related products as a list of links, using the custom.size metafield
+        // Display recommended products as a list of links
         data.products.forEach(product => {
+          // Log each product to check for metafields
+          console.log('Product:', product);
+
           // Check for custom.size metafield
-          const customSize = product.metafields && product.metafields.custom.size && product.metafields.custom.size 
+          const customSize = product.metafields && product.metafields.custom && product.metafields.custom.size 
               ? product.metafields.custom.size.value 
-              : 'Unknown Size'; // Fallback to 'Unknown Size' if metafield not found
+              : product.title; // Fallback to product.title if metafield not found
           
           const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
           
@@ -49,6 +55,7 @@
 
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
+
 
 <style>
   /* Simple styling for list of links */
