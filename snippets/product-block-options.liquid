@@ -11,7 +11,7 @@
     {% for option in product.options_with_values %}
       <li class="py-3">
         {% if block.settings.options_style == 'buttons' %}
-          <p class="mb-1" style="display: none;">
+          <p class="mb-1">
             {{ option.name }}
           </p>
           <ul class="size-buttons list-unstyled">
@@ -26,7 +26,7 @@
                   value="{{ value | escape }}"
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
-                  <p style="font-size: 18px; font-weight: bold;">{{ value }}</p><br/>
+                  <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                   {% if variant %}
                     {{ variant.price | money }}
                   {% endif %}
