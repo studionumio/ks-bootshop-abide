@@ -34,10 +34,10 @@
                       <!-- Check if the variant is on sale -->
                       {% if variant.compare_at_price > variant.price %}
                         <!-- Show sale price and compare at price -->
-                        <span class="product-price-final-sale">
+                        <span class="abide-product-price-final-sale">
                           {{ variant.price | money_without_trailing_zeros }}
                         </span>
-                        <s class="product-price-compare">
+                        <s class="abide-product-price-compare">
                           {{ variant.compare_at_price | money_without_trailing_zeros }}
                         </s>
                       {% else %}
@@ -48,7 +48,7 @@
 
                     <!-- Sale Badge -->
                     {% if variant.compare_at_price > variant.price %}
-                      <span class="product-sale-badge badge">
+                      <span class="abide-product-sale-badge badge">
                         {{ 'product.save' | t }}
                         {% if block.settings.badge_discount_type == 'percentage' %}
                           {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
@@ -60,7 +60,7 @@
 
                     <!-- Stock status for this variant -->
                     {% unless variant.available %}
-                      <span class="badge product-sold-out-badge">
+                      <span class="abide-badge abide-product-sold-out-badge">
                         {{ 'product.sold_out' | t }}
                       </span>
                     {% endunless %}
