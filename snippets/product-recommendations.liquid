@@ -5,7 +5,7 @@
     <p>No related products found. Check out some of our other popular products:</p>
     <ul>
       {% for product in collections['your-fallback-collection'].products limit: 4 %}
-        <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+        <li><a href="{{ product.url }}">{{ product.metafields.size }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -29,11 +29,6 @@
         
         // Display recommended products as a list of links
         data.products.forEach(product => {
-          // Check if the custom.size metafield exists
-          const customSize = product.metafields && product.metafields.custom && product.metafields.custom.size ? product.metafields.custom.size.value : product.title;
-          
-          const productHtml = `
-            <li><a href="${product.url}">${customSize}</a></li>`;
           
           recommendationsList.innerHTML += productHtml;
         });
