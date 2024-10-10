@@ -26,8 +26,7 @@
           {{ 'product.sale_price' | t }} 
         </span>
       {% endif %}
-      {{ variant.price | money_without_trailing_zeros }}
-      
+      {{ current_variant.price | money_without_trailing_zeros }}
     </span>
 
     <span 
