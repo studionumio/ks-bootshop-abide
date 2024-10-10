@@ -1,6 +1,23 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
+<section 
+  id="product-main{{ product.id }}" 
+  class="
+    product-main
+    {{ section.settings.bg_color }} 
+    {{ section.settings.bg_gradient }}
+    {{ section.settings.text_color }} 
+    {{ section.settings.border_top_width | prepend: 'border-top-' }}
+    {{ section.settings.border_bottom_width | prepend: 'border-bottom-' }}
+    {{ section.settings.border_color }} 
+    {{ section.settings.pt | prepend: 'pt-0 pt-tablet-' }}
+    {{ section.settings.pb | prepend: 'pb-' }}
+  "
+  style="
+    --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
+    --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
+  ">
     <script>
   async function initProductRecommendations ()  {
     const sectionId = '{{ section.id }}'
@@ -31,23 +48,7 @@
     }
   })  
 </script>
-<section 
-  id="product-main{{ product.id }}" 
-  class="
-    product-main
-    {{ section.settings.bg_color }} 
-    {{ section.settings.bg_gradient }}
-    {{ section.settings.text_color }} 
-    {{ section.settings.border_top_width | prepend: 'border-top-' }}
-    {{ section.settings.border_bottom_width | prepend: 'border-bottom-' }}
-    {{ section.settings.border_color }} 
-    {{ section.settings.pt | prepend: 'pt-0 pt-tablet-' }}
-    {{ section.settings.pb | prepend: 'pb-' }}
-  "
-  style="
-    --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
-    --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
-  ">
+  
   <div 
     class="container" 
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
@@ -111,8 +112,8 @@
     const sectionId = '{{ section.id }}'
     const baseUrl = '{{ routes.product_recommendations_url }}'
     const productId = {{ product.id }}
-    const limit = {{ section.settings.limit }}
-    const intent = '{{ section.settings.recommended_mode_intent }}'
+    const limit = 8
+    const intent = 'related'
     
     const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=${intent}`
 
@@ -139,23 +140,23 @@
 {% endif %}
 
 
-      <div class="swiper-wrapper">
+
         {% if section.settings.recommended_mode and request.path contains 'recommendations' %}
           {% for product in recommendations.products %}
-            <div class="swiper-slide p-4 p-desktop-5">
+
               {% render 'product-card', product: product %}
-            </div>
+
           {% endfor %}
         {% elsif products == blank %}
           {{ empty_state }}
         {% else %}
           {% for product in products limit: section.settings.limit %} 
-            <div class="swiper-slide p-4 p-desktop-5">
+
               {% render 'product-card', product: product %}
-            </div>
+
           {% endfor %}
         {% endif %}
-      </div>
+
 
   
     </div>
