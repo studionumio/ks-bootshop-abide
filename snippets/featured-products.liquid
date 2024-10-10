@@ -1,13 +1,12 @@
 
 <script>
   async function initProductRecommendations ()  {
-    const sectionId = '{{ section.id }}';
     const baseUrl = '{{ routes.product_recommendations_url }}';
     const productId = {{ product.id }};
     const limit = 8;
     const intent = 'related';
 
-    const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=${intent}`;
+    const url = `${baseUrl}?section_id=${productId}&limit=${limit}&intent=related`;
 
     const response = await fetch(url);
     const data = await response.text();
