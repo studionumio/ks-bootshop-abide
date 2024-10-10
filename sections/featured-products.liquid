@@ -25,38 +25,43 @@
   {% endunless %}
 {% endcapture %}
 
-{% if section.settings.recommended_mode and request.page_type == 'product' %}
 <script>
-  async function initProductRecommendations ()  {
-    const sectionId = '{{ section.id }}'
-    const baseUrl = '{{ routes.product_recommendations_url }}'
-    const productId = {{ product.id }}
-    const limit = {{ section.settings.limit }}
-    const intent = '{{ section.settings.recommended_mode_intent }}'
-    
-    const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=${intent}`
+  async function initProductRecommendations () {
+    const baseUrl = '{{ routes.product_recommendations_url }}'; // Shopify's built-in recommendation URL
+    const productId = {{ product.id }}; // The current product ID
+    const limit = 4; // Hardcoded limit (adjust as needed)
+    const intent = 'related'; // Recommendation intent (you can adjust this)
 
-    const response = await fetch(url)
-    const data = await response.text()
+    const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`; // Generate the URL for fetching recommendations
 
-    // console.log(url)
-    // console.log(data)
+    try {
+      const response = await fetch(url);
+      const data = await response.text();
 
-    document.querySelector('#featured-products-{{ section.id }}')
-      .closest('.shopify-section').outerHTML = data
+      if (data.trim().length > 0) {
+        document.querySelector('#related-products-container').outerHTML = data; // Insert the recommendations into the container
+      }
+    } catch (error) {
+      console.error('Failed to load product recommendations:', error);
+    }
   }
 
+  // Initialize the recommendations after the page is fully loaded
   window.addEventListener('DOMContentLoaded', () => {
-    initProductRecommendations()
-  })
+    initProductRecommendations();
+  });
 
+  // Reinitialize when Shopify sections are reloaded (e.g., when changing product variants in the admin)
   document.addEventListener('shopify:section:load', (e) => {
-    if (e.target.querySelector('.featured-products')) {
-      initProductRecommendations()
+    if (e.target.querySelector('#related-products-container')) {
+      initProductRecommendations();
     }
-  })  
+  });
 </script>
-{% endif %}
+
+<!-- Container for related products (add this in your product-main.liquid or wherever you want the recommendations to appear) -->
+<div id="related-products-container"></div>
+
 
 <swiper-slider
   id="featured-products-{{ section.id }}" 
