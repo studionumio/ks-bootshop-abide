@@ -3,7 +3,35 @@
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  // Add event listeners to each radio button
+  document.querySelectorAll('input[type="radio"][name^="option-"]').forEach(function (radioButton) {
+    radioButton.addEventListener('change', function () {
+      // Get the selected variant ID
+      var selectedVariantId = this.getAttribute('data-variant-id');
 
+      // Update the price and availability based on the selected variant
+      document.querySelectorAll('.product-price-final').forEach(function (priceElement) {
+        var variantId = priceElement.getAttribute('data-variant-id');
+        priceElement.style.display = (variantId === selectedVariantId) ? 'inline' : 'none';
+      });
+
+      document.querySelectorAll('.product-sold-out-badge').forEach(function (soldOutElement) {
+        var variantId = soldOutElement.getAttribute('data-variant-id');
+        soldOutElement.style.display = (variantId === selectedVariantId) ? 'inline' : 'none';
+      });
+    });
+  });
+
+  // Trigger the change event on the currently selected option to update the prices initially
+  var selectedRadio = document.querySelector('input[type="radio"][name^="option-"]:checked');
+  if (selectedRadio) {
+    selectedRadio.dispatchEvent(new Event('change'));
+  }
+});
+
+</script>
 {% unless product.has_only_default_variant %}
   <ul 
     class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
