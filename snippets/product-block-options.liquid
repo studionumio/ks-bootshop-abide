@@ -61,13 +61,7 @@
           {{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }}
         {% endif %}
       {% endif %}
-    </span> 
-
-    <span 
-      class="product-sold-out-badge badge"
-      {% if current_variant.available %}hidden{% endif %}>
-      {{ 'product.sold_out' | t }}
-    </span>    
+    </span>  
   </div>
       
 </div>
