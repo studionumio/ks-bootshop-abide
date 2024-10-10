@@ -23,7 +23,7 @@
     <span class="product-price-final {% if current_variant.compare_at_price > current_variant.price %}product-price-final-sale{% endif %}">
       {% if current_variant.compare_at_price > current_variant.price %}
         <span class="visually-hidden">
-          {{ 'product.sale_price' | t }} 
+          {{ variant.price | money }}
         </span>
       {% endif %}
       {{ current_variant.price | money_without_trailing_zeros }}
