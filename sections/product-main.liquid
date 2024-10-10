@@ -2,8 +2,26 @@
   assign variants_json = product.variants | json
 %}
   {% assign recommendations_url = '/recommendations/products?product_id=' | append: product.id | append: '&limit=4' %}
-
-<script>
+  
+{% capture empty_state %}
+  {% unless request.page_type == 'product' %}
+    {% for num in (1..section.settings.limit) %}
+      <div class="swiper-slide p-4 p-desktop-5">
+        <div class="product-card text-center">
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'product-' | append: current | placeholder_svg_tag: 'product-card-img img-thumbnail mb-4' }}
+          <h3 class="product-card-title h6 mb-1">
+            Product {{ current }}
+          </h3>
+          <p class="mb-0">
+            $19.99
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  {% endunless %}
+{% endcapture %}
+<<script>
   async function initProductRecommendations () {
     const baseUrl = '{{ routes.product_recommendations_url }}'; // Shopify's built-in recommendation URL
     const productId = {{ product.id }}; // The current product ID
@@ -39,6 +57,12 @@
 
 <!-- Container for related products (add this in your product-main.liquid or wherever you want the recommendations to appear) -->
 <div id="related-products-container"></div>
+
+<!-- Container for related products (add this in your product-main.liquid or wherever you want the recommendations to appear) -->
+<div id="related-products-container"></div>
+
+
+
 
 <section 
   id="product-main{{ product.id }}" 
@@ -110,18 +134,31 @@
               {% endform %}
             </product-form>
           </div>
-          <!-- Moved the container for related products here -->
-          <div class="product-recommendations" style="width: 15%;">
-            <div id="related-products-container">
-              <!-- Related products will be dynamically inserted here -->
-            </div>
-          </div>
+                <div class="product-recommendations" style="width: 15%;">
+
+  
+  <div class="related-products">
+     <h4>Related Products</h4>
+     <div class="product-grid">
+       {% for product in product_recommendations %}
+         <div class="product-item">
+           <a href="{{ product.url }}">
+             <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+             <p>{{ product.title }}</p>
+             <p>{{ product.price | money }}</p>
+           </a>
+         </div>
+       {% endfor %}
+     </div>
+  </div>
+
+
+        </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 {% schema %}
 
