@@ -1,7 +1,5 @@
 
 {% liquid 
-  assign current_variant = product.selected_or_first_available_variant
-  
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
@@ -76,6 +74,3 @@
     {% endfor %}
   </ul>
 {% endunless %}
-
-{{ form | payment_terms }}
-
