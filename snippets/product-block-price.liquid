@@ -11,15 +11,17 @@
 
   <div class="d-flex align-items-center">
 
-    <s 
-      class="product-price-compare" 
-      {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>
-      <span class="visually-hidden">
-        {{ 'product.regular_price' | t }} 
-      </span>
-      {{ current_variant.compare_at_price | money_without_trailing_zeros }}
-    </s>
+    <!-- Render the "compare at" price only if the variant is on sale -->
+    {% if current_variant.compare_at_price > current_variant.price %}
+      <s class="product-price-compare">
+        <span class="visually-hidden">
+          {{ 'product.regular_price' | t }} 
+        </span>
+        {{ current_variant.compare_at_price | money_without_trailing_zeros }}
+      </s>
+    {% endif %}
 
+    <!-- Render the final price -->
     <span class="product-price-final {% if current_variant.compare_at_price > current_variant.price %}product-price-final-sale{% endif %}">
       {% if current_variant.compare_at_price > current_variant.price %}
         <span class="visually-hidden">
@@ -29,25 +31,24 @@
       {{ current_variant.price | money_without_trailing_zeros }}
     </span>
 
-    <span 
-      class="product-sale-badge badge" 
-      data-discount-type="{{ block.settings.badge_discount_type }}"
-      {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>
-      {{ 'product.save' | t }}
-      {% if current_variant.compare_at_price > 0 %}
-        {% if block.settings.badge_discount_type == 'percentage' %} 
+    <!-- Render sale badge if applicable -->
+    {% if current_variant.compare_at_price > current_variant.price %}
+      <span class="product-sale-badge badge" data-discount-type="{{ block.settings.badge_discount_type }}">
+        {{ 'product.save' | t }}
+        {% if block.settings.badge_discount_type == 'percentage' %}
           {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price | round | append: '%' }}
         {% else %}
           {{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }}
         {% endif %}
-      {% endif %}
-    </span> 
+      </span>
+    {% endif %}
 
-    <span 
-      class="product-sold-out-badge badge"
-      {% if current_variant.available %}hidden{% endif %}>
-      {{ 'product.sold_out' | t }}
-    </span>    
+    <!-- Render sold out badge if not available -->
+    {% unless current_variant.available %}
+      <span class="product-sold-out-badge badge">
+        {{ 'product.sold_out' | t }}
+      </span>
+    {% endunless %}
   </div>
       
 </div>
