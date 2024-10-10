@@ -16,44 +16,45 @@
           </p>
           <ul class="size-buttons list-unstyled">
             {% for value in option.values %}
+              {% assign variant = product.variants | where: 'option1', value | first %}
               <li>
-                {% assign variant = product.variants | where: 'option1', value | first %}
                 <input 
                   class="visually-hidden" 
                   type="radio" 
                   name="option-{{ option.name | handleize }}" 
                   id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
                   value="{{ value | escape }}"
-                  {% if option.selected_value == value %}checked{% endif %}>
+                  {% if option.selected_value == value %}checked{% endif %}
+                  data-variant-id="{{ variant.id }}">
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
 
                   {% if variant %}
                     <!-- Price display -->
-                    {% if variant.compare_at_price > variant.price %}
-                      <span class="product-price-final-sale">
+                    <span class="product-price-final" data-variant-id="{{ variant.id }}">
+                      {% if variant.compare_at_price > variant.price %}
+                        <span class="product-price-final-sale">
+                          {{ variant.price | money_without_trailing_zeros }}
+                        </span>
+                        <s class="product-price-compare">
+                          {{ variant.compare_at_price | money_without_trailing_zeros }}
+                        </s>
+                        <span class="badge product-sale-badge">
+                          {{ 'product.save' | t }}
+                          {% if block.settings.badge_discount_type == 'percentage' %}
+                            {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
+                          {% else %}
+                            {{ variant.compare_at_price | minus: variant.price | money_without_trailing_zeros }}
+                          {% endif %}
+                        </span>
+                      {% else %}
                         {{ variant.price | money_without_trailing_zeros }}
-                      </span>
-                      <s class="product-price-compare">
-                        {{ variant.compare_at_price | money_without_trailing_zeros }}
-                      </s>
-                      <span class="badge product-sale-badge">
-                        {{ 'product.save' | t }}
-                        {% if block.settings.badge_discount_type == 'percentage' %}
-                          {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
-                        {% else %}
-                          {{ variant.compare_at_price | minus: variant.price | money_without_trailing_zeros }}
-                        {% endif %}
-                      </span>
-                    {% else %}
-                      <span class="product-price-final">
-                        {{ variant.price | money_without_trailing_zeros }}
-                      </span>
-                    {% endif %}
-                    
+                      {% endif %}
+                    </span>
+
                     <!-- Stock status -->
                     {% unless variant.available %}
-                      <span class="badge product-sold-out-badge">
+                      <span class="badge product-sold-out-badge" data-variant-id="{{ variant.id }}">
                         {{ 'product.sold_out' | t }}
                       </span>
                     {% endunless %}
@@ -67,6 +68,7 @@
     {% endfor %}
   </ul>
 {% endunless %}
+
 
 
 
