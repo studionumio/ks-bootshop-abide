@@ -24,7 +24,7 @@
                   value="{{ value | escape }}"
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
-                  {{ value }}
+                  {{ value }}-{{ option.price | handleize }}
                 </label>
               </li>
             {% endfor %}
