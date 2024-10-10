@@ -204,7 +204,7 @@
         "price_bPXD4X"
       ],
       "custom_css": [
-        ".product-price {display: none;}"
+        ".product-price * {color: #ffffff; background: #ffffff;}"
       ],
       "settings": {
         "bg_color": "bg-body",
