@@ -1,39 +1,17 @@
 {% liquid 
-  assign current_variant = product.selected_or_first_available_variant
-  assign variants_json = product.variants | json
-  
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
 
-<script>
-  // Parse the variants JSON data
-  var variants = {{ variants_json }};
-  
-  // Loop through each variant and display its price
-  variants.forEach(function(variant) {
-    var variantElement = document.createElement('div');
-    variantElement.innerHTML = `<p>Variant: ${variant.title}</p>
-                                <p>Price: ${Shopify.formatMoney(variant.price, "{{ shop.money_format }}")}</p>`;
-    
-    // Append the price to a container on the page
-    document.getElementById('variant-prices').appendChild(variantElement);
-  });
-</script>
-
-
 {% unless product.has_only_default_variant %}
-  <ul 
-    class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
-    aria-label="{{ 'product.product_options' | t }}">
+  <ul class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}" aria-label="{{ 'product.product_options' | t }}">
     {% for option in product.options_with_values %}
       <li class="py-3">
-        {% if block.settings.options_style == 'buttons' %}       
-          <p class="mb-1">
-            {{ option.name }}
-          </p>
+        {% if block.settings.options_style == 'buttons' %}
+          <p class="mb-1">{{ option.name }}</p>
           <ul class="size-buttons list-unstyled">
             {% for value in option.values %}
+              {% assign variant = product.variants | where: 'option' | first %}
               <li>
                 <input 
                   class="visually-hidden" 
@@ -43,7 +21,7 @@
                   value="{{ value | escape }}"
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
-                 {{ value }} - {{ matching_variant.price | money }}
+                  {{ value }} - {% if variant %}{{ variant.price | money }}{% endif %}
                 </label>
               </li>
             {% endfor %}
@@ -57,11 +35,11 @@
             name="option-{{ option.name | handleize }}"
             class="form-select">
             {% for value in option.values %}
-              <option 
-                value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>
-                {{ value }}
+              <!-- Find the variant that matches the option value -->
+              {% assign variant = product.variants | where: 'option1', value | first %}
+              <option value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>
+                {{ value }} - {% if variant %}{{ variant.price | money }}{% endif %}
               </option>
-              
             {% endfor %}
           </select>
         {% endif %}
