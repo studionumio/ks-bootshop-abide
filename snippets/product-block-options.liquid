@@ -44,6 +44,12 @@
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
                  <div id="variant-prices"></div>
+{% for variant in product.variants %}
+  <div class="variant-info">
+    <p>Variant: {{ variant.title }}</p>
+    <p>Price: {{ variant.price | money }}</p>
+  </div>
+{% endfor %}
 
       
                 </label>
