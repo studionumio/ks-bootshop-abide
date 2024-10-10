@@ -298,7 +298,7 @@ background-color: var(--bs-success);
 }
 
 .product-options .size-buttons input:checked + label {
-  background-color: var(--bs-body-color);
+  background-color: var(--bs-secondary);;
   color: white;
 }
 
