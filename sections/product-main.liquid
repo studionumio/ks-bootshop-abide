@@ -76,7 +76,7 @@
           {% render 'product-block-media-gallery' %}
         </div>
         <div class="col-desktop-9">
-          <div id="product-inner-{{ product.id }}">
+          <div id="product-inner-{{ product.id }}" style="width: 85%;">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
                 <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
@@ -113,8 +113,7 @@
               {% endform %}
             </product-form>
           </div>
-        </div>
-         <div class="col-desktop-3">
+                <div class="product-recommendations" style="width: 15%;">
 
    {% if product_recommendations.size > 0 %}
   <div class="related-products">
@@ -133,9 +132,7 @@
   </div>
 {% endif %}
 
-
-
-
+        </div>
         </div>
       </div>
     </div>
