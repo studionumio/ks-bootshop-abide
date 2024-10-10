@@ -3,7 +3,43 @@
 %}
   {% assign recommendations_url = '/recommendations/products?product_id=' | append: product.id | append: '&limit=4' %}
 
+<script>
+  async function initProductRecommendations () {
+    const baseUrl = '{{ routes.product_recommendations_url }}'; // Shopify's built-in recommendation URL
+    const productId = {{ product.id }}; // The current product ID
+    const limit = 4; // Hardcoded limit (adjust as needed)
+    const intent = 'related'; // Recommendation intent (you can adjust this)
+
+    const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`; // Generate the URL for fetching recommendations
+
+    try {
+      const response = await fetch(url);
+      const data = await response.text();
+
+      if (data.trim().length > 0) {
+        document.querySelector('#related-products-container').outerHTML = data; // Insert the recommendations into the container
+      }
+    } catch (error) {
+      console.error('Failed to load product recommendations:', error);
+    }
+  }
+
+  // Initialize the recommendations after the page is fully loaded
+  window.addEventListener('DOMContentLoaded', () => {
+    initProductRecommendations();
+  });
+
+  // Reinitialize when Shopify sections are reloaded (e.g., when changing product variants in the admin)
+  document.addEventListener('shopify:section:load', (e) => {
+    if (e.target.querySelector('#related-products-container')) {
+      initProductRecommendations();
+    }
+  });
+</script>
+
+<!-- Container for related products (add this in your product-main.liquid or wherever you want the recommendations to appear) -->
 <div id="related-products-container"></div>
+
 
 
 
@@ -80,8 +116,22 @@
         </div>
          <div class="col-desktop-3">
 
-<div id="related-products-container"></div>
-
+   {% if product_recommendations.size > 0 %}
+  <div class="related-products">
+     <h4>Related Products</h4>
+     <div class="product-grid">
+       {% for product in product_recommendations %}
+         <div class="product-item">
+           <a href="{{ product.url }}">
+             <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+             <p>{{ product.title }}</p>
+             <p>{{ product.price | money }}</p>
+           </a>
+         </div>
+       {% endfor %}
+     </div>
+  </div>
+{% endif %}
 
 
 
