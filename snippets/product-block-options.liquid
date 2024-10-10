@@ -1,5 +1,4 @@
 {% liquid 
-  assign current_variant = product.selected_or_first_available_variant
   assign variants_json = product.variants | json
   
   assign pt = block.settings.pt | prepend: 'pt-'
@@ -44,11 +43,8 @@
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
-                  <div 
-  class="product-price {{ pt }} {{ pb }}"
-  {{ block.shopify_attributes }}>  
-                   {{ option.price | money_without_trailing_zeros }}
-  </div>
+                 <div id="variant-prices"></div>
+
       
                 </label>
               </li>
