@@ -5,17 +5,7 @@
 
 <div id="related-products-container"></div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    fetch('{{ recommendations_url }}')
-      .then(response => response.text())
-      .then(html => {
-        if (html.trim().length > 0) {
-          document.getElementById('related-products-container').innerHTML = html;
-        }
-      });
-  });
-</script>
+
 
 <section 
   id="product-main{{ product.id }}" 
@@ -90,22 +80,8 @@
         </div>
          <div class="col-desktop-3">
 
-   {% if product_recommendations.size > 0 %}
-  <div class="related-products">
-     <h4>Related Products</h4>
-     <div class="product-grid">
-       {% for product in product_recommendations %}
-         <div class="product-item">
-           <a href="{{ product.url }}">
-             <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-             <p>{{ product.title }}</p>
-             <p>{{ product.price | money }}</p>
-           </a>
-         </div>
-       {% endfor %}
-     </div>
-  </div>
-{% endif %}
+<div id="related-products-container"></div>
+
 
 
 
