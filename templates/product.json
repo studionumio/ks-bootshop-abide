@@ -7,15 +7,6 @@
 * made to this file may be overwritten.
 * ------------------------------------------------------------
 */
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwrittenn.
-* ------------------------------------------------------------
-*/
 {
   "sections": {
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583": {
@@ -213,7 +204,7 @@
         "price_bPXD4X"
       ],
       "custom_css": [
-
+        ".product-price {display: none;}"
       ],
       "settings": {
         "bg_color": "bg-body",
