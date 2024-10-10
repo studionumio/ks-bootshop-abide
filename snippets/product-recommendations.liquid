@@ -5,7 +5,7 @@
     <p>No related products found. Check out some of our other popular products:</p>
     <ul>
       {% for product in collections['your-fallback-collection'].products limit: 4 %}
-        <li><a href="{{ product.url }}">{{ product.custom.size }}</a></li>
+        <li><a href="{{ product.url }}">{{ product.title }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -22,13 +22,25 @@
     
     try {
       const response = await fetch(url);
-      const data = await response.json(); // Use JSON format
+      const data = await response.json(); // Parse JSON response
+
+      // Log the full API response for debugging
+      console.log('API response:', data);
 
       if (data && data.products && data.products.length > 0) {
         const recommendationsList = document.getElementById('product-recommendations-list');
         
         // Display recommended products as a list of links
         data.products.forEach(product => {
+          // Log each product to check for metafields
+          console.log('Product:', product);
+
+          // Check for custom.size metafield
+          const customSize = product.metafields && product.metafields.custom && product.metafields.custom.size && product.custom.size && metafields.custom.size && custom.size 
+              ? product.metafields.custom.size.value 
+              : product.title; // Fallback to product.title if metafield not found
+          
+          const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
           
           recommendationsList.innerHTML += productHtml;
         });
@@ -43,6 +55,7 @@
 
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
+
 
 <style>
   /* Simple styling for list of links */
