@@ -1,36 +1,7 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
-    <script>
-  async function initProductRecommendations ()  {
-    const sectionId = '{{ section.id }}'
-    const baseUrl = '{{ routes.product_recommendations_url }}'
-    const productId = {{ product.id }}
-    const limit = 3
-    const intent = 'related'
-    
-    const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=$related`
-
-    const response = await fetch(url)
-    const data = await response.text()
-
-    // console.log(url)
-    // console.log(data)
-
-    document.querySelector('#featured-products-{{ section.id }}')
-      .closest('.shopify-section').outerHTML = data
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    initProductRecommendations()
-  })
-
-  document.addEventListener('shopify:section:load', (e) => {
-    if (e.target.querySelector('.featured-products')) {
-      initProductRecommendations()
-    }
-  })  
-</script>
+  
 <section 
   id="product-main{{ product.id }}" 
   class="
@@ -102,12 +73,28 @@
             </product-form>
           </div>
         </div>
+         <div class="col-desktop-9">
+
+     <div class="related-products">
+   <h2>Related Products</h2>
+   <div class="product-grid">
+     {% for product in product_recommendations %}
+       <div class="product-item">
+         <a href="{{ product.url }}">
+           <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+           <p>{{ product.title }}</p>
+           <p>{{ product.price | money }}</p>
+         </a>
+       </div>
+     {% else %}
+       <p>No related products found.</p>
+     {% endfor %}
+   </div>
+</div>
 
 
-           {% section 'featured-products' %}
 
-
- 
+        </div>
       </div>
     </div>
   </div>
