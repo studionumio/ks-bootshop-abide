@@ -30,14 +30,14 @@
 
                   {% if variant %}
                     <!-- Show Price and Compare Price for this variant -->
-                    <span>
+                    <span class="variant-price">
                       <!-- Check if the variant is on sale -->
                       {% if variant.compare_at_price > variant.price %}
                         <!-- Show sale price and compare at price -->
-                        <span>
+                        <span class="product-price-final-sale">
                           {{ variant.price | money_without_trailing_zeros }}
                         </span>
-                        <s>
+                        <s class="product-price-compare">
                           {{ variant.compare_at_price | money_without_trailing_zeros }}
                         </s>
                       {% else %}
@@ -48,7 +48,7 @@
 
                     <!-- Sale Badge -->
                     {% if variant.compare_at_price > variant.price %}
-                      <span>
+                      <span class="product-sale-badge badge">
                         {{ 'product.save' | t }}
                         {% if block.settings.badge_discount_type == 'percentage' %}
                           {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
