@@ -34,7 +34,7 @@
           {% render 'product-block-media-gallery' %}
         </div>
         <div class="col-desktop-9">
-          <div id="product-inner-{{ product.id }}" style="width: 88%; float: left;">
+          <div id="product-inner-{{ product.id }}" style="width: 80%; float: left;">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
                 <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
