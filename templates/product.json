@@ -88,10 +88,13 @@
           "settings": {
             "label": "What we promise",
             "max_width": "460",
-            "img_size": 24,
-            "text_1": "<p>Commitment to<br/>Excellence</p>",
-            "text_2": "<p>100% Satisfaction<br/>Guarantee</p>",
-            "text_3": "<p>Free Shipping<br/>Over $90</p>",
+            "img_size": 51,
+            "img_1": "shopify://shop_images/Bamboo.png",
+            "text_1": "<p><strong>100% Bamboo</strong></p>",
+            "img_2": "shopify://shop_images/Tree.png",
+            "text_2": "<p>Tree Free</p>",
+            "img_3": "shopify://shop_images/Dye.png",
+            "text_3": "<p>Dye Free</p>",
             "text_4": "",
             "pt": 0,
             "pb": 7
