@@ -29,8 +29,9 @@
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
                   <div 
-  class="product-price {{ block.settings.font_size }} {{ pt }} {{ pb }}"
+  class="product-price {{ pt }} {{ pb }}"
   {{ block.shopify_attributes }}>  
+                    {{ 'product.regular_price' | t }} 
   </div>
       
                 </label>
