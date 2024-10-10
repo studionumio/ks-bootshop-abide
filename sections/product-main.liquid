@@ -1,12 +1,20 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
+
+{% liquid
+  if section.settings.collection == blank
+    assign products = section.settings.products
+  else
+    assign products = collections[section.settings.collection].products
+  endif
+%}
   {% assign recommendations_url = '/recommendations/products?product_id=' | append: product.id | append: '&limit=4' %}
   
 {% capture empty_state %}
   {% unless request.page_type == 'product' %}
     {% for num in (1..section.settings.limit) %}
-      <div class="swiper-slide p-4 p-desktop-5">
+      <div>
         <div class="product-card text-center">
           {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
           {{ 'product-' | append: current | placeholder_svg_tag: 'product-card-img img-thumbnail mb-4' }}
