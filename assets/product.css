@@ -6,13 +6,15 @@
 .col-desktop-9 {
   width: 50%;
 }
+
+.product-options .size-buttons input:checked + label *
 .abide-product-price-final-sale:checked {
   color: var(--bs-white);
   font-weight: 600;
 }
-
+  
   .abide-product-price-final-sale {
-  color: vvar(--bs-body-color)
+  color: var(--bs-body-color)
   font-weight: 600;
 }
 
