@@ -27,9 +27,9 @@
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
                     {% assign variant = product.variants | where: 'option' , value %}
-                  {% if variant %}
+         
                     {{ variant.first.price | money }}
-                  {% endif %}
+ 
                 </label>
               </li>
             {% endfor %}
