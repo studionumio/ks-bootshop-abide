@@ -76,9 +76,9 @@
          <div class="col-desktop-3">
 
      <div class="related-products">
-   <h4>Other Sizes Available:</h4>
    <div class="product-grid">
      {% for product in product_recommendations %}
+          <h4>Other Sizes Available:</h4>
        <div class="product-item">
          <a href="{{ product.url }}">
            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
