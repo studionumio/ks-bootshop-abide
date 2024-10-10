@@ -61,7 +61,7 @@
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f": {
           "type": "options",
           "settings": {
-            "options_style": "select",
+            "options_style": "buttons",
             "color_swatches": "Color, color",
             "pt": 0,
             "pb": 3
