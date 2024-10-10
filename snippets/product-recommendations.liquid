@@ -1,18 +1,13 @@
 <div id="product-recommendations-container">
-  <h4>Other Sizes:</h4>
-  <div id="product-recommendations-grid" class="grid"></div>
+  <h4>Related Products</h4>
+  <ul id="product-recommendations-list" class="list"></ul>
   <div id="no-recommendations" style="display: none;">
     <p>No related products found. Check out some of our other popular products:</p>
-    <div class="fallback-products-grid">
+    <ul>
       {% for product in collections['your-fallback-collection'].products limit: 4 %}
-        <div class="product-item">
-          <a href="{{ product.url }}">
-            <p>{{ product.title }}</p>
-          
-          </a>
-        </div>
+        <li><a href="{{ product.url }}">{{ product.title }}</a></li>
       {% endfor %}
-    </div>
+    </ul>
   </div>
 </div>
 
@@ -30,18 +25,17 @@
       const data = await response.json(); // Use JSON format
 
       if (data && data.products && data.products.length > 0) {
-        const recommendationsContainer = document.getElementById('product-recommendations-grid');
+        const recommendationsList = document.getElementById('product-recommendations-list');
         
-        // Display recommended products
+        // Display recommended products as a list of links
         data.products.forEach(product => {
-          const productHtml = `
-            <div class="product-item">
-              <a href="${product.url}">
-                <p>${product.title}</p>
-              </a>
-            </div>`;
+          // Check if the custom.size metafield exists
+          const customSize = product.metafields && product.metafields.custom && product.metafields.custom.size ? product.metafields.custom.size.value : product.title;
           
-          recommendationsContainer.innerHTML += productHtml;
+          const productHtml = `
+            <li><a href="${product.url}">${customSize}</a></li>`;
+          
+          recommendationsList.innerHTML += productHtml;
         });
       } else {
         // Show fallback content if no recommendations
@@ -56,21 +50,19 @@
 </script>
 
 <style>
-  /* Basic styles for the grid and fallback */
-  .grid {
-    display: flex;
-    gap: 16px;
+  /* Simple styling for list of links */
+  ul.list {
+    list-style-type: none;
+    padding-left: 0;
   }
-  .product-item {
-    flex: 1 1 22%;
-    text-align: center;
+  ul.list li {
+    margin-bottom: 10px;
   }
-  .product-item img {
-    max-width: 100%;
-    height: auto;
+  ul.list li a {
+    text-decoration: none;
+    color: #000;
   }
-  .fallback-products-grid {
-    display: flex;
-    gap: 16px;
+  ul.list li a:hover {
+    text-decoration: underline;
   }
 </style>
