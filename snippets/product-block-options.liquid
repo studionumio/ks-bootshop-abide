@@ -1,6 +1,7 @@
+
 {% liquid 
-  assign pt = block.settings.pt | prepend: 'pt-'
-  assign pb = block.settings.pb | prepend: 'pb-'
+  assign pt = block.settings.pt | prepend: 'pt-' 
+  assign pb = block.settings.pb | prepend: 'pb-' 
 %}
 
 {% unless product.has_only_default_variant %}
@@ -22,17 +23,15 @@
                   name="option-{{ option.name | handleize }}" 
                   id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
                   value="{{ value | escape }}"
+                  data-variant-price="{{ product.variants | where: 'option' | last.price | money }}"  <!-- New line to hold variant price -->
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
-                  <br>
-                  <span class="variant-price" id="variant-price-{{ option.name | handleize }}-{{ value | handleize }}">
-                    {% assign current_variant = product.variants | where: 'option{{ forloop.index }}', value | first %}
-                    {% if current_variant %}
-                      {{ current_variant.price | money }}
-                    {% endif %}
-                  </span>
                 </label>
+                <p class="variant-price" id="variant-price-{{ value | handleize }}"> <!-- Price container for each variant -->
+                  {% assign selected_variant = product.variants | where: 'option' | last %}
+                  {{ selected_variant.price | money }}
+                </p>
               </li>
             {% endfor %}
           </ul>
@@ -49,7 +48,6 @@
                 value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>
                 {{ value }}
               </option>
-              
             {% endfor %}
           </select>
         {% endif %}
@@ -57,3 +55,22 @@
     {% endfor %}
   </ul>
 {% endunless %}
+
+<!-- Add JavaScript to update the price dynamically -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const variantInputs = document.querySelectorAll('input[type="radio"][name^="option-"]');
+    
+    variantInputs.forEach(function(input) {
+      input.addEventListener('change', function(event) {
+        const selectedInput = event.target;
+        const priceContainer = document.querySelector("#variant-price-" + selectedInput.value.replace(/\s+/g, '-').toLowerCase());
+        
+        // Fetch the price from the data attribute and update the relevant price container
+        if (priceContainer) {
+          priceContainer.textContent = selectedInput.getAttribute("data-variant-price");
+        }
+      });
+    });
+  });
+</script>
