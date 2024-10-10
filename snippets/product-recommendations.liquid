@@ -30,7 +30,7 @@
         // Display related products as a list of links, using the custom.size metafield
         data.products.forEach(product => {
           // Check for custom.size metafield
-          const customSize = custom.size
+          const customSize = product.metafields && custom.size 
               : 'Unknown Size'; // Fallback to 'Unknown Size' if metafield not found
           
           const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
