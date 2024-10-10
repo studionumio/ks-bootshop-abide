@@ -6,7 +6,7 @@
     const limit = 8;
     const intent = 'related';
 
-    const url = `${baseUrl}?section_id=${productId}&limit=${limit}&intent=related`;
+    const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`;
 
     const response = await fetch(url);
     const data = await response.text();
