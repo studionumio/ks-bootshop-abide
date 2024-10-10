@@ -31,12 +31,7 @@
                   <div 
   class="product-price {{ pt }} {{ pb }}"
   {{ block.shopify_attributes }}>  
-                {% if current_variant.compare_at_price > current_variant.price %}
-        <span class="visually-hidden">
-          {{ 'product.sale_price' | t }} 
-        </span>
-      {% endif %}
-      {{ current_variant.price | money_without_trailing_zeros }}
+                   {{ variant.price | money_without_trailing_zeros }}
   </div>
       
                 </label>
