@@ -26,8 +26,7 @@
                   value="{{ value | escape }}"
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
-                  <p style="font-size: 20px; font-weight: bold;">{{ value }}</p>
-
+                  <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                   {% if variant %}
                     <!-- Show Price and Compare Price for this variant -->
                     <span class="variant-price">
