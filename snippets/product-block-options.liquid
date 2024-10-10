@@ -6,6 +6,22 @@
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
 
+<script>
+  // Parse the variants JSON data
+  var variants = {{ variants_json }};
+  
+  // Loop through each variant and display its price
+  variants.forEach(function(variant) {
+    var variantElement = document.createElement('div');
+    variantElement.innerHTML = `<p>Variant: ${variant.title}</p>
+                                <p>Price: ${Shopify.formatMoney(variant.price, "{{ shop.money_format }}")}</p>`;
+    
+    // Append the price to a container on the page
+    document.getElementById('variant-prices').appendChild(variantElement);
+  });
+</script>
+
+
 {% unless product.has_only_default_variant %}
   <ul 
     class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
