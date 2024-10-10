@@ -1,4 +1,7 @@
 {% liquid 
+
+  assign variant = product.variants | where: 'option' , value %
+  
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
