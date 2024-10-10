@@ -7,7 +7,7 @@
 <!-- JavaScript to fetch and display recommendations -->
 <script>
   async function fetchProductRecommendations() {
-  const baseUrl = '/recommendations/products'; // Shopify's recommendation API
+  const baseUrl = '/recommendations/products.json'; // Shopify's recommendation API
   const productId = {{ product.id }}; // Current product ID
   const limit = 4; // Number of recommended products to show
 
