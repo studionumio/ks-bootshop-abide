@@ -26,6 +26,25 @@
   });
 </script>
 
+{% capture empty_state %}
+  {% unless request.page_type == 'product' %}
+    {% for num in (1..section.settings.limit) %}
+      <div class="swiper-slide p-4 p-desktop-5">
+        <div class="product-card text-center">
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'product-' | append: current | placeholder_svg_tag: 'product-card-img img-thumbnail mb-4' }}
+          <h3 class="product-card-title h6 mb-1">
+            Product {{ current }}
+          </h3>
+          <p class="mb-0">
+            $19.99
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  {% endunless %}
+{% endcapture %}
+
   <div 
     class="container">
     <div >
