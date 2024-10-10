@@ -1,5 +1,5 @@
 <div id="product-recommendations-container">
-  <h4>Related Products</h4>
+  <h4>Other Sizes:</h4>
   <div id="product-recommendations-grid" class="grid"></div>
   <div id="no-recommendations" style="display: none;">
     <p>No related products found. Check out some of our other popular products:</p>
@@ -7,9 +7,8 @@
       {% for product in collections['your-fallback-collection'].products limit: 4 %}
         <div class="product-item">
           <a href="{{ product.url }}">
-            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
             <p>{{ product.title }}</p>
-            <p>{{ product.price | money }}</p>
+          
           </a>
         </div>
       {% endfor %}
