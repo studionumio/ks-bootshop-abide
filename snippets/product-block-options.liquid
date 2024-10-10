@@ -31,7 +31,7 @@
                   <div 
   class="product-price {{ pt }} {{ pb }}"
   {{ block.shopify_attributes }}>  
-                    {{ 'product.regular_price' | t }} 
+                   {{ current_variant.price | money_without_trailing_zeros }}
   </div>
       
                 </label>
