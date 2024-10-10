@@ -4,23 +4,38 @@
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
   // Add event listeners to each radio button
   document.querySelectorAll('input[type="radio"][name^="option-"]').forEach(function (radioButton) {
     radioButton.addEventListener('change', function () {
       // Get the selected variant ID
       var selectedVariantId = this.getAttribute('data-variant-id');
 
-      // Update the price and availability based on the selected variant
-      document.querySelectorAll('.product-price-final').forEach(function (priceElement) {
-        var variantId = priceElement.getAttribute('data-variant-id');
-        priceElement.style.display = (variantId === selectedVariantId) ? 'inline' : 'none';
-      });
+      // Find the price for the selected variant
+      var selectedPriceElement = document.querySelector('.variant-price[data-variant-id="' + selectedVariantId + '"]');
 
-      document.querySelectorAll('.product-sold-out-badge').forEach(function (soldOutElement) {
-        var variantId = soldOutElement.getAttribute('data-variant-id');
-        soldOutElement.style.display = (variantId === selectedVariantId) ? 'inline' : 'none';
-      });
+      // Get the sale price and compare price (if applicable)
+      var newPrice = selectedPriceElement.querySelector('.product-price-final-sale') || selectedPriceElement;
+      var comparePrice = selectedPriceElement.querySelector('.product-price-compare');
+
+      // Update the main price display
+      var currentPriceElement = document.getElementById('current-variant-price');
+      var currentCompareElement = document.getElementById('current-compare-price');
+
+      currentPriceElement.innerHTML = newPrice.innerHTML;
+
+      // Update the compare price if it exists
+      if (comparePrice) {
+        if (currentCompareElement) {
+          currentCompareElement.innerHTML = comparePrice.innerHTML;
+          currentCompareElement.style.display = 'inline';
+        } else {
+          var compareHTML = '<s id="current-compare-price">' + comparePrice.innerHTML + '</s>';
+          currentPriceElement.insertAdjacentHTML('afterend', compareHTML);
+        }
+      } else if (currentCompareElement) {
+        currentCompareElement.style.display = 'none';
+      }
     });
   });
 
@@ -58,8 +73,8 @@
                   {{ value }}
 
                   {% if variant %}
-                    <!-- Price display -->
-                    <span class="product-price-final" data-variant-id="{{ variant.id }}">
+                    <!-- Prices for all variants still displayed -->
+                    <span class="variant-price" data-variant-id="{{ variant.id }}">
                       {% if variant.compare_at_price > variant.price %}
                         <span class="product-price-final-sale">
                           {{ variant.price | money_without_trailing_zeros }}
@@ -67,22 +82,14 @@
                         <s class="product-price-compare">
                           {{ variant.compare_at_price | money_without_trailing_zeros }}
                         </s>
-                        <span class="badge product-sale-badge">
-                          {{ 'product.save' | t }}
-                          {% if block.settings.badge_discount_type == 'percentage' %}
-                            {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
-                          {% else %}
-                            {{ variant.compare_at_price | minus: variant.price | money_without_trailing_zeros }}
-                          {% endif %}
-                        </span>
                       {% else %}
                         {{ variant.price | money_without_trailing_zeros }}
                       {% endif %}
                     </span>
 
-                    <!-- Stock status -->
+                    <!-- Stock status still displayed -->
                     {% unless variant.available %}
-                      <span class="badge product-sold-out-badge" data-variant-id="{{ variant.id }}">
+                      <span class="badge product-sold-out-badge">
                         {{ 'product.sold_out' | t }}
                       </span>
                     {% endunless %}
@@ -95,8 +102,17 @@
       </li>
     {% endfor %}
   </ul>
+
+  <!-- Main product price display (for the currently selected variant) -->
+  <div class="main-product-price">
+    <span id="current-variant-price">
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {{ current_variant.price | money_without_trailing_zeros }}
+    </span>
+    {% if current_variant.compare_at_price > current_variant.price %}
+      <s id="current-compare-price">
+        {{ current_variant.compare_at_price | money_without_trailing_zeros }}
+      </s>
+    {% endif %}
+  </div>
 {% endunless %}
-
-
-
-
