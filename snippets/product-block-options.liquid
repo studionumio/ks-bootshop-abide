@@ -22,13 +22,14 @@
                   name="option-{{ option.name | handleize }}" 
                   id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
                   value="{{ value | escape }}"
-                  {% assign variant = product.variants | where: 'option' , value %}
+           
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
-                 {% for variant in product.variants %}
-    {{ variant.price | money }}
-{% endfor %}
+                    {% assign variant = product.variants | where: 'option' , value %}
+                  {% if variant %}
+                    {{ variant.first.price | money }}
+                  {% endif %}
                 </label>
               </li>
             {% endfor %}
