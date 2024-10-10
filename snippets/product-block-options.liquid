@@ -28,7 +28,7 @@
                   {{ value }}
                     {% assign variant = product.variants | where: 'option' , value %}
          
-                    {{ variant.first.price | money }}
+                    {{ variant.price | money }}
  
                 </label>
               </li>
