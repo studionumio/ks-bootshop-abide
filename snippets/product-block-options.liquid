@@ -47,7 +47,7 @@
 
                     <!-- Sale Badge -->
                     {% if variant.compare_at_price > variant.price %}
-                      <br/><span class="abide-product-sale-badge badge">
+                     <span class="abide-product-sale-badge badge" style="margin-left: 4px;">
                         {{ 'product.save' | t }}
                         {% if block.settings.badge_discount_type == 'percentage' %}
                           {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
