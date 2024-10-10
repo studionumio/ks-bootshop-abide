@@ -204,7 +204,7 @@
         "liquid_iDU3Rg"
       ],
       "custom_css": [
-        ".product-contents {width: 80%;}"
+        ".product-contents {width: 80%; display: inline-block; position: relative;}"
       ],
       "settings": {
         "bg_color": "bg-body",
@@ -224,7 +224,7 @@
     "featured_products_m8YUjB": {
       "type": "featured-products",
       "custom_css": [
-        ".container {float: left; width: 20%;}"
+        ".container {float: left; width: 15%; position: relative; display: inline-block;}"
       ],
       "settings": {
         "bg_color": "bg-body",
