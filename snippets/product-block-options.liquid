@@ -46,7 +46,7 @@
                  <div id="variant-prices"></div>
 {% for variant in product.variants %}
   <div class="variant-info">
-    <p>Price: {{ variant.price | money }}</p>
+    <p>Price: {{ current_variant.price | money }}</p>
   </div>
 {% endfor %}
 
