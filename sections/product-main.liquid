@@ -40,9 +40,6 @@
 <!-- Container for related products (add this in your product-main.liquid or wherever you want the recommendations to appear) -->
 <div id="related-products-container"></div>
 
-
-
-
 <section 
   id="product-main{{ product.id }}" 
   class="
@@ -113,31 +110,18 @@
               {% endform %}
             </product-form>
           </div>
-                <div class="product-recommendations" style="width: 15%;">
-
-  
-  <div class="related-products">
-     <h4>Related Products</h4>
-     <div class="product-grid">
-       {% for product in product_recommendations %}
-         <div class="product-item">
-           <a href="{{ product.url }}">
-             <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-             <p>{{ product.title }}</p>
-             <p>{{ product.price | money }}</p>
-           </a>
-         </div>
-       {% endfor %}
-     </div>
-  </div>
-
-
-        </div>
+          <!-- Moved the container for related products here -->
+          <div class="product-recommendations" style="width: 15%;">
+            <div id="related-products-container">
+              <!-- Related products will be dynamically inserted here -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 {% schema %}
 
