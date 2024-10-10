@@ -1,3 +1,4 @@
+
 {% liquid 
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
@@ -9,13 +10,14 @@
     aria-label="{{ 'product.product_options' | t }}">
     {% for option in product.options_with_values %}
       <li class="py-3">
-        {% if block.settings.options_style == 'buttons' %}       
+        {% if block.settings.options_style == 'buttons' %}
           <p class="mb-1">
             {{ option.name }}
           </p>
           <ul class="size-buttons list-unstyled">
             {% for value in option.values %}
               <li>
+                {% assign variant = product.variants | where: 'option1', value | first %}
                 <input 
                   class="visually-hidden" 
                   type="radio" 
@@ -24,11 +26,21 @@
                   value="{{ value | escape }}"
                   {% if option.selected_value == value %}checked{% endif %}>
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
-                  {{ value }}
+                  {{ value }}<br/>
+                  {% if variant %}
+                    {{ variant.price | money }}
+                  {% endif %}
                 </label>
               </li>
             {% endfor %}
           </ul>
+   
+      </li>
+
+  </ul>
+
+
+     
         {% else %}
           <label class="form-label" for="option-{{ option.name | handleize }}">
             {{ option.name }}
@@ -49,3 +61,6 @@
     {% endfor %}
   </ul>
 {% endunless %}
+
+
+
