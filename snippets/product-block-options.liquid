@@ -5,58 +5,41 @@
 %}
 
 {% unless product.has_only_default_variant %}
-  <ul 
-    class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
-    aria-label="{{ 'product.product_options' | t }}">
+  <ul class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}" aria-label="{{ 'product.product_options' | t }}">
     {% for option in product.options_with_values %}
       <li class="py-3">
-        {% if block.settings.options_style == 'buttons' %}       
-          <p class="mb-1">
-            {{ option.name }}
-          </p>
+        {% if block.settings.options_style == 'buttons' %}
+          <p class="mb-1">{{ option.name }}</p>
           <ul class="size-buttons list-unstyled">
             {% for value in option.values %}
-              <li>
-                <input 
-                  class="visually-hidden" 
-                  type="radio" 
-                  name="option-{{ option.name | handleize }}" 
-                  id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
-                  value="{{ value | escape }}"
-                  data-variant-price="{{ product.variants | where: 'option' | last.price | money }}"  <!-- New line to hold variant price -->
-                  {% if option.selected_value == value %}checked{% endif %}>
-                <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
-                  {{ value }}
-                </label>
-                <p class="variant-price" id="variant-price-{{ value | handleize }}"> <!-- Price container for each variant -->
-                  {% assign selected_variant = product.variants | where: 'option' | last %}
-                  {{ selected_variant.price | money }}
-                </p>
-              </li>
+              {% assign matching_variant = product.variants | where: 'option' | first %}
+              {% for variant in product.variants %}
+                {% if variant.option{{ forloop.index0 }} == value %}
+                  <li>
+                    <input 
+                      class="visually-hidden" 
+                      type="radio" 
+                      name="option-{{ option.name | handleize }}" 
+                      id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
+                      value="{{ value | escape }}"
+                      data-variant-price="{{ variant.price | money }}"
+                      {% if option.selected_value == value %}checked{% endif %}>
+                    <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">{{ value }}</label>
+                    <p class="variant-price" id="variant-price-{{ value | handleize }}">
+                      {{ variant.price | money }}
+                    </p>
+                  </li>
+                {% endif %}
+              {% endfor %}
             {% endfor %}
           </ul>
-        {% else %}
-          <label class="form-label" for="option-{{ option.name | handleize }}">
-            {{ option.name }}
-          </label>
-          <select
-            id="option-{{ option.name | handleize }}"
-            name="option-{{ option.name | handleize }}"
-            class="form-select">
-            {% for value in option.values %}
-              <option 
-                value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>
-                {{ value }}
-              </option>
-            {% endfor %}
-          </select>
         {% endif %}
       </li>
     {% endfor %}
   </ul>
 {% endunless %}
 
-<!-- Add JavaScript to update the price dynamically -->
+<!-- JavaScript to update price dynamically -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const variantInputs = document.querySelectorAll('input[type="radio"][name^="option-"]');
@@ -66,7 +49,6 @@
         const selectedInput = event.target;
         const priceContainer = document.querySelector("#variant-price-" + selectedInput.value.replace(/\s+/g, '-').toLowerCase());
         
-        // Fetch the price from the data attribute and update the relevant price container
         if (priceContainer) {
           priceContainer.textContent = selectedInput.getAttribute("data-variant-price");
         }
