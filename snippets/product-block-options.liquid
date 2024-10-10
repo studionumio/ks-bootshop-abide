@@ -28,7 +28,7 @@
                 <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                   {{ value }}
 
-
+                  {% if variant %}
                     <!-- Price display -->
                     {% if variant.compare_at_price > variant.price %}
                       <span class="product-price-final-sale">
@@ -57,7 +57,7 @@
                         {{ 'product.sold_out' | t }}
                       </span>
                     {% endunless %}
-     
+                  {% endif %}
                 </label>
               </li>
             {% endfor %}
