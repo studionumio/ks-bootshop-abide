@@ -162,7 +162,9 @@
 .product-price-final-sale {
   color: var(--bs-success);
 }
-
+.abide-product-price-final-sale {
+  color: var(--bs-success);
+}
 .text-white .product-price-final-sale {
   color: var(--bs-white);
 }
