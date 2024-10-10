@@ -204,7 +204,7 @@
         "liquid_iDU3Rg"
       ],
       "custom_css": [
-        ".product-contents {width: 80%; display: inline-block; position: relative;}"
+
       ],
       "settings": {
         "bg_color": "bg-body",
@@ -217,46 +217,6 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "pt": 10,
-        "pb": 10
-      }
-    },
-    "featured_products_m8YUjB": {
-      "type": "featured-products",
-      "custom_css": [
-        ".container {float: left; width: 15%; position: relative; display: inline-block;}"
-      ],
-      "settings": {
-        "bg_color": "bg-body",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-body",
-        "border_opacity": 100,
-        "container_max_width": "",
-        "products": [
-
-        ],
-        "collection": "",
-        "limit": 8,
-        "recommended_mode": true,
-        "recommended_mode_intent": "related",
-        "header_title": "Other Sizes",
-        "header_title_font_size": "h4",
-        "header_description": "<p>Add on optional description for this section</p>",
-        "header_description_font_size": "fs-sm",
-        "slider_speed": 300,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "fraction",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": false,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 1,
-        "breakpoint_tablet": 2,
-        "breakpoint_desktop": 4,
         "pt": 10,
         "pb": 10
       }
@@ -299,7 +259,6 @@
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
-    "featured_products_m8YUjB",
     "1710322973d29fae05",
     "20426219-2b04-4ec4-9f23-1ed81a76c181"
   ]
