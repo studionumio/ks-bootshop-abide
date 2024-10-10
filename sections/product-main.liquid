@@ -1,7 +1,22 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
-  
+  {% assign recommendations_url = '/recommendations/products?product_id=' | append: product.id | append: '&limit=4' %}
+
+<div id="related-products-container"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    fetch('{{ recommendations_url }}')
+      .then(response => response.text())
+      .then(html => {
+        if (html.trim().length > 0) {
+          document.getElementById('related-products-container').innerHTML = html;
+        }
+      });
+  });
+</script>
+
 <section 
   id="product-main{{ product.id }}" 
   class="
@@ -74,21 +89,6 @@
           </div>
         </div>
          <div class="col-desktop-3">
-{% assign recommendations_url = '/recommendations/products?product_id=' | append: product.id | append: '&limit=4' %}
-
-<div id="related-products-container"></div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    fetch('{{ recommendations_url }}')
-      .then(response => response.text())
-      .then(html => {
-        if (html.trim().length > 0) {
-          document.getElementById('related-products-container').innerHTML = html;
-        }
-      });
-  });
-</script>
 
    {% if product_recommendations.size > 0 %}
   <div class="related-products">
