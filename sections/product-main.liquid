@@ -75,22 +75,23 @@
         </div>
          <div class="col-desktop-3">
 
-     <div class="related-products">
-   <div class="product-grid">
-     {% for product in product_recommendations %}
-          <h4>Other Sizes Available:</h4>
-       <div class="product-item">
-         <a href="{{ product.url }}">
-           <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-           <p>{{ product.title }}</p>
-           <p>{{ product.price | money }}</p>
-         </a>
-       </div>
-     {% else %}
-       <p>No related products found.</p>
-     {% endfor %}
-   </div>
-</div>
+   {% if product_recommendations.size > 0 %}
+  <div class="related-products">
+     <h4>Related Products</h4>
+     <div class="product-grid">
+       {% for product in product_recommendations %}
+         <div class="product-item">
+           <a href="{{ product.url }}">
+             <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+             <p>{{ product.title }}</p>
+             <p>{{ product.price | money }}</p>
+           </a>
+         </div>
+       {% endfor %}
+     </div>
+  </div>
+{% endif %}
+
 
 
 
