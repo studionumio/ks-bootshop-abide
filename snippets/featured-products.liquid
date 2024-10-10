@@ -1,10 +1,4 @@
-{% liquid
-  if section.settings.collection == blank
-    assign products = section.settings.products
-  else
-    assign products = collections[section.settings.collection].products
-  endif
-%}
+
 
 {% capture empty_state %}
   {% unless request.page_type == 'product' %}
