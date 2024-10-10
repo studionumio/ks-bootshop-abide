@@ -1,4 +1,9 @@
 {% liquid 
+  assign pt = block.settings.pt | prepend: 'pt-'
+  assign pb = block.settings.pb | prepend: 'pb-'
+%}
+
+{% liquid 
   assign current_variant = product.selected_or_first_available_variant
   
   
@@ -36,10 +41,33 @@
               </li>
             {% endfor %}
           </ul>
+   
+      </li>
+=
+  </ul>
+
+
+     
+        {% else %}
+          <label class="form-label" for="option-{{ option.name | handleize }}">
+            {{ option.name }}
+          </label>
+          <select
+            id="option-{{ option.name | handleize }}"
+            name="option-{{ option.name | handleize }}"
+            class="form-select">
+            {% for value in option.values %}
+              <option 
+                value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>
+                {{ value }}
+              </option>
+            {% endfor %}
+          </select>
         {% endif %}
       </li>
     {% endfor %}
   </ul>
 {% endunless %}
 
-     
+
+
