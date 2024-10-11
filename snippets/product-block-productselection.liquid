@@ -2,8 +2,8 @@
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
-<div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; min-width: 100%;">
-  <div class="option-selection" style="flex: 1 1 25%; max-width: 65%;padding: 5px;">
+<div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%;">
+  <div class="option-selection" style="flex: 1 1 25%; max-width: 65%; padding: 10px;">
     {% unless product.has_only_default_variant %}
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
@@ -28,7 +28,6 @@
                     <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                       <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                       {% if variant %}
-                        <!-- Show Price and Compare Price for this variant -->
                         <span class="variant-price">
                           {% if variant.compare_at_price > variant.price %}
                             <span class="abide-product-price-final-sale">
@@ -70,10 +69,10 @@
     {% endunless %}
   </div>
 
-  <div class="related-products" style="flex: 1; min-width: 25%; padding: 5px;">
-    <div id="product-recommendations-container" class="loading ">
+  <div class="related-products" style="flex: 1; min-width: 35%; padding: 10px;">
+    <div id="product-recommendations-container" class="loading">
       <h6>Other Sizes:</h6>
-      <ul id="product-recommendations-list" class="size-buttons list-unstyled"></ul>
+      <ul id="product-recommendations-list" class="list"></ul>
       <div id="no-recommendations" style="display: none;">
         <p>No related products found. Check out some of our other popular products:</p>
         <ul>
