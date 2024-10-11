@@ -1,6 +1,202 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+
+{% liquid 
+  assign pt = block.settings.pt | prepend: 'pt-'
+  assign pb = block.settings.pb | prepend: 'pb-'
+%}
+<div class="option-selection">
+{% unless product.has_only_default_variant %}
+  <ul 
+    class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
+    aria-label="{{ 'product.product_options' | t }}">
+    {% for option in product.options_with_values %}
+      <li class="py-3">
+        {% if block.settings.options_style == 'buttons' %}
+          <p class="mb-1">
+            Select a Quantity:
+          </p>
+          <ul class="size-buttons list-unstyled">
+            {% for value in option.values %}
+              {% assign variant = product.variants | where: 'option1', value | first %}
+              <li>
+                <input 
+                  class="visually-hidden" 
+                  type="radio" 
+                  name="option-{{ option.name | handleize }}" 
+                  id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}checked{% endif %}>
+                <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
+                  <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
+                  {% if variant %}
+                    <!-- Show Price and Compare Price for this variant -->
+                    <span class="variant-price">
+                      <!-- Check if the variant is on sale -->
+                      {% if variant.compare_at_price > variant.price %}
+                        <!-- Show sale price and compare at price -->
+                        <span class="abide-product-price-final-sale">
+                          {{ variant.price | money_without_trailing_zeros }}
+                        </span>
+                        <s class="abide-product-price-compare">
+                          {{ variant.compare_at_price | money_without_trailing_zeros }}
+                        </s>
+                      {% else %}
+                        <!-- Show regular price if not on sale -->
+                        {{ variant.price | money_without_trailing_zeros }}
+                      {% endif %}
+                    </span>
+
+                    <!-- Sale Badge -->
+                    {% if variant.compare_at_price > variant.price %}
+                     <span class="abide-product-sale-badge badge" style="margin-left: 4px;">
+                        {{ 'product.save' | t }}
+                        {% if block.settings.badge_discount_type == 'percentage' %}
+                          {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
+                        {% else %}
+                          {{ variant.compare_at_price | minus: variant.price | money_without_trailing_zeros }}
+                        {% endif %}
+                      </span>
+                    {% endif %}
+
+                    <!-- Stock status for this variant -->
+                    {% unless variant.available %}
+                      <span class="abide-badge abide-product-sold-out-badge">
+                        {{ 'product.sold_out' | t }}
+                      </span>
+                    {% endunless %}
+                  {% endif %}
+                </label>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endunless %}
+</div>
+<div class="related-products">
+<div id="product-recommendations-container">
+  <h6>Other Sizes:</h6>
+  <ul id="product-recommendations-list" class="list"></ul>
+  <div id="no-recommendations" style="display: none;">
+    <p>No related products found. Check out some of our other popular products:</p>
+    <ul>
+      {% for product in collections['your-fallback-collection'].products limit: 5 %}
+        <li><a href="{{ product.url }}">{{ product.metafields.custom.size.value }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+  async function fetchProductRecommendations() {
+    const baseUrl = '/recommendations/products.json'; // Shopify's recommendation API in JSON format
+    const productId = {{ product.id }}; // Current product ID
+    const limit = 4; // Number of recommended products to show
+    const intent = 'related'; // Recommendation intent (can also be 'complementary')
+
+    // Fetch the current product's size
+    const currentSize = await fetchProductMetafields(productId);
+
+    const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`;
+    
+    try {
+      const response = await fetch(url);
+      const data = await response.json(); // Parse JSON response
+
+      if (data && data.products && data.products.length > 0) {
+        const recommendationsList = document.getElementById('product-recommendations-list');
+        
+        // Add the current product size to the top of the list
+        recommendationsList.innerHTML = `<li class="current-size"><a href="#">✔️ ${currentSize}</a></li>`;
+        
+        for (const product of data.products) {
+          // Fetch the metafields using the GraphQL API
+          const customSize = await fetchProductMetafields(product.id);
+          
+          // Check if the size matches the current product's size
+          const isCurrentProduct = customSize === currentSize;
+
+          // Skip adding the current product again (since it's already added at the top)
+          if (isCurrentProduct) continue;
+
+          // Add related products to the list
+          const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
+          recommendationsList.innerHTML += productHtml;
+        }
+      } else {
+        // Show fallback content if no recommendations
+        document.getElementById('no-recommendations').style.display = 'block';
+      }
+    } catch (error) {
+      console.error('Failed to load product recommendations:', error);
+    }
   }
-{% endschema %}
+
+  // Fetch product metafields via the Storefront API or GraphQL API
+  async function fetchProductMetafields(productId) {
+    const storefrontAccessToken = '8e0b6fef95af50d09f34e85b96c593d1'; // Replace with your Storefront API access token
+    const storeDomain = 'abidehawaii.com'; // Replace with your store domain
+
+    const query = `
+      query {
+        product(id: "gid://shopify/Product/${productId}") {
+          metafield(namespace: "custom", key: "size") {
+            value
+          }
+        }
+      }
+    `;
+
+    try {
+      const response = await fetch(`https://${storeDomain}/api/2024-01/graphql.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': storefrontAccessToken,
+        },
+        body: JSON.stringify({ query }),
+      });
+      
+      const result = await response.json();
+      return result.data.product.metafield ? result.data.product.metafield.value : 'Unknown size';
+    } catch (error) {
+      console.error('Failed to fetch product metafields:', error);
+      return 'Unknown size'; // Fallback in case of error
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
+</script>
+
+
+
+
+
+
+<style>
+
+
+  /* Simple styling for list of links */
+
+  ul.list li.current-size a {
+  font-weight: bold;
+  color: #28a745; /* Example color for emphasis */
+}
+  ''
+  ul.list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  ul.list li {
+    margin-bottom: 10px;
+  }
+  ul.list li a {
+    text-decoration: none;
+    color: #000;
+  }
+  ul.list li a:hover {
+    text-decoration: underline;
+  }
+</style>
