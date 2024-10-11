@@ -26,24 +26,16 @@
       const response = await fetch(url);
       const data = await response.json(); // Parse JSON response
 
-      // Log the full API response for debugging
-      console.log('API response:', data);
-
       if (data && data.products && data.products.length > 0) {
         const recommendationsList = document.getElementById('product-recommendations-list');
         
-        // Display recommended products as a list of links
-        data.products.forEach(product => {
-          // Log each product to check for metafields
-          console.log('Product:', product);
-
-          // Check for custom.size metafield (we can safely assume Shopify will return the metafields object, otherwise it might need manual querying)
-          const customSize = product.metafields?.custom?.size?.value || product.title; // Fallback to product.title if metafield not found
+        for (const product of data.products) {
+          // Fetch the metafields using the GraphQL API
+          const customSize = await fetchProductMetafields(product.id);
           
           const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
-          
           recommendationsList.innerHTML += productHtml;
-        });
+        }
       } else {
         // Show fallback content if no recommendations
         document.getElementById('no-recommendations').style.display = 'block';
@@ -53,8 +45,42 @@
     }
   }
 
+  // Fetch product metafields via the Storefront API or GraphQL API
+  async function fetchProductMetafields(productId) {
+    const storefrontAccessToken = 'your-storefront-access-token'; // Replace with your Storefront API access token
+    const storeDomain = 'your-store.myshopify.com'; // Replace with your store domain
+
+    const query = `
+      query {
+        product(id: "gid://shopify/Product/${productId}") {
+          metafield(namespace: "custom", key: "size") {
+            value
+          }
+        }
+      }
+    `;
+
+    try {
+      const response = await fetch(`https://${storeDomain}/api/2024-01/graphql.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': storefrontAccessToken,
+        },
+        body: JSON.stringify({ query }),
+      });
+      
+      const result = await response.json();
+      return result.data.product.metafield ? result.data.product.metafield.value : 'Unknown size';
+    } catch (error) {
+      console.error('Failed to fetch product metafields:', error);
+      return 'Unknown size'; // Fallback in case of error
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
+
 
 
 
