@@ -3,6 +3,7 @@
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
+<div class="product-selection" style="min-width: 100%;">
 <div class="option-selection" style="float: left; display: inline-block;">
 {% unless product.has_only_default_variant %}
   <ul 
@@ -88,7 +89,7 @@
   </div>
 </div>
 </div>
-
+</div>
 <script>
   async function fetchProductRecommendations() {
     const baseUrl = '/recommendations/products.json'; // Shopify's recommendation API in JSON format
