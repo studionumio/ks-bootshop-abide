@@ -2,8 +2,8 @@
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
-<div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%;">
-  <div class="option-selection" style="flex: 2 1 25%; max-width: 65%; padding: 10px;">
+<div class="product-selection" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25%, 65%)); gap: 10px; width: 100%;">
+  <div class="option-selection" style="padding: 10px;">
     {% unless product.has_only_default_variant %}
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
@@ -69,7 +69,7 @@
     {% endunless %}
   </div>
 
-  <div class="related-products" style="flex: 1; min-width: 35%; padding: 10px;">
+  <div class="related-products" style="padding: 10px;">
     <div id="product-recommendations-container" class="loading">
       <h6>Other Sizes:</h6>
       <ul id="product-recommendations-list" class="list"></ul>
@@ -156,21 +156,14 @@
 </script>
 
 <style>
-  .product-selection {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+   .product-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 65%)); /* Defines grid layout */
+    gap: 10px;
+    width: 100%;
   }
 
-  .option-selection {
-    flex: 1 1 25%; /* Flex-grow: 1, Flex-shrink: 1, Flex-basis: 25% */
-    max-width: 75%;
-    padding: 10px;
-  }
-
-  .related-products {
-    flex: 1;
-    min-width: 25%;
+  .option-selection, .related-products {
     padding: 10px;
   }
 
