@@ -37,10 +37,8 @@
           // Log each product to check for metafields
           console.log('Product:', product);
 
-          // Check for custom.size metafield
-          const customSize = product.metafields && product.metafields.custom && product.metafields.custom.size 
-              ? product.metafields.custom.size.value 
-              : product.title; // Fallback to product.title if metafield not found
+          // Check for custom.size metafield (we can safely assume Shopify will return the metafields object, otherwise it might need manual querying)
+          const customSize = product.metafields?.custom?.size?.value || product.title; // Fallback to product.title if metafield not found
           
           const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
           
@@ -57,6 +55,7 @@
 
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
+
 
 
 <style>
