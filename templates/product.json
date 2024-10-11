@@ -139,7 +139,7 @@
             "title_font_size": "fs-sm",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 0,
-            "description": "<p>Information on SKU will go here</p>",
+            "description": "",
             "product_description": false,
             "description_font_size": "fs-md",
             "border_top_width": 1,
