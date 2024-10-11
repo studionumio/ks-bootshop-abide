@@ -32,6 +32,9 @@
       if (data && data.products && data.products.length > 0) {
         const recommendationsList = document.getElementById('product-recommendations-list');
         
+        // Add the current product size to the top of the list
+        recommendationsList.innerHTML = `<li class="current-size"><a href="#">✔️ ${currentSize}</a></li>`;
+        
         for (const product of data.products) {
           // Fetch the metafields using the GraphQL API
           const customSize = await fetchProductMetafields(product.id);
@@ -39,15 +42,13 @@
           // Check if the size matches the current product's size
           const isCurrentProduct = customSize === currentSize;
 
-          // Add a checkmark icon for the current product size
-          const checkmark = isCurrentProduct ? '✔️ ' : ''; // Add a checkmark if it's the current size
-          
-          const productHtml = `<li><a href="${product.url}">${checkmark}${customSize}</a></li>`;
+          // Skip adding the current product again (since it's already added at the top)
+          if (isCurrentProduct) continue;
+
+          // Add related products to the list
+          const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
           recommendationsList.innerHTML += productHtml;
         }
-
-        // Add the current product to the list if you want it to appear along with related products
-        recommendationsList.innerHTML += `<li><a href="#">✔️ ${currentSize} (current size)</a></li>`;
       } else {
         // Show fallback content if no recommendations
         document.getElementById('no-recommendations').style.display = 'block';
@@ -97,10 +98,17 @@
 
 
 
+
 <style>
 
 
   /* Simple styling for list of links */
+
+  ul.list li.current-size a {
+  font-weight: bold;
+  color: #28a745; /* Example color for emphasis */
+}
+  ''
   ul.list {
     list-style-type: none;
     padding-left: 0;
