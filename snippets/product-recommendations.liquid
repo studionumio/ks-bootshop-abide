@@ -1,24 +1,24 @@
 <div class="related-products">
-<div id="product-recommendations-container">
-  <h6>Other Sizes:</h6>
-  <ul id="product-recommendations-list" class="list"></ul>
-  <div id="no-recommendations" style="display: none;">
-    <p>No related products found. Check out some of our other popular products:</p>
-    <ul>
-      {% for product in collections['your-fallback-collection'].products limit: 5 %}
-        <li><a href="{{ product.url }}">{{ product.title }}</a></li>
-      {% endfor %}
-    </ul>
+  <div id="product-recommendations-container">
+    <h6>Other Sizes:</h6>
+    <ul id="product-recommendations-list" class="list"></ul>
+    <div id="no-recommendations" style="display: none;">
+      <p>No related products found. Check out some of our other popular products:</p>
+      <ul>
+        {% for product in collections['your-fallback-collection'].products limit: 5 %}
+          <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
-</div>
 </div>
 
 <script>
   async function fetchProductRecommendations() {
-    const baseUrl = '/recommendations/products.json'; // Shopify's recommendation API in JSON format
+    const baseUrl = '/recommendations/products.json'; // Shopify's recommendation API
     const productId = {{ product.id }}; // Current product ID
     const limit = 4; // Number of recommended products to show
-    const intent = 'related'; // Recommendation intent (can also be 'complementary')
+    const intent = 'related'; // Recommendation intent
 
     const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`;
     
@@ -34,8 +34,8 @@
         
         // Display recommended products as a list of links
         data.products.forEach(product => {
-          // Log each product to check for metafields
-          console.log('Product:', product);
+          // Log the metafields for debugging
+          console.log('Product metafields:', product.metafields);
 
           // Check for custom.size metafield
           const customSize = product.metafields && product.metafields.custom && product.metafields.custom.size 
@@ -58,8 +58,6 @@
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
 
-
-<style>
 
 
   /* Simple styling for list of links */
