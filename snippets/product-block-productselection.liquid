@@ -109,6 +109,9 @@
       if (data && data.products && data.products.length > 0) {
         const recommendationsList = document.getElementById('product-recommendations-list');
         
+        // Clear the previous recommendations to avoid duplication
+        recommendationsList.innerHTML = '';
+
         // Add the current product size to the top of the list
         recommendationsList.innerHTML = `<li class="current-size"><a href="#">✔️ ${currentSize}</a></li>`;
         
@@ -170,6 +173,7 @@
 
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
+
 
 
 
