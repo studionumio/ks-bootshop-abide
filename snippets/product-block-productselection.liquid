@@ -4,7 +4,7 @@
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
 <div class="product-selection" style="min-width: 100%;">
-<div class="option-selection" >
+<div class="option-selection" style="width: 50%;" >
 {% unless product.has_only_default_variant %}
   <ul 
     class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
@@ -73,7 +73,7 @@
       </li>
     {% endfor %}
   </ul>
-  <div class="related-products" >
+  <div class="related-products" style="width: 50%;" >
 <div id="product-recommendations-container">
   <h6>Other Sizes:</h6>
   <ul id="product-recommendations-list" class="list"></ul>
