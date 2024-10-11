@@ -114,7 +114,7 @@
           "settings": {
             "icon_size": 20,
             "title": "Product Details",
-            "title_font_family": "",
+            "title_font_family": "heading",
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
@@ -135,8 +135,8 @@
           "settings": {
             "icon_size": 20,
             "title": "SKU Information",
-            "title_font_family": "",
-            "title_font_size": "fs-md",
+            "title_font_family": "heading",
+            "title_font_size": "fs-sm",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 0,
             "description": "<p>Information on SKU will go here</p>",
@@ -165,8 +165,8 @@
           "settings": {
             "icon_size": 20,
             "title": "Shipping Information",
-            "title_font_family": "",
-            "title_font_size": "fs-md",
+            "title_font_family": "heading",
+            "title_font_size": "fs-sm",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
             "description": "<p>Feel free to create additional blocks like this for <strong>Shipping, Payments, etc </strong>through the Shopify Theme editor. Also, you may easily adjust their order by dragging and dropping.</p>",
@@ -186,8 +186,8 @@
           "settings": {
             "icon_size": 20,
             "title": "Returns & Warranty",
-            "title_font_family": "",
-            "title_font_size": "fs-md",
+            "title_font_family": "heading",
+            "title_font_size": "fs-sm",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
             "description": "<p>To return an item to us, follow the directions listed on the return exchange form included with your order. If you don’t have this form available, you can download one by clicking here</p>",
