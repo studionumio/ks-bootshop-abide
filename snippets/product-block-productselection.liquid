@@ -86,7 +86,6 @@
     </div>
   </div>
 </div>
-
 <script>
   async function fetchProductRecommendations() {
     const baseUrl = '/recommendations/products.json';
@@ -94,34 +93,84 @@
     const limit = 4;
     const intent = 'related';
 
-    const currentSize = await fetchProductMetafields(productId);
-
-    const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`;
-    
     try {
-      const response = await fetch(url);
-      const data = await response.json();
+      // Fetch recommendations and current size in parallel
+      const [currentSize, recommendationsResponse] = await Promise.all([
+        fetchProductMetafields(productId),
+        fetch(`${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`)
+      ]);
 
-      if (data && data.products && data.products.length > 0) {
+      const recommendationsData = await recommendationsResponse.json();
+
+      if (recommendationsData && recommendationsData.products && recommendationsData.products.length > 0) {
+        const productIds = recommendationsData.products.map(product => product.id);
+        const metafields = await fetchMultipleProductMetafields(productIds);
+
         const recommendationsList = document.getElementById('product-recommendations-list');
-        
+
+        // Render current size first
         recommendationsList.innerHTML = `<li class="current-size"><a href="#" class="size-box active">✔️ ${currentSize}</a></li>`;
         
-        for (const product of data.products) {
-          const customSize = await fetchProductMetafields(product.id);
-          if (customSize === currentSize) continue;
-          recommendationsList.innerHTML += `<li><a href="${product.url}" class="size-box">${customSize}</a></li>`;
-        }
+        // Render other sizes
+        recommendationsData.products.forEach(product => {
+          const customSize = metafields[product.id] || 'Unknown size';
+          if (customSize !== currentSize) {
+            recommendationsList.innerHTML += `<li><a href="${product.url}" class="size-box">${customSize}</a></li>`;
+          }
+        });
       } else {
         document.getElementById('no-recommendations').style.display = 'block';
       }
-      
+
       document.getElementById('product-recommendations-container').classList.remove('loading');
     } catch (error) {
       console.error('Failed to load product recommendations:', error);
     }
   }
 
+  // Fetch multiple metafields for recommended products in one API call
+  async function fetchMultipleProductMetafields(productIds) {
+    const storefrontAccessToken = '8e0b6fef95af50d09f34e85b96c593d1';
+    const storeDomain = 'abidehawaii.com';
+
+    const query = `
+      query {
+        nodes(ids: [${productIds.map(id => `"gid://shopify/Product/${id}"`).join(',')}]) {
+          ... on Product {
+            id
+            metafield(namespace: "custom", key: "size") {
+              value
+            }
+          }
+        }
+      }
+    `;
+
+    try {
+      const response = await fetch(`https://${storeDomain}/api/2024-01/graphql.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': storefrontAccessToken,
+        },
+        body: JSON.stringify({ query }),
+      });
+
+      const result = await response.json();
+
+      // Return a map of product IDs to their metafield values
+      const metafields = {};
+      result.data.nodes.forEach(node => {
+        metafields[node.id.split('/').pop()] = node.metafield ? node.metafield.value : 'Unknown size';
+      });
+      return metafields;
+    } catch (error) {
+      console.error('Failed to fetch product metafields:', error);
+      return {};
+    }
+  }
+
+  // Fetch metafield for a single product
   async function fetchProductMetafields(productId) {
     const storefrontAccessToken = '8e0b6fef95af50d09f34e85b96c593d1';
     const storeDomain = 'abidehawaii.com';
@@ -156,6 +205,7 @@
 
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
+
 
 <style>
 
