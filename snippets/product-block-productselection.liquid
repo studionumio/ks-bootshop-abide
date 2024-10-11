@@ -3,7 +3,7 @@
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
 <div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%;">
-  <div class="option-selection" style="flex-grow: 2; flex-basis: 10%; padding: 10px;">
+  <div class="option-selection" style="flex-grow: 1; flex-basis: 10%; padding: 10px;">
     {% unless product.has_only_default_variant %}
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
@@ -199,6 +199,9 @@
     color: #000000;
     background-color: #ffffff;
     text-decoration: none;
+    width: 80px;
+    float: left;
+    margin: 3px;
   }
 
   .size-box:hover {
