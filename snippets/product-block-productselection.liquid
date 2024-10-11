@@ -69,7 +69,7 @@
     {% endunless %}
   </div>
 
-  <div class="related-products" style="flex-grow: 1; flex-basis: 10%;  padding: 10px;">
+  <div class="related-products" style="flex-grow: 1; flex-basis: 10%; padding: 10px;">
     <div id="product-recommendations-container" class="loading">
       <h6>Other Sizes:</h6>
       <ul id="product-recommendations-list" class="list"></ul>
@@ -103,12 +103,12 @@
       if (data && data.products && data.products.length > 0) {
         const recommendationsList = document.getElementById('product-recommendations-list');
         
-        recommendationsList.innerHTML = `<li class="current-size"><a href="#">✔️ ${currentSize}</a></li>`;
+        recommendationsList.innerHTML = `<li class="current-size"><a href="#" class="size-box active">✔️ ${currentSize}</a></li>`;
         
         for (const product of data.products) {
           const customSize = await fetchProductMetafields(product.id);
           if (customSize === currentSize) continue;
-          recommendationsList.innerHTML += `<li><a href="${product.url}">${customSize}</a></li>`;
+          recommendationsList.innerHTML += `<li><a href="${product.url}" class="size-box">${customSize}</a></li>`;
         }
       } else {
         document.getElementById('no-recommendations').style.display = 'block';
@@ -189,17 +189,29 @@
     margin-bottom: 10px;
   }
 
-  ul.list li a {
+  .size-box {
+    display: block;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    color: #000000;
+    background-color: #ffffff;
     text-decoration: none;
-    color: #000;
+  }
+
+  .size-box:hover {
+    background-color: #efefef;
+    cursor: pointer;
+  }
+
+  .size-box.active {
+    background-color: green;
+    color: white;
   }
 
   ul.list li a:hover {
-    text-decoration: underline;
-  }
-
-  ul.list li.current-size a {
-    font-weight: bold;
-    color: #28a745;
+    text-decoration: none;
   }
 </style>
