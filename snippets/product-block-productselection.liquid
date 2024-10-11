@@ -3,7 +3,7 @@
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
 <div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; min-width: 100%;">
-  <div class="option-selection" style="flex: 1; min-width: 25%; max-width: 65%; padding: 10px;">
+  <div class="option-selection" style="flex: 1; min-width: 25%; max-width: 75%; padding: 5px;">
     {% unless product.has_only_default_variant %}
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
@@ -70,7 +70,7 @@
     {% endunless %}
   </div>
 
-  <div class="related-products" style="flex: 1; min-width: 35%; padding: 10px;">
+  <div class="related-products" style="flex: 1; min-width: 25%; max-width: 80%; padding: 5px;">
     <div id="product-recommendations-container" class="loading">
       <h6>Other Sizes:</h6>
       <ul id="product-recommendations-list" class="list"></ul>
