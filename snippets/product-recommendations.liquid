@@ -20,6 +20,9 @@
     const limit = 4; // Number of recommended products to show
     const intent = 'related'; // Recommendation intent (can also be 'complementary')
 
+    // Fetch the current product's size
+    const currentSize = await fetchProductMetafields(productId);
+
     const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`;
     
     try {
@@ -33,9 +36,18 @@
           // Fetch the metafields using the GraphQL API
           const customSize = await fetchProductMetafields(product.id);
           
-          const productHtml = `<li><a href="${product.url}">${customSize}</a></li>`;
+          // Check if the size matches the current product's size
+          const isCurrentProduct = customSize === currentSize;
+
+          // Add a checkmark icon for the current product size
+          const checkmark = isCurrentProduct ? '✔️ ' : ''; // Add a checkmark if it's the current size
+          
+          const productHtml = `<li><a href="${product.url}">${checkmark}${customSize}</a></li>`;
           recommendationsList.innerHTML += productHtml;
         }
+
+        // Add the current product to the list if you want it to appear along with related products
+        recommendationsList.innerHTML += `<li><a href="#">✔️ ${currentSize} (current size)</a></li>`;
       } else {
         // Show fallback content if no recommendations
         document.getElementById('no-recommendations').style.display = 'block';
@@ -80,6 +92,7 @@
 
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
+
 
 
 
