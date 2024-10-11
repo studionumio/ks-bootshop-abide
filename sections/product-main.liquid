@@ -34,7 +34,7 @@
           {% render 'product-block-media-gallery' %}
         </div>
         <div class="col-desktop-9">
-          <div id="product-inner-{{ product.id }}" style="width: 78%; float: left;">
+          <div id="product-inner-{{ product.id }}" style="width: 100%; float: left;">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
                 <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
@@ -442,6 +442,52 @@
     {
       "type": "options",
       "name": "Options",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "options_style",
+          "label": "Options style",
+          "options": [
+            { "value": "buttons", "label": "Buttons" },
+            { "value": "select",  "label": "Select" }
+          ],
+          "default": "buttons"
+        },
+        {
+          "type": "text",
+          "id": "color_swatches",
+          "label": "Color swatches",
+          "default": "Color, color",
+          "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "range",
+          "id": "pt",
+          "label": "Top",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "pb",
+          "label": "Bottom",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 4
+        }
+      ]
+    },
+      {
+      "type": "productselection",
+      "name": "Product Selection",
       "limit": 1,
       "settings": [
         {
