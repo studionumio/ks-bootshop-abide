@@ -207,7 +207,30 @@
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const skuElement = document.getElementById('variant-sku');
+    const variantInputs = document.querySelectorAll('input[type="radio"][name^="option-"]');
+    
+    // Function to update the SKU display
+    function updateSKU() {
+      const selectedInput = document.querySelector('input[type="radio"]:checked');
+      if (selectedInput && selectedInput.dataset.sku) {
+        skuElement.textContent = selectedInput.dataset.sku;
+      } else {
+        skuElement.textContent = 'N/A';
+      }
+    }
 
+    // Initialize SKU on page load
+    updateSKU();
+
+    // Add event listeners to update SKU when variants change
+    variantInputs.forEach(input => {
+      input.addEventListener('change', updateSKU);
+    });
+  });
+</script>
 <style>
 
   .sizeselect {
