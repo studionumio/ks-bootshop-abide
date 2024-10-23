@@ -40,8 +40,8 @@
           "type": "liquid",
           "settings": {
             "liquid": "<div class=\"product-sku\">\nSKU <span id=\"variant-sku\"></span>\n  </div>",
-            "pt": 3,
-            "pb": 3
+            "pt": 0,
+            "pb": 0
           }
         },
         "productselection_aBb4rm": {
