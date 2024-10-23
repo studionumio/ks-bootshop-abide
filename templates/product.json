@@ -36,6 +36,14 @@
             "pb": 2
           }
         },
+        "liquid_CGfKRz": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<p><b>{{ current_variant.sku }}</b></p>",
+            "pt": 3,
+            "pb": 3
+          }
+        },
         "productselection_aBb4rm": {
           "type": "productselection",
           "settings": {
@@ -181,27 +189,6 @@
             "pb": 0
           }
         },
-        "collapse_e93jG8": {
-          "type": "collapse",
-          "settings": {
-            "icon_size": 20,
-            "title": "SKU Information",
-            "title_font_family": "heading",
-            "title_font_size": "fs-sm",
-            "title_text_transform": "text-capitalize",
-            "title_letter_spacing": 0,
-            "description": "",
-            "product_description": false,
-            "description_font_size": "fs-md",
-            "border_top_width": 1,
-            "border_bottom_width": 0,
-            "border_color": "border-body",
-            "border_opacity": 100,
-            "open_by_default": false,
-            "pt": 0,
-            "pb": 0
-          }
-        },
         "liquid_iDU3Rg": {
           "type": "liquid",
           "settings": {
@@ -224,6 +211,7 @@
       "block_order": [
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
+        "liquid_CGfKRz",
         "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
@@ -234,7 +222,6 @@
         "price_bPXD4X",
         "9ecd1e68-8c4b-4330-ac14-7459a1896521",
         "0f571c64-329e-4ea3-9c76-ebf86266226a",
-        "collapse_e93jG8",
         "liquid_iDU3Rg",
         "separator_cWJNG3"
       ],
