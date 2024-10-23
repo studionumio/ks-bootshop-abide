@@ -2,29 +2,9 @@
   assign variants_json = product.variants | json
 %}
 
-<script>
 
-  document.addEventListener('DOMContentLoaded', function () {
-  const productForms = document.querySelectorAll('product-form');
-  const skuDisplay = document.getElementById('VariantSku');
-
-  productForms.forEach(form => {
-    form.addEventListener('variant:change', function (event) {
-      const newVariant = event.detail.variant; // Get the new variant object from the event
-
-      if (newVariant) {
-        skuDisplay.textContent = newVariant.sku; // Update SKU text
-        skuDisplay.setAttribute('data-variant-id', newVariant.id); // Update variant ID
-      }
-    });
-  });
-});
-
-</script>
-<span id="VariantSku" data-variant-id="{{ product.selected_or_first_available_variant.id }}">
-  {{ product.selected_or_first_available_variant.sku }}
-</span>
-
+{% assign current_variant = product.selected_or_first_available_variant %}
+<span class="variant-sku">{{ current_variant.sku }}</span>
 <section 
   id="product-main{{ product.id }}" 
   class="
