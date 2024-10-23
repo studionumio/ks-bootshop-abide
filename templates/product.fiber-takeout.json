@@ -277,11 +277,135 @@
         "pt": 0,
         "pb": 0
       }
+    },
+    "media_with_text_xGFhyq": {
+      "type": "media-with-text",
+      "blocks": {
+        "row_Khn4FE": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-secondary",
+            "bg_opacity": 9,
+            "bg_gradient": "bg-gradient",
+            "text_color": "text-body",
+            "border_top_width": 0,
+            "border_bottom_width": 0,
+            "border_color": "border-body",
+            "border_opacity": 100,
+            "media_align_desktop": "",
+            "media_border": "img-thumbnail",
+            "img_orientation": "adapt",
+            "video_ratio": "adapt",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-start",
+            "subtitle": "Fiber Takeout Containers",
+            "title": "Eco-Friendly",
+            "title_font_size": "h2",
+            "description": "",
+            "description_font_size": "fs-md",
+            "btn_primary_text": "",
+            "btn_primary_url": "",
+            "btn_primary_color": "btn-primary",
+            "btn_secondary_text": "",
+            "btn_secondary_url": "",
+            "btn_secondary_color": "btn-secondary",
+            "pt": 12,
+            "pb": 10
+          }
+        },
+        "row_WKtbKU": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-white",
+            "bg_opacity": 9,
+            "bg_gradient": "",
+            "text_color": "text-body",
+            "border_top_width": 0,
+            "border_bottom_width": 0,
+            "border_color": "border-body",
+            "border_opacity": 100,
+            "media_align_desktop": "flex-desktop-row-reverse",
+            "media_border": "img-thumbnail",
+            "img_orientation": "adapt",
+            "video_ratio": "adapt",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "external_video": "",
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-start",
+            "subtitle": "FIBER TAKE-OUT CONTAINERS",
+            "title": "Sog-Resistant",
+            "title_font_size": "h2",
+            "description": "<p>Either show an image, video (MP4) or an external video (YouTube). If no text block is shown, the media will take full section's space.</p>",
+            "description_font_size": "fs-md",
+            "btn_primary_text": "",
+            "btn_primary_url": "",
+            "btn_primary_color": "btn-primary",
+            "btn_secondary_text": "",
+            "btn_secondary_url": "",
+            "btn_secondary_color": "btn-secondary",
+            "pt": 5,
+            "pb": 5
+          }
+        },
+        "row_ea3DeU": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-primary",
+            "bg_opacity": 9,
+            "bg_gradient": "",
+            "text_color": "text-body",
+            "border_top_width": 0,
+            "border_bottom_width": 0,
+            "border_color": "border-body",
+            "border_opacity": 100,
+            "media_align_desktop": "",
+            "media_border": "img-thumbnail",
+            "img_orientation": "adapt",
+            "video_ratio": "adapt",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "external_video": "",
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-start",
+            "subtitle": "Fiber Take-out Containers",
+            "title": "Sturdy and Secure",
+            "title_font_size": "h2",
+            "description": "",
+            "description_font_size": "fs-md",
+            "btn_primary_text": "",
+            "btn_primary_url": "",
+            "btn_primary_color": "btn-primary",
+            "btn_secondary_text": "",
+            "btn_secondary_url": "",
+            "btn_secondary_color": "btn-secondary",
+            "pt": 5,
+            "pb": 5
+          }
+        }
+      },
+      "block_order": [
+        "row_Khn4FE",
+        "row_WKtbKU",
+        "row_ea3DeU"
+      ],
+      "settings": {
+        "container_max_width": ""
+      }
     }
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
     "1710322973d29fae05",
-    "20426219-2b04-4ec4-9f23-1ed81a76c181"
+    "20426219-2b04-4ec4-9f23-1ed81a76c181",
+    "media_with_text_xGFhyq"
   ]
 }
