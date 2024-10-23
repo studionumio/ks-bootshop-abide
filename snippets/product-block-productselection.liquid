@@ -5,7 +5,7 @@
 <div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%;">
   <div class="option-selection" style="width: 55%; padding: 2px;">
     {% unless product.has_only_default_variant %}
-              <span>{{ variant.sku }}</span>
+              
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
         aria-label="{{ 'product.product_options' | t }}">
@@ -13,6 +13,7 @@
           <li class="py-3">
             {% if block.settings.options_style == 'buttons' %}
               <p class="mb-1">
+                <span>{{ variant.sku }}</span>
                 Select a Quantity:
                    
               </p>
