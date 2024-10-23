@@ -39,7 +39,7 @@
         "liquid_WBYdaW": {
           "type": "liquid",
           "settings": {
-            "liquid": "<div class=\"variant-sku\">SKU: <span id=\"variant-sku\"></span></div>",
+            "liquid": "<div class=\"product-sku\">\n    <strong>SKU:</strong> <span id=\"variant-sku\"></span>\n  </div>",
             "pt": 3,
             "pb": 3
           }
