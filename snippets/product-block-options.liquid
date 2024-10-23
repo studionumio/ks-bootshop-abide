@@ -31,12 +31,12 @@
                   <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                   {% if variant %}
                     <!-- Show Price and Compare Price for this variant -->
-                   <span class="variant-sku">{{ variant.sku }}</span>
                     <span class="variant-price">
                       <!-- Check if the variant is on sale -->
                       {% if variant.compare_at_price > variant.price %}
                         <!-- Show sale price and compare at price -->
                         <span class="abide-product-price-final-sale">
+                          {{ variant.sku }}
                           {{ variant.price | money_without_trailing_zeros }}
                         </span>
                         <s class="abide-product-price-compare">
