@@ -12,7 +12,7 @@
     {% for option in product.options_with_values %}
       <li class="py-3">
         {% if block.settings.options_style == 'buttons' %}
-          <p class="mb-1"> {{ product.selected_or_first_available_variant.sku }}
+          <p class="mb-1"> <span>{{ product.selected_or_first_available_variant.sku }} Test</span>
             Select a Quantity:
           </p>
           <ul class="size-buttons list-unstyled">
