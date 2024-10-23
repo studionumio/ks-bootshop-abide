@@ -32,7 +32,18 @@
 
   {% render 'styles-scripts' %}
 </head>
+<script>document.addEventListener('DOMContentLoaded', function() {
+  const variantSkuElement = document.getElementById('variant-sku');
+  const variantSelector = document.querySelector('[name="id"]'); // This is the variant selector (dropdown or buttons)
 
+  if (variantSelector) {
+    variantSelector.addEventListener('change', function() {
+      const selectedVariant = this.options[this.selectedIndex].dataset.sku;
+      variantSkuElement.textContent = selectedVariant || 'N/A'; // Replace with the selected variant SKU
+    });
+  }
+});
+</script>
 <body class="{{ request.page_type | prepend: 'page-type-' }}">
   <a class="visually-hidden-focusable" href="#main">
     {{ 'general.accessibility.skip_content' | t }}
