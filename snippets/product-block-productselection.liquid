@@ -13,6 +13,7 @@
             {% if block.settings.options_style == 'buttons' %}
               <p class="mb-1">
                 Select a Quantity:
+                     <span>{{ product.selected_or_first_available_variant.sku }} Test</span>
               </p>
               <ul class="size-buttons list-unstyled">
                 {% for value in option.values %}
