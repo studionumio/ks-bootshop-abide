@@ -21,6 +21,10 @@
 });
 
 </script>
+<span id="VariantSku" data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+  {{ product.selected_or_first_available_variant.sku }}
+</span>
+
 <section 
   id="product-main{{ product.id }}" 
   class="
