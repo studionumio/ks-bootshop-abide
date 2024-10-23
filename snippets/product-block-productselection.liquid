@@ -9,7 +9,7 @@
 <span class="variant-sku">{{ current_variant.sku }}</span>
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
-        aria-label="{{ 'product.product_options' | t }}">
+        aria-label="{{ 'product.product_options' | t }} ">
         {% for option in product.options_with_values %}
           <li class="py-3">
             {% if block.settings.options_style == 'buttons' %}
@@ -18,7 +18,7 @@
                 Select a Quantity:
                    
               </p>
-              <ul class="size-buttons list-unstyled">
+              <ul class="size-buttons list-unstyled" >
                 {% for value in option.values %}
                   {% assign variant = product.variants | where: 'option1', value | first %}
                   <li>
@@ -29,7 +29,7 @@
                       id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
                       value="{{ value | escape }}"
                       {% if option.selected_value == value %}checked{% endif %}>
-                    <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
+                    <label for="option-{{ option.name | handleize }}-{{ value | handleize }} data-sku="{{ variant.sku }}" value="{{ variant.id }}"">
                       <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                       {% if variant %}
                         <span class="variant-price">
