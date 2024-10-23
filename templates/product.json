@@ -49,8 +49,8 @@
           "settings": {
             "options_style": "buttons",
             "color_swatches": "Color, color",
-            "pt": 4,
-            "pb": 4
+            "pt": 0,
+            "pb": 2
           }
         },
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
