@@ -2,38 +2,24 @@
   assign variants_json = product.variants | json
 %}
 
-<script>document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const productJsonElements = [...document.querySelectorAll('[id^=ProductJson-')];
+<script>
 
-    productJsonElements.forEach((productElement) => {
-      const sectionId = productElement.id.replace("ProductJson-", "shopify-section-");
-      const variantSKU = document.querySelector(`#${sectionId} .variant-sku`);
-      const inputSelects = [...document.querySelectorAll(`#${sectionId} .single-option-selector`)];
-      const productInfo = JSON.parse(productElement.innerHTML);
+  document.addEventListener('DOMContentLoaded', function () {
+  const productForms = document.querySelectorAll('product-form');
+  const skuDisplay = document.getElementById('VariantSku');
 
-      if (variantSKU && inputSelects.length) {
-        const inputValues = inputSelects.map(input => input.value);
+  productForms.forEach(form => {
+    form.addEventListener('variant:change', function (event) {
+      const newVariant = event.detail.variant; // Get the new variant object from the event
 
-        inputSelects.forEach((input, index) => {
-          input.addEventListener('change', (evt) => {
-            inputValues[index] = evt.target.value;
-
-            const matchedVariant = productInfo.variants.find(variant => {
-              return variant.options.every((option, i) => option === inputValues[i]);
-            });
-
-            if (matchedVariant) {
-              variantSKU.innerText = matchedVariant.sku;
-            } else {
-              variantSKU.innerText = 'Not available'; // Optional fallback message
-            }
-          });
-        });
+      if (newVariant) {
+        skuDisplay.textContent = newVariant.sku; // Update SKU text
+        skuDisplay.setAttribute('data-variant-id', newVariant.id); // Update variant ID
       }
     });
-  }, 100);
+  });
 });
+
 </script>
 <section 
   id="product-main{{ product.id }}" 
