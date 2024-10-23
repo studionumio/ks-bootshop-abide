@@ -235,3 +235,16 @@ adjustShopifySubscriptionsStyling()
 window.addEventListener('kt.product.quick_view.modal_shown', adjustShopifySubscriptionsStyling)
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  const variantSkuElement = document.getElementById('variant-sku');
+  const variantSelector = document.querySelector('[name="id"]'); // This is the variant selector (dropdown or buttons)
+
+  if (variantSelector) {
+    variantSelector.addEventListener('change', function() {
+      const selectedVariant = this.options[this.selectedIndex].dataset.sku;
+      variantSkuElement.textContent = selectedVariant || 'N/A'; // Replace with the selected variant SKU
+    });
+  }
+});
+
+
