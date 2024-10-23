@@ -5,35 +5,30 @@
 <div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%;">
   <div class="option-selection" style="width: 55%; padding: 2px;">
     {% unless product.has_only_default_variant %}
-               {% assign current_variant = product.selected_or_first_available_variant %}
-<span class="variant-sku">{{ current_variant.sku }}</span>
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
-        aria-label="{{ 'product.product_options' | t }} ">
+        aria-label="{{ 'product.product_options' | t }}">
         {% for option in product.options_with_values %}
           <li class="py-3">
             {% if block.settings.options_style == 'buttons' %}
               <p class="mb-1">
-                
                 Select a Quantity:
-                   
               </p>
-              <ul class="size-buttons list-unstyled" >
+              <ul class="size-buttons list-unstyled">
                 {% for value in option.values %}
                   {% assign variant = product.variants | where: 'option1', value | first %}
                   <li>
-                    <input  
+                    <input 
                       class="visually-hidden" 
                       type="radio" 
                       name="option-{{ option.name | handleize }}" 
                       id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
                       value="{{ value | escape }}"
                       {% if option.selected_value == value %}checked{% endif %}>
-                    <label for="option-{{ option.name | handleize }}-{{ value | handleize }} ">
+                    <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
                       <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                       {% if variant %}
                         <span class="variant-price">
-                    
                           {% if variant.compare_at_price > variant.price %}
                             <span class="abide-product-price-final-sale">
                               {{ variant.price | money_without_trailing_zeros }}
@@ -210,46 +205,7 @@
 
   document.addEventListener('DOMContentLoaded', fetchProductRecommendations);
 </script>
-<script>
 
-  document.addEventListener('DOMContentLoaded', () => {
-  const observeProductJson = () => {
-    const productJsonElements = document.querySelectorAll('[id^=ProductJson-]');
-    
-    productJsonElements.forEach((productElement) => {
-      const sectionId = productElement.id.replace('ProductJson-', 'shopify-section-');
-      const variantSKU = document.querySelector(`#${sectionId} .variant-sku`);
-      const inputSelects = document.querySelectorAll(`#${sectionId} .single-option-selector`);
-      const productInfo = JSON.parse(productElement.innerHTML);
-
-      if (variantSKU && inputSelects.length > 0) {
-        const inputValues = Array.from(inputSelects).map(input => input.value);
-
-        inputSelects.forEach((input, index) => {
-          input.addEventListener('change', (evt) => {
-            inputValues[index] = evt.target.value;
-
-            const matchedVariant = productInfo.variants.find(variant => 
-              variant.options.every((option, i) => option === inputValues[i])
-            );
-
-            variantSKU.innerText = matchedVariant ? matchedVariant.sku : 'Not available';
-          });
-        });
-      }
-    });
-  };
-
-  // Use MutationObserver to detect when product elements are added
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach(() => observeProductJson());
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-});
-
-  
-</script>
 
 <style>
 
