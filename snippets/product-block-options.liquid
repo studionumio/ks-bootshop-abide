@@ -3,30 +3,7 @@
   assign pt = block.settings.pt | prepend: 'pt-'
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-  const productForm = document.querySelector('product-form');
-  const skuDisplay = document.getElementById('VariantSku');
 
-  if (productForm) {
-    productForm.addEventListener('change', function (event) {
-      const selectedVariant = productForm.querySelector('input[name="id"]:checked') || 
-                              productForm.querySelector('select[name="id"]');
-      
-      const variantId = selectedVariant ? selectedVariant.value : null;
-      const variants = {{ product.variants | json }};
-
-      const matchingVariant = variants.find(variant => variant.id == variantId);
-
-      if (matchingVariant) {
-        skuDisplay.textContent = matchingVariant.sku;
-        skuDisplay.setAttribute('data-variant-id', matchingVariant.id);
-      }
-    });
-  }
-});
-
-  </script>
 {% unless product.has_only_default_variant %}
   <ul 
     class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
