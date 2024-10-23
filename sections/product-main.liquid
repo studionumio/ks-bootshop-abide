@@ -18,6 +18,30 @@
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
   ">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const productForm = document.querySelector('product-form');
+  const skuDisplay = document.getElementById('VariantSku');
+
+  if (productForm) {
+    productForm.addEventListener('change', function (event) {
+      const selectedVariant = productForm.querySelector('input[name="id"]:checked') || 
+                              productForm.querySelector('select[name="id"]');
+      
+      const variantId = selectedVariant ? selectedVariant.value : null;
+      const variants = {{ product.variants | json }};
+
+      const matchingVariant = variants.find(variant => variant.id == variantId);
+
+      if (matchingVariant) {
+        skuDisplay.textContent = matchingVariant.sku;
+        skuDisplay.setAttribute('data-variant-id', matchingVariant.id);
+      }
+    });
+  }
+});
+
+  </script>
   
   <div 
     class="container" 
