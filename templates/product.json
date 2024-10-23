@@ -39,7 +39,7 @@
         "liquid_GjHRQG": {
           "type": "liquid",
           "settings": {
-            "liquid": "<span id=\"VariantSku\" data-variant-id=\"{{ product.selected_or_first_available_variant.id }}\">\n  {{ product.selected_or_first_available_variant.sku }}\n</span>",
+            "liquid": "{% assign current_variant = product.selected_or_first_available_variant %}\n<span class=\"variant-sku\">{{ current_variant.sku }}</span>",
             "pt": 3,
             "pb": 3
           }
