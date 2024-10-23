@@ -1,10 +1,6 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
-
-
-{% assign current_variant = product.selected_or_first_available_variant %}
-<span class="variant-sku">{{ current_variant.sku }}</span>
 <section 
   id="product-main{{ product.id }}" 
   class="
