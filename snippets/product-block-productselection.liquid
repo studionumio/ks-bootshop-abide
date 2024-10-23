@@ -13,7 +13,7 @@
             {% if block.settings.options_style == 'buttons' %}
               <p class="mb-1">
                 Select a Quantity:
-                     <span>{{ product.selected_or_first_available_variant.sku }} Test</span>
+                   
               </p>
               <ul class="size-buttons list-unstyled">
                 {% for value in option.values %}
@@ -30,6 +30,7 @@
                       <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                       {% if variant %}
                         <span class="variant-price">
+                            <span>{{ product.selected_or_first_available_variant.sku }}</span>
                           {% if variant.compare_at_price > variant.price %}
                             <span class="abide-product-price-final-sale">
                               {{ variant.price | money_without_trailing_zeros }}
