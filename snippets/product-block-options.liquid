@@ -12,7 +12,7 @@
     {% for option in product.options_with_values %}
       <li class="py-3">
         {% if block.settings.options_style == 'buttons' %}
-          <p class="mb-1">
+          <p class="mb-1"> {{ product.selected_or_first_available_variant.sku }}
             Select a Quantity:
           </p>
           <ul class="size-buttons list-unstyled">
@@ -36,7 +36,7 @@
                       {% if variant.compare_at_price > variant.price %}
                         <!-- Show sale price and compare at price -->
                         <span class="abide-product-price-final-sale">
-                          {{ product.selected_or_first_available_variant.sku }}
+                          
                           {{ variant.price | money_without_trailing_zeros }}
                         </span>
                         <s class="abide-product-price-compare">
