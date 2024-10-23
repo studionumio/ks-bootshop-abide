@@ -39,7 +39,7 @@
         "liquid_GjHRQG": {
           "type": "liquid",
           "settings": {
-            "liquid": "<span id=\"VariantSku\" data-variant-id=\"{{ product.variants.first.id }}\">\n  {{ product.variants.first.sku }}\n</span>\n\n\n<script>\ndocument.getElementById('ProductSelect').addEventListener('change', function (event) {\n    const selectedVariantId = event.target.value;\n    const variants = {{ product.variants | json }};\n    \n    const selectedVariant = variants.find(variant => variant.id == selectedVariantId);\n\n    if (selectedVariant) {\n        document.getElementById('VariantSku').textContent = selectedVariant.sku;\n        document.getElementById('VariantSku').setAttribute('data-variant-id', selectedVariant.id);\n    }\n});\n</script>",
+            "liquid": "<span id=\"VariantSku\" data-variant-id=\"{{ product.selected_or_first_available_variant.id }}\">\n  {{ product.selected_or_first_available_variant.sku }}\n</span>\n<script>",
             "pt": 3,
             "pb": 3
           }
