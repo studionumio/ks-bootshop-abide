@@ -5,6 +5,7 @@
 <div class="product-selection" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%;">
   <div class="option-selection" style="width: 55%; padding: 2px;">
     {% unless product.has_only_default_variant %}
+              <span>{{ variant.sku }}</span>
       <ul 
         class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
         aria-label="{{ 'product.product_options' | t }}">
@@ -30,7 +31,7 @@
                       <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                       {% if variant %}
                         <span class="variant-price">
-                            <span>{{ variant.sku }}</span>
+                    
                           {% if variant.compare_at_price > variant.price %}
                             <span class="abide-product-price-final-sale">
                               {{ variant.price | money_without_trailing_zeros }}
