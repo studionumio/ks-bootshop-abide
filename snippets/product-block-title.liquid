@@ -7,13 +7,6 @@
   {{ product.title }}
 </h1>
 
-<select name="id">
-  {% for variant in product.variants %}
-    <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">
-      {{ variant.title }}
-    </option>
-  {% endfor %}
-</select>
 
 
 
