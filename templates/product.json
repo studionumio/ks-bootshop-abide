@@ -36,6 +36,14 @@
             "pb": 2
           }
         },
+        "liquid_GjHRQG": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<span id=\"VariantSku\" data-variant-id=\"{{ product.variants.first.id }}\">\n  {{ product.variants.first.sku }}\n</span>\n\n\n<script>\ndocument.getElementById('ProductSelect').addEventListener('change', function (event) {\n    const selectedVariantId = event.target.value;\n    const variants = {{ product.variants | json }};\n    \n    const selectedVariant = variants.find(variant => variant.id == selectedVariantId);\n\n    if (selectedVariant) {\n        document.getElementById('VariantSku').textContent = selectedVariant.sku;\n        document.getElementById('VariantSku').setAttribute('data-variant-id', selectedVariant.id);\n    }\n});\n</script>",
+            "pt": 3,
+            "pb": 3
+          }
+        },
         "productselection_aBb4rm": {
           "type": "productselection",
           "settings": {
@@ -203,6 +211,7 @@
       "block_order": [
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
+        "liquid_GjHRQG",
         "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
