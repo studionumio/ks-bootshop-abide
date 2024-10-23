@@ -234,36 +234,4 @@ const adjustShopifySubscriptionsStyling = () => {
 adjustShopifySubscriptionsStyling()
 window.addEventListener('kt.product.quick_view.modal_shown', adjustShopifySubscriptionsStyling)
 
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const productJsonElements = [...document.querySelectorAll('[id^=ProductJson-')];
-
-    productJsonElements.forEach((productElement) => {
-      const sectionId = productElement.id.replace("ProductJson-", "shopify-section-");
-      const variantSKU = document.querySelector(`#${sectionId} .variant-sku`);
-      const inputSelects = [...document.querySelectorAll(`#${sectionId} .single-option-selector`)];
-      const productInfo = JSON.parse(productElement.innerHTML);
-
-      if (variantSKU && inputSelects.length) {
-        const inputValues = inputSelects.map(input => input.value);
-
-        inputSelects.forEach((input, index) => {
-          input.addEventListener('change', (evt) => {
-            inputValues[index] = evt.target.value;
-
-            const matchedVariant = productInfo.variants.find(variant => {
-              return variant.options.every((option, i) => option === inputValues[i]);
-            });
-
-            if (matchedVariant) {
-              variantSKU.innerText = matchedVariant.sku;
-            } else {
-              variantSKU.innerText = 'Not available'; // Optional fallback message
-            }
-          });
-        });
-      }
-    });
-  }, 100);
-});
 
