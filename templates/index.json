@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_carousel_CmDneU": {
@@ -91,9 +91,11 @@
         "border_opacity": 100,
         "container_max_width": "",
         "products": [
-
+          "9-x-9-fiber-take-out-container",
+          "8-x-8-fiber-take-out-container",
+          "6-x-9-fiber-take-out-container"
         ],
-        "collection": "all-wholesale-items",
+        "collection": "",
         "limit": 8,
         "recommended_mode": true,
         "recommended_mode_intent": "related",
