@@ -39,7 +39,7 @@
         "liquid_CGfKRz": {
           "type": "liquid",
           "settings": {
-            "liquid": "<p>{{ variant.sku }}</b></p>",
+            "liquid": "<span>{{ variant.sku }}</span",
             "pt": 3,
             "pb": 3
           }
