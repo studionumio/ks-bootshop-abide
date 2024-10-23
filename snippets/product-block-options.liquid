@@ -30,8 +30,8 @@
                   <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
                   {% if variant %}
                     <!-- Show Price and Compare Price for this variant -->
-                    {% assign current_variant = product.selected_or_first_available_variant %}
-<span class="variant-sku">{{ current_variant.sku }}</span>
+                   
+<span class="variant-sku">{{ variant.sku }}</span>
                     <span class="variant-price">
                       <!-- Check if the variant is on sale -->
                       {% if variant.compare_at_price > variant.price %}
