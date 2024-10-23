@@ -22,7 +22,7 @@
                 {% for value in option.values %}
                   {% assign variant = product.variants | where: 'option1', value | first %}
                   <li>
-                    <input  data-sku="{{ variant.sku }}" value="{{ variant.id }}"
+                    <input  
                       class="visually-hidden" 
                       type="radio" 
                       name="option-{{ option.name | handleize }}" 
