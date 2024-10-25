@@ -191,14 +191,16 @@
         },
         "liquid_iDU3Rg": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
-            "liquid": "{% for product in recommendations.products %}   \n              {% render 'product-card', product: product %}\n          {% endfor %}",
+            "liquid": "<script>\n  async function initProductRecommendations ()  {\n    const baseUrl = '{{ routes.product_recommendations_url }}';\n    const productId = {{ product.id }};\n    const limit = 8;\n    const intent = 'related';\n\n    const url = `${baseUrl}?product_id=${productId}&limit=${limit}&intent=${intent}`;\n\n    const response = await fetch(url);\n    const data = await response.text();\n\n    document.querySelector('#featured-products-{{ section.id }}')\n      .closest('.shopify-section').outerHTML = data;\n  }\n\n  window.addEventListener('DOMContentLoaded', () => {\n    initProductRecommendations();\n  });\n\n  document.addEventListener('shopify:section:load', (e) => {\n    if (e.target.querySelector('.featured-products')) {\n      initProductRecommendations();\n    }\n  });\n</script>\n\n{% capture empty_state %}\n  {% unless request.page_type == 'product' %}\n    {% for num in (1..section.settings.limit) %}\n      <div class=\"swiper-slide p-4 p-desktop-5\">\n        <div class=\"product-card text-center\">\n          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}\n          {{ 'product-' | append: current | placeholder_svg_tag: 'product-card-img img-thumbnail mb-4' }}\n          <h3 class=\"product-card-title h6 mb-1\">\n            Product {{ current }}\n          </h3>\n          <p class=\"mb-0\">\n            $19.99\n          </p>\n        </div>\n      </div>\n    {% endfor %}\n  {% endunless %}\n{% endcapture %}\n\n  <div \n    class=\"container\">\n    <div >\n          {% for product in recommendations.products %}\n            <div >\n              {% render 'product-card', product: product %}\n            </div>\n          {% endfor %}\n    \n          {% for product in products limit: section.settings.limit %}\n            <div >\n              {% render 'product-card', product: product %}\n            </div>\n          {% endfor %}\n  \n    </div>\n  </div>",
             "pt": 3,
             "pb": 3
           }
         },
         "separator_cWJNG3": {
           "type": "separator",
+          "disabled": true,
           "settings": {
             "bg_color": "bg-body",
             "bg_opacity": 10,
@@ -337,6 +339,7 @@
             "video_loop": true,
             "video_muted": true,
             "video_controls": true,
+            "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
             "subtitle": "Fiber Takeout Containers",
