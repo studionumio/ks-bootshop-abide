@@ -166,7 +166,7 @@
         "row_FVeGJj"
       ],
       "custom_css": [
-        "img {border-radius: 20px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);}"
+        "img {border-radius: 20px; box-shadow: 9px 7px 13px rgba(0, 0, 0, 0.1); border-style: none; border: 0px;}"
       ],
       "settings": {
         "container_max_width": ""
