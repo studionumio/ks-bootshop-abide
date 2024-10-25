@@ -120,11 +120,50 @@
             "pt": 5,
             "pb": 5
           }
+        },
+        "row_FVeGJj": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-body",
+            "bg_opacity": 100,
+            "bg_gradient": "",
+            "text_color": "text-body",
+            "border_top_width": 0,
+            "border_bottom_width": 0,
+            "border_color": "border-body",
+            "border_opacity": 100,
+            "media_align_desktop": "",
+            "media_border": "img-thumbnail",
+            "img": "shopify://shop_images/P1633616.jpg",
+            "img_orientation": "adapt",
+            "video_ratio": "adapt",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "external_video": "",
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-start",
+            "subtitle": "About Abide Hawaii",
+            "title": "An Exciting Future",
+            "title_font_size": "h2",
+            "description": "<p>Jenny, inspired by her early experiences in her father’s small business in rural China, began her journey with a vision to create meaningful, sustainable products for local communities. After college in China and advanced studies in the U.S., she returned to America to start her own company. Now, with her family by her side, she’s dedicated to growing Abide Hawaii as a trusted local brand, committed to quality, sustainability, and honest business practices.</p>",
+            "description_font_size": "fs-md",
+            "btn_primary_text": "",
+            "btn_primary_url": "",
+            "btn_primary_color": "btn-primary",
+            "btn_secondary_text": "",
+            "btn_secondary_url": "",
+            "btn_secondary_color": "btn-secondary",
+            "pt": 5,
+            "pb": 5
+          }
         }
       },
       "block_order": [
         "row_yfazd4",
-        "row_zMGcJL"
+        "row_zMGcJL",
+        "row_FVeGJj"
       ],
       "custom_css": [
 
