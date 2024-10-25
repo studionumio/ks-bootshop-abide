@@ -24,7 +24,6 @@
     },
     "91fa2e27-741f-431f-b658-c6ce03d0f6eb": {
       "type": "page-content",
-      "disabled": true,
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -40,29 +39,6 @@
         "description_font_size": "fs-lg",
         "pt": 9,
         "pb": 9
-      }
-    },
-    "html_bUMpDY": {
-      "type": "html",
-      "settings": {
-        "liquid": "<section class=\"about-section\">\n        <div class=\"container\">\n            <div class=\"row\">                \n                <div class=\"content-column col-lg-6 col-md-12 col-sm-12 order-2\">\n                    <div class=\"inner-column\">\n                        <div class=\"sec-title\">\n                            <span class=\"title\">About Css3transition</span>\n                            <h2>We are Creative Tech Enthusiast working since 2015</h2>\n                        </div>\n                        <div class=\"text\">I am Rahul Yaduvanshi works at Css3 Transition since last 3 years. We are here to provide touch notch solution for your website or web application that helps you to make your website look attractive & efficient in handling by creating usefull plugins thats you need.</div>\n                      <div class=\"text\">\n                        We are here to serve you next level tutorial that currently in trend to match you with your expertise. Css3 transition is a learning website. where you can find many good quality content related to web development and tutorials about plugins. here we are using html, html5, css, css3, jquery & javascript along with inspirational UI design layout by professionals by using Photoshop and adobe allustrator.\n                      </div>\n                        <div class=\"btn-box\">\n                            <a href=\"#\" class=\"theme-btn btn-style-one\">Contact Us</a>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Image Column -->\n                <div class=\"image-column col-lg-6 col-md-12 col-sm-12\">\n                    <div class=\"inner-column wow fadeInLeft\">\n                      <div class=\"author-desc\">\n                        <h2>Rahul Kumar Yadav</h2>\n                        <span>Web Developer</span>\n                      </div>\n                        <figure class=\"image-1\"><a href=\"#\" class=\"lightbox-image\" data-fancybox=\"images\"><img title=\"Rahul Kumar Yadav\" src=\"https://i.ibb.co/QP6Nmpf/image-1-about.jpg\" alt=\"\"></a></figure>\n                     \n                    </div>\n                </div>\n              \n            </div>\n           <div class=\"sec-title\">\n                            <span class=\"title\">Our Future Goal</span>\n                            <h2>We want to lead in innovation & Technology</h2>\n                        </div>\n          <div class=\"text\">\n                We works on UI/UX and functionality as well so that a plugins comes with proper stucture & stunning looks which suits to your web app & website.\n              </div>\n               <div class=\"text\">\n                We take a small toolkit here and ride it well so that it is fit for your use. One who performs well and looks even better.\n              </div>\n               <div class=\"text\">                \nHere we are trying to give you all kinds of technical content, whether it is related to designing or functionality. We are creating content on a lot of languages and will continue to make it free of cost even if you use it without any problem. Which is a very important thing.\n              </div>\n               <div class=\"text\">\n                Here you can also share the content you create, if our technical team likes it, then we will also share it on our blog.\n              </div>\n               <div class=\"text\">\n                \nIn the end, I would say keep visiting our website and enjoy the quality content.\n              </div>\n        </div>\n    </section>",
-        "bg_color": "bg-body",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-body",
-        "border_opacity": 100,
-        "container": "",
-        "container_max_width": "",
-        "text_align": "text-center",
-        "header_title": "HTML and Liquid",
-        "header_title_font_size": "h2",
-        "header_description": "<p>Add on optional description for this section</p>",
-        "header_description_font_size": "fs-md",
-        "pt": 10,
-        "pb": 10
       }
     },
     "media_with_text_wFwQDp": {
@@ -242,7 +218,6 @@
   "order": [
     "18e3bb8e-f1ba-421c-91c3-37c1c5b25a2a",
     "91fa2e27-741f-431f-b658-c6ce03d0f6eb",
-    "html_bUMpDY",
     "media_with_text_wFwQDp",
     "54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e",
     "664feedb-7180-4e8f-a84d-1cf45bc1dd42",
