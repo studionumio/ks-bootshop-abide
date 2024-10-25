@@ -70,7 +70,7 @@
             "title": "Media With Text",
             "title_font_size": "h2",
             "description": "<p>Either show an image, video (MP4) or an external video (YouTube). If no text block is shown, the media will take full section's space.</p>",
-            "description_font_size": "fs-md",
+            "description_font_size": "fs-lg",
             "btn_primary_text": "Primary button",
             "btn_primary_url": "",
             "btn_primary_color": "btn-primary",
