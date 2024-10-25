@@ -255,6 +255,7 @@
     },
     "664feedb-7180-4e8f-a84d-1cf45bc1dd42": {
       "type": "richtext",
+      "disabled": true,
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
