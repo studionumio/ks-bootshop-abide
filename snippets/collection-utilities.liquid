@@ -16,24 +16,7 @@
     padding: 1rem 0;
     border-bottom: 1px solid #ddd;
   }
-  .filter-item {
-    position: relative;
-  }
-  .filter-button {
-    background: none;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .filter-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border: 1px solid #ddd;
-    z-index: 1000;
-  }
+
 </style>
 <div class="collection-utilities mb-5 {% unless section.settings.show_product_count %}justify-content-end{% endunless %}">
   {% if section.settings.show_product_count %}
@@ -43,20 +26,13 @@
   {% endif %}
   
 <div id="horizontal-collection-filters" class="collection-filters-bar">
-  <form class="collection-filters-form d-flex align-items-center flex-wrap gap-2">
+  <form class="collection-filters-form d-flex align-items-center flex-wrap gap-2" action="{{ collection.url }}" method="get">
     <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
 
     <!-- Loop through each filter to display as a dropdown -->
     {% for filter in collection.filters %}
       <div class="filter-item">
-        <button
-          id="filters-collapse-btn-{{ forloop.index }}"
-          class="filter-button"
-          type="button"
-          aria-expanded="false"
-          aria-controls="filters-collapse-{{ forloop.index }}">
-          {{ filter.label }}
-        </button>
+        <label class="filter-label">{{ filter.label }}</label>
 
         <!-- Filter Options as Dropdowns (CSS-only dropdowns) -->
         <div id="filters-collapse-{{ forloop.index }}" class="filter-dropdown">
@@ -71,6 +47,7 @@
                       class="form-check-input" 
                       name="{{ filter.param_name }}" 
                       value="{{ filter.true_value.value }}"
+                      onchange="this.form.submit()"
                       {% if filter.true_value.active %}checked{% endif %}
                       {% if filter.true_value.count == 0 and filter.true_value.active == false %}disabled{% endif %}>
                     <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
@@ -84,6 +61,7 @@
                       class="form-check-input" 
                       name="{{ filter.param_name }}" 
                       value="{{ filter.false_value.value }}"
+                      onchange="this.form.submit()"
                       {% if filter.false_value.active %}checked{% endif %}
                       {% if filter.false_value.count == 0 and filter.false_value.active == false %}disabled{% endif %}>
                     <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.false_value.value }}">
@@ -102,6 +80,7 @@
                         class="form-check-input" 
                         name="{{ filter_value.param_name }}" 
                         value="{{ filter_value.value }}"
+                        onchange="this.form.submit()"
                         {% if filter_value.active %}checked{% endif %}
                         {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}>
                       <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ forloop.index }}">
@@ -121,6 +100,7 @@
                       type="number" 
                       value="{{ filter_min_value }}" 
                       min="0" 
+                      onchange="this.form.submit()"
                       placeholder="{{ 'collection.filters.from' | t }}">
                   </div>
                   <div class="input-group">
@@ -131,6 +111,7 @@
                       type="number" 
                       value="{{ filter_max_value }}" 
                       min="0" 
+                      onchange="this.form.submit()"
                       placeholder="{{ 'collection.filters.to' | t }}">
                   </div>
                 </div>
@@ -141,6 +122,8 @@
     {% endfor %}
   </form>
 </div>
+
+<!-- CS
 
   
   {% if section.settings.show_filters or section.settings.show_sort_by %}
