@@ -120,7 +120,7 @@
           "type": "trust_icons",
           "settings": {
             "label": "What we promise",
-            "max_width": "460",
+            "max_width": "",
             "img_size": 51,
             "img_1": "shopify://shop_images/Bamboo.png",
             "text_1": "<p><strong>100% Bamboo</strong></p>",
@@ -243,7 +243,8 @@
         "separator_cWJNG3"
       ],
       "custom_css": [
-        ".product-price * {color: #ffffff; background: red;}"
+        ".product-price * {color: #ffffff; background: #ffffff;}",
+        ".product-block-icons {background: #efefef;}"
       ],
       "settings": {
         "bg_color": "bg-body",
