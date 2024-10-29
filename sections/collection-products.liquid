@@ -5,16 +5,7 @@
     assign limit = section.settings.limit
   endif
 %}
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
 
-<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
- {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 <section 
   id="collection-products-{{ collection.id }}" 
   class="
@@ -41,12 +32,7 @@
           {{ 'collection.empty_html' | t }}
         </p>
       {% else %}
-    
-  
-     <div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
-      {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
-    </div>
-
+        {% render 'collection-utilities' %}
         <div 
           class="
             product-list mx-n4 mx-desktop-n5 mb-0 row 
