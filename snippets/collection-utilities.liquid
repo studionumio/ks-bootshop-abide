@@ -41,20 +41,20 @@
                     {% when 'list' %}
                       <ul 
                         class="list-unstyled mb-0"
-                        ari-labelledby="filters-collapse-btn-1">
+                        ari-labelledby="filters-collapse-btn-{{ forloop.index }}">
                         {% for filter_value in filter.values %}
                           <li class="form-check">
                             <input 
                               type="checkbox" 
-                              id="filter-{{ filter.p.m.custom.material }}-1"
+                              id="filter-{{ filter.p.m.custom.material }}-{{ forloop.index }}"
                               class="form-check-input" 
-                              name="{{ filter_value.param_name }}" 
+                              name="{{ filter.p.m.custom.material }}" 
                               value="{{ filter_value.value }}"
                               {% if filter_value.active -%}checked{%- endif %}
                               {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}>
                             <label 
                               class="form-check-label" 
-                              for="filter-{{ filter.p.m.custom.material }}-1">
+                              for="filter-{{ filter.p.m.custom.material }}-{{ forloop.index }}">
                               <div class="d-flex">
                                 <span>{{ filter_value.label | escape }}</span>
                                 <span class="ms-2">({{ filter_value.count }})</span>
