@@ -27,7 +27,7 @@
         {% render 'svg-icons', icon: 'x' %}
       </button>
     </div>
-    <div class="offcanvas-body p-0">
+  
 
         <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
         <div       
@@ -35,17 +35,6 @@
           aria-labelledby="offcanvas-collection-filters-label">
           {% for filter in collection.filters %}
             <div class="collapse-wrapper" role="listitem">
-              <button
-                id="filters-collapse-btn-{{ forloop.index }}" 
-                class="" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#filters-collapse-{{ forloop.index }}" 
-                aria-expanded="true" 
-                aria-controls="filters-collapse-{{ forloop.index }}">
-                {{ filter.label }}
-                {% render 'svg-icons', icon: 'chevron-down', size: 18 %}
-              </button>
               <div id="filters-collapse-{{ forloop.index }}" class="collapse show">
                 <div class="collapse-inner">
                   {% case filter.type %}
@@ -144,22 +133,6 @@
                               aria-label=" {{ 'collection.filters.from' | t }}">
                           </div>
                         </div>
-                        <div class="col-9 px-2">
-                          <div class="input-group">
-                            <span class="input-group-text px-3">
-                              {{ cart.currency.symbol }}
-                            </span>
-                            <input 
-                              class="form-control"
-                              name="{{ filter.max_value.param_name }}"
-                              value="{{ filter_max_value }}"
-                              type="number"
-                              min="0"
-                              max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                              placeholder="{{ 'collection.filters.to' | t }}"
-                              aria-label="{{ 'collection.filters.to' | t }}">
-                          </div>
-                        </div>
                       </div>
                   {% endcase %}
                 </div>
@@ -168,7 +141,6 @@
           {% endfor %}
         </div>
 
-    </div>
     <div
       class="offcanvas-footer border-top px-5 py-4">
       <button class="btn btn-primary btn-filters-view-results w-100" type="button" data-bs-dismiss="offcanvas">
