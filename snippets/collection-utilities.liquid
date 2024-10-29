@@ -16,12 +16,12 @@
       {{ 'collection.count_products' | t: count: collection.products_count }}
     </p>
   {% endif %}
-  <form class="collection-filters-form">
-        <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
-        <div       
-          role="list" 
-          aria-labelledby="offcanvas-collection-filters-label">
-          {% for filter in collection.filters %}
+  
+   <collection-filters 
+    id="collection-filters" 
+    class="collection-filters">
+      <form class="collection-filters-form">
+{% for filter in collection.filters %}
             <div class="collapse-wrapper" role="listitem">
               <button
                 id="filters-collapse-btn-{{ forloop.index }}" 
@@ -154,8 +154,59 @@
               </div>
             </div>
           {% endfor %}
-        </div>
       </form>
+     </collection-filters>
+
+
+
+   <collection-filters 
+    id="collection-filters" 
+    class="collection-filters">
+      <form class="collection-filters-form">
+{% for filter in collection.filters %}
+            <div class="collapse-wrapper" role="listitem">
+              <button
+                id="filters-collapse-btn-{{ forloop.index }}" 
+                class="" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#filters-collapse-{{ forloop.index }}" 
+                aria-expanded="true" 
+                aria-controls="filters-collapse-{{ forloop.index }}">
+                {{ filter.label }}
+                {% render 'svg-icons', icon: 'chevron-down', size: 18 %}
+              </button>
+              <div id="filters-collapse-{{ forloop.index }}" class="collapse show">
+                <div class="collapse-inner">
+                  {% case filter.type %}
+                    {% when 'price_range' %}
+                      {% liquid                                           
+                        if filter.min_value.value
+                          assign filter_min_value = filter.min_value.value | money_without_currency | replace: ',', ''
+                        else 
+                          assign filter_min_value = 0
+                        endif
+
+                        if filter.max_value.value
+                          assign filter_max_value = filter.max_value.value | money_without_currency | replace: ',', ''
+                        else 
+                          assign filter_max_value = filter.range_max | money_without_currency | replace: ',', ''
+                        endif
+                      %}
+                      
+                  {% endcase %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+      </form>
+     </collection-filters>
+
+
+
+
+  
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2 ">
       {% if section.settings.show_filters %}
