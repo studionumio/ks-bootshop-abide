@@ -12,7 +12,6 @@
 <style>
 .collection-filters-bar {
   padding: 1rem;
-  width: 100%;
 }
 
 .filter-item {
@@ -49,7 +48,7 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
   padding: 1rem;
-  width: 300px;
+  width: 200px;
   border-radius: 5px;
 }
 
@@ -57,6 +56,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-top: 0.5rem; /* Added to align with other filter dropdowns */
 }
 
 .filter-price-group .input-group {
@@ -92,91 +92,95 @@
     <!-- Loop through each filter to display as a dropdown -->
     {% for filter in collection.filters %}
       <div class="filter-item dropdown">
-        <label class="filter-label" id="filters-collapse-btn-{{ forloop.index }}">
-          {{ filter.label }} 
-          <span class="caret"></span>
-        </label>
-
-        <!-- Filter Options as Dropdowns (CSS-only dropdowns) -->
-        <div id="filters-collapse-{{ forloop.index }}" class="filter-dropdown-content">
-          <div class="filter-options">
-            {% case filter.type %}
-              {% when 'boolean' %}
-                <ul class="list-unstyled mb-0" aria-labelledby="filters-collapse-btn-{{ forloop.index }}">
-                  <li class="form-check">
-                    <input 
-                      type="checkbox" 
-                      id="filter-{{ filter.param_name }}-{{ filter.true_value.value }}"
-                      class="form-check-input" 
-                      name="{{ filter.param_name }}" 
-                      value="{{ filter.true_value.value }}"
-                      {% if filter.true_value.active %}checked{% endif %}
-                      {% if filter.true_value.count == 0 and filter.true_value.active == false %}disabled{% endif %}>
-                    <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
-                      {{ filter.true_value.label }} ({{ filter.true_value.count }})
-                    </label>
-                  </li>
-                  <li class="form-check">
-                    <input 
-                      type="checkbox" 
-                      id="filter-{{ filter.param_name }}-{{ filter.false_value.value }}"
-                      class="form-check-input" 
-                      name="{{ filter.param_name }}" 
-                      value="{{ filter.false_value.value }}"
-                      {% if filter.false_value.active %}checked{% endif %}
-                      {% if filter.false_value.count == 0 and filter.false_value.active == false %}disabled{% endif %}>
-                    <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.false_value.value }}">
-                      {{ filter.false_value.label }} ({{ filter.false_value.count }})
-                    </label>
-                  </li>
-                </ul>
-
-              {% when 'list' %}
-                <ul class="list-unstyled mb-0" aria-labelledby="filters-collapse-btn-{{ forloop.index }}">
-                  {% for filter_value in filter.values %}
+        <!-- Price filter is open by default, others are collapsed -->
+        {% if filter.type == 'price_range' %}
+          <label class="filter-label" id="filters-collapse-btn-{{ forloop.index }}">
+            {{ filter.label }}
+          </label>
+          <div class="filter-price-group d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text">{{ cart.currency.symbol }}</span>
+              <input 
+                class="form-control" 
+                name="{{ filter.min_value.param_name }}" 
+                type="number" 
+                value="{{ filter_min_value }}" 
+                min="0" 
+                placeholder="{{ 'collection.filters.from' | t }}">
+            </div>
+            <span class="mx-2">–</span>
+            <div class="input-group">
+              <span class="input-group-text">{{ cart.currency.symbol }}</span>
+              <input 
+                class="form-control" 
+                name="{{ filter.max_value.param_name }}" 
+                type="number" 
+                value="{{ filter_max_value }}" 
+                min="0" 
+                placeholder="{{ 'collection.filters.to' | t }}">
+            </div>
+          </div>
+        {% else %}
+          <label class="filter-label" id="filters-collapse-btn-{{ forloop.index }}">
+            {{ filter.label }} 
+            <span class="caret"></span>
+          </label>
+          <!-- Filter Options as Dropdowns (CSS-only dropdowns) -->
+          <div id="filters-collapse-{{ forloop.index }}" class="filter-dropdown-content">
+            <div class="filter-options">
+              {% case filter.type %}
+                {% when 'boolean' %}
+                  <ul class="list-unstyled mb-0" aria-labelledby="filters-collapse-btn-{{ forloop.index }}">
                     <li class="form-check">
                       <input 
                         type="checkbox" 
-                        id="filter-{{ filter.param_name }}-{{ forloop.index }}"
+                        id="filter-{{ filter.param_name }}-{{ filter.true_value.value }}"
                         class="form-check-input" 
-                        name="{{ filter_value.param_name }}" 
-                        value="{{ filter_value.value }}"
-                        {% if filter_value.active %}checked{% endif %}
-                        {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}>
-                      <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ forloop.index }}">
-                        {{ filter_value.label | escape }} ({{ filter_value.count }})
+                        name="{{ filter.param_name }}" 
+                        value="{{ filter.true_value.value }}"
+                        {% if filter.true_value.active %}checked{% endif %}
+                        {% if filter.true_value.count == 0 and filter.true_value.active == false %}disabled{% endif %}>
+                      <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
+                        {{ filter.true_value.label }} ({{ filter.true_value.count }})
                       </label>
                     </li>
-                  {% endfor %}
-                </ul>
+                    <li class="form-check">
+                      <input 
+                        type="checkbox" 
+                        id="filter-{{ filter.param_name }}-{{ filter.false_value.value }}"
+                        class="form-check-input" 
+                        name="{{ filter.param_name }}" 
+                        value="{{ filter.false_value.value }}"
+                        {% if filter.false_value.active %}checked{% endif %}
+                        {% if filter.false_value.count == 0 and filter.false_value.active == false %}disabled{% endif %}>
+                      <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.false_value.value }}">
+                        {{ filter.false_value.label }} ({{ filter.false_value.count }})
+                      </label>
+                    </li>
+                  </ul>
 
-              {% when 'price_range' %}
-                <div class="filter-price-group d-flex align-items-center">
-                  <div class="input-group">
-                    <span class="input-group-text">{{ cart.currency.symbol }}</span>
-                    <input 
-                      class="form-control" 
-                      name="{{ filter.min_value.param_name }}" 
-                      type="number" 
-                      value="{{ filter_min_value }}" 
-                      min="0" 
-                      placeholder="{{ 'collection.filters.from' | t }}">
-                  </div>
-                  <span class="mx-2">–</span>
-                  <div class="input-group">
-                    <span class="input-group-text">{{ cart.currency.symbol }}</span>
-                    <input 
-                      class="form-control" 
-                      name="{{ filter.max_value.param_name }}" 
-                      type="number" 
-                      value="{{ filter_max_value }}" 
-                      min="0" 
-                      placeholder="{{ 'collection.filters.to' | t }}">
-                  </div>
-                </div>
-            {% endcase %}
+                {% when 'list' %}
+                  <ul class="list-unstyled mb-0" aria-labelledby="filters-collapse-btn-{{ forloop.index }}">
+                    {% for filter_value in filter.values %}
+                      <li class="form-check">
+                        <input 
+                          type="checkbox" 
+                          id="filter-{{ filter.param_name }}-{{ forloop.index }}"
+                          class="form-check-input" 
+                          name="{{ filter_value.param_name }}" 
+                          value="{{ filter_value.value }}"
+                          {% if filter_value.active %}checked{% endif %}
+                          {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}>
+                        <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ forloop.index }}">
+                          {{ filter_value.label | escape }} ({{ filter_value.count }})
+                        </label>
+                      </li>
+                    {% endfor %}
+                  </ul>
+              {% endcase %}
+            </div>
           </div>
-        </div>
+        {% endif %}
       </div>
     {% endfor %}
   </form>
