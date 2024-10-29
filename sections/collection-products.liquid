@@ -42,6 +42,8 @@
           " 
           role="list">
           {% for product in collection.products %}
+            {% assign product_material = product.metafields.shopify.disposable-tableware-material %}
+  
             <div class="p-4 p-desktop-5 mb-4 mb-desktop-5" role="list-item">
               {% render 'product-card', product: product %}
             </div>
