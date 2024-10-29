@@ -16,6 +16,20 @@
       {{ 'collection.count_products' | t: count: collection.products_count }}
     </p>
   {% endif %}
+  <div class="material-filter-container">
+  <label for="material-filter">Filter by Material:</label>
+  <select id="material-filter" name="material-filter">
+    <option value="">All Materials</option>
+    {% assign materials = "" %}
+    {% for product in collection.products %}
+      {% assign material = product.metafields.shopify.disposable-tableware-material %}
+      {% unless materials contains material %}
+        <option value="{{ material | escape }}">{{ material }}</option>
+        {% assign materials = materials | append: material | append: "," %}
+      {% endunless %}
+    {% endfor %}
+  </select>
+</div>
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
       {% if section.settings.show_filters %}
