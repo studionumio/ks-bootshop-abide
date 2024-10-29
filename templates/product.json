@@ -244,7 +244,7 @@
       ],
       "custom_css": [
         ".product-price * {color: #ffffff; background: #ffffff;}",
-        ".product-block-icons {background: #ffffff; margin-left: -10px;}"
+        ".product-block-icons {background: #ffffff; margin-left: -10px; border-radius: 10px;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
