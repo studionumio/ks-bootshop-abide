@@ -114,6 +114,11 @@
         </div>
       </div>
     {% endfor %}
+    
+    <!-- Apply Filters Button -->
+    <button class="btn btn-primary btn-filters-view-results" type="submit">
+      {{ 'collection.filters.view_results' | t: count: collection.products_count }}
+    </button>
   </form>
 </div>
   {% if section.settings.show_filters or section.settings.show_sort_by %}
