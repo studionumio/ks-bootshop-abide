@@ -53,7 +53,7 @@
           "type": "liquid",
           "repeater": "{{ product.metafields.shopify[\"disposable-tableware-material\"].value }}",
           "settings": {
-            "liquid": "<p class=\"bg-primary text-white rounded p-5\">Today's date: <b>{{ 'now' | date: \"%b %d, %Y\" }}</b></p>",
+            "liquid": "<p class=\"bg-primary text-white rounded p-5\">Today's date: <b>{{ product.metafields.my_fields.product_type.value }}</b></p>",
             "pt": 3,
             "pb": 3
           }
