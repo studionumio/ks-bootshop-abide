@@ -25,7 +25,9 @@
     aria-expanded="false">
     Filter by Material
   </button>
+
   <ul class="dropdown-menu dropdown-menu-end">
+    <!-- All Materials Option -->
     <li>
       <input 
         type="radio" 
@@ -33,15 +35,16 @@
         name="material-filter" 
         id="material-all" 
         value=""
-        checked>
+        {% if request.params.material == blank %}checked{% endif %}>
       <label class="dropdown-item" for="material-all">
         All Materials
       </label>
     </li>
 
+    <!-- Loop Through Materials -->
     {% assign materials = "" %}
     {% for product in collection.products %}
-      {% assign material = product.metafields.shopify.disposable-tableware-material %}
+      {% assign material = product.metafields.shopify.disposable-tableware-material.value %}
       {% unless materials contains material %}
         <li>
           <input 
@@ -49,7 +52,8 @@
             class="btn-check" 
             name="material-filter" 
             id="material-{{ material | handle }}" 
-            value="{{ material }}">
+            value="{{ material }}"
+            {% if request.params.material == material %}checked{% endif %}>
           <label class="dropdown-item" for="material-{{ material | handle }}">
             {{ material }}
           </label>
@@ -76,6 +80,7 @@
     });
   });
 </script>
+
 
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
