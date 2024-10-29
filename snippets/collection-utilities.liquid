@@ -17,21 +17,20 @@
     </p>
   {% endif %}
   
-    <collection-filters 
-    id="collection-filters" 
-    class="collection-filters">
-  <div class="horizontal-filters-container">
-  <form class="collection-filters-form d-flex flex-wrap align-items-center">
+<div class="horizontal-filters-container">
+  <form class="collection-filters-form d-flex flex-wrap align-items-center" method="GET">
     <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
 
     {% for filter in collection.filters %}
-         {% case filter.type %}
-                    {% when 'list' %}
       <div class="filter-dropdown mx-2">
         <label for="filters-collapse-{{ forloop.index }}" class="filter-label">
           {{ filter.label }}
         </label>
-        <select id="filters-collapse-{{ forloop.index }}" name="{{ filter.param_name }}" class="form-select">
+        <select 
+          id="filters-collapse-{{ forloop.index }}" 
+          name="{{ filter.param_name }}" 
+          class="form-select" 
+          onchange="this.form.submit()"> <!-- Auto-submit form on change -->
           {% for filter_value in filter.values %}
             <option value="{{ filter_value.value }}" 
               {% if filter_value.active %}selected{% endif %}
@@ -41,12 +40,9 @@
           {% endfor %}
         </select>
       </div>
-                 {% endcase %}
     {% endfor %}
-
   </form>
 </div>
-</collection-filters>
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
       {% if section.settings.show_filters %}
