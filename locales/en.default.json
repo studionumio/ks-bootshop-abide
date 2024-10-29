@@ -155,6 +155,7 @@
       }
     }
   },
+    "products": {
   "product": {
     "add_to_cart": "Add to cart",
     "buy_it_now": "Buy it now",
@@ -205,7 +206,8 @@
       "to": "To",
       "clear_filter": "Clear filter"
     }
-  },
+  }
+    },
   "cart": {
     "title": "Cart",
     "empty_html": "<p>Your cart is currently empty<\/p>",
@@ -233,5 +235,6 @@
     "gift_upsell": {
       "title": "Add gift wrapping"
     }
-  }
+  
+}
 }
