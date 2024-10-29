@@ -28,33 +28,20 @@
             "full_screen_effect": "slide"
           }
         },
-        "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1": {
-          "type": "title",
-          "settings": {
-            "title_font_size": "h3",
-            "pt": 3,
-            "pb": 2
-          }
-        },
-        "richtext_QXLXFr": {
-          "type": "richtext",
-          "settings": {
-            "title": "{{ product.metafields.my_fields.product_type.value }}",
-            "title_font_size": "h6",
-            "description": "",
-            "description_font_size": "fs-md",
-            "product_description": false,
-            "description_classes": "",
-            "pt": 0,
-            "pb": 0
-          }
-        },
         "liquid_RjGY9L": {
           "type": "liquid",
           "settings": {
             "liquid": "<p class=\"bg-secondary text-white rounded p-4\" style=\"max-width: 200px;\"><b>{{ product.metafields.my_fields.product_type.value }}</b></p>",
             "pt": 3,
             "pb": 3
+          }
+        },
+        "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1": {
+          "type": "title",
+          "settings": {
+            "title_font_size": "h3",
+            "pt": 3,
+            "pb": 2
           }
         },
         "liquid_WBYdaW": {
@@ -230,9 +217,8 @@
       },
       "block_order": [
         "8abeac2d-7b60-4697-891c-4d6201789d31",
-        "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
-        "richtext_QXLXFr",
         "liquid_RjGY9L",
+        "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "liquid_WBYdaW",
         "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
