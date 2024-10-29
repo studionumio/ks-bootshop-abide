@@ -49,11 +49,10 @@
             "pb": 0
           }
         },
-        "liquid_ki7qQr": {
+        "liquid_RjGY9L": {
           "type": "liquid",
-          "repeater": "{{ product.metafields.shopify[\"disposable-tableware-material\"].value }}",
           "settings": {
-            "liquid": "<p class=\"bg-primary text-white rounded p-5\">Today's date: <b>{{ product.metafields.my_fields.product_type.value }}</b></p>",
+            "liquid": "<p class=\"bg-secondary text-white rounded p-4\" style=\"max-width: 200px;\"><b>{{ product.metafields.my_fields.product_type.value }}</b></p>",
             "pt": 3,
             "pb": 3
           }
@@ -233,7 +232,7 @@
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "richtext_QXLXFr",
-        "liquid_ki7qQr",
+        "liquid_RjGY9L",
         "liquid_WBYdaW",
         "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
