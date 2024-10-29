@@ -142,22 +142,7 @@
                               aria-label=" {{ 'collection.filters.from' | t }}">
                           </div>
                         </div>
-                        <div class="col-9 px-2">
-                          <div class="input-group">
-                            <span class="input-group-text px-3">
-                              {{ cart.currency.symbol }}
-                            </span>
-                            <input 
-                              class="form-control"
-                              name="{{ filter.max_value.param_name }}"
-                              value="{{ filter_max_value }}"
-                              type="number"
-                              min="0"
-                              max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                              placeholder="{{ 'collection.filters.to' | t }}"
-                              aria-label="{{ 'collection.filters.to' | t }}">
-                          </div>
-                        </div>
+    
                       </div>
                   {% endcase %}
                 </div>
