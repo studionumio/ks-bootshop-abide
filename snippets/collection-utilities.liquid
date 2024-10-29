@@ -24,7 +24,9 @@
       {{ 'collection.count_products' | t: count: collection.products_count }}
     </p>
   {% endif %}
-  
+    <collection-filters 
+    id="collection-filters" 
+    class="collection-filters">
 <div id="horizontal-collection-filters" class="collection-filters-bar">
   <form class="collection-filters-form d-flex align-items-center flex-wrap gap-2" action="{{ collection.url }}" method="get">
     <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
@@ -122,7 +124,7 @@
     {% endfor %}
   </form>
 </div>
-
+</collection-filters>
   
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
