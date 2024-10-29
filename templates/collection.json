@@ -36,6 +36,9 @@
     },
     "collection_products_Fx3hb6": {
       "type": "collection-products",
+      "custom_css": [
+        ".product-card-price {display: none;}"
+      ],
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
