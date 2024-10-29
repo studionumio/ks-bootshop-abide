@@ -14,18 +14,18 @@
   padding: 1rem;
 }
 
-.filter-item {
+.collection-filters-bar .filter-item {
   position: relative;
 }
 
-.filter-label {
+.collection-filters-bar .filter-label {
   cursor: pointer;
   display: flex;
   align-items: center;
   font-weight: bold;
 }
 
-.filter-label .caret {
+.collection-filters-bar .filter-label .caret {
   margin-left: 8px;
   border: solid black;
   border-width: 0 2px 2px 0;
@@ -34,12 +34,12 @@
   transform: rotate(45deg);
 }
 
-.filter-label:hover + .filter-dropdown-content,
-.filter-dropdown-content:hover {
+.collection-filters-bar .filter-label:hover + .collection-filters-bar .filter-dropdown-content,
+.collection-filters-bar .filter-dropdown-content:hover {
   display: block;
 }
 
-.filter-dropdown-content {
+.collection-filters-bar .filter-dropdown-content {
   display: none;
   position: absolute;
   top: 100%;
@@ -52,23 +52,24 @@
   border-radius: 5px;
 }
 
-.filter-price-group {
+.collection-filters-bar .filter-price-group {
   display: flex;
   gap: 10px;
+  width: 70%
   align-items: center;
   margin-top: 0.5rem; /* Added to align with other filter dropdowns */
 }
 
-.filter-price-group .input-group {
+.collection-filters-bar .filter-price-group .input-group {
   flex: 1;
 }
 
-.input-group-text {
+.collection-filters-bar .input-group-text {
   background: #f8f8f8;
   border-right: 0;
 }
 
-.form-control {
+.collection-filters-bar .form-control {
   border-left: 0;
 }
 
