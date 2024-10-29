@@ -9,7 +9,35 @@
     endif
   endfor
 %}
-
+<style>
+  .collection-filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .filter-item {
+    position: relative;
+  }
+  .filter-button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .filter-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    z-index: 1000;
+  }
+  .filter-item:hover .filter-dropdown {
+    display: block;
+  }
+</style>
 <div class="collection-utilities mb-5 {% unless section.settings.show_product_count %}justify-content-end{% endunless %}">
   {% if section.settings.show_product_count %}
     <p class="collection-product-count small mb-0">
@@ -114,13 +142,10 @@
         </div>
       </div>
     {% endfor %}
-    
-    <!-- Apply Filters Button -->
-    <button class="btn btn-primary btn-filters-view-results" type="submit">
-      {{ 'collection.filters.view_results' | t: count: collection.products_count }}
-    </button>
   </form>
 </div>
+
+  
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
       {% if section.settings.show_filters %}
