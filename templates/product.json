@@ -156,6 +156,7 @@
         },
         "price_bPXD4X": {
           "type": "price",
+          "disabled": true,
           "settings": {
             "font_size": "fs-lg",
             "badge_discount_type": "percentage",
