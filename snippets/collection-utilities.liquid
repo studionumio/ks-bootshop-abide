@@ -16,10 +16,7 @@
       {{ 'collection.count_products' | t: count: collection.products_count }}
     </p>
   {% endif %}
-  <div 
- 
-  tabindex="-1"
-  aria-labelledby="offcanvas-collection-filters-label">
+  
     <collection-filters 
     id="collection-filters" 
     class="collection-filters">
@@ -28,6 +25,8 @@
     <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
 
     {% for filter in collection.filters %}
+         {% case filter.type %}
+                    {% when 'list' %}
       <div class="filter-dropdown mx-2">
         <label for="filters-collapse-{{ forloop.index }}" class="filter-label">
           {{ filter.label }}
@@ -42,12 +41,12 @@
           {% endfor %}
         </select>
       </div>
+                 {% endcase %}
     {% endfor %}
 
   </form>
 </div>
 </collection-filters>
-  </div>
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
       {% if section.settings.show_filters %}
