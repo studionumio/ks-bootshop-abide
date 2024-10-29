@@ -16,6 +16,9 @@
       {{ 'collection.count_products' | t: count: collection.products_count }}
     </p>
   {% endif %}
+    <collection-filters 
+    id="collection-filters" 
+    class="collection-filters">
   <div class="horizontal-filters-container">
   <form class="collection-filters-form d-flex flex-wrap align-items-center">
     <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
@@ -36,18 +39,10 @@
         </select>
       </div>
     {% endfor %}
-    
-    <button type="submit" class="btn btn-primary mx-2">
-      {{ 'collection.filters.view_results' | t: count: collection.products_count }}
-    </button>
+
   </form>
 </div>
-
-<!-- Product Grid Section -->
-<div class="product-grid">
-  <!-- Your product grid code goes here -->
-</div>
-
+</collection-filters>
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
       {% if section.settings.show_filters %}
