@@ -120,7 +120,7 @@
           "type": "trust_icons",
           "settings": {
             "label": "What we promise",
-            "max_width": "",
+            "max_width": "450",
             "img_size": 51,
             "img_1": "shopify://shop_images/Bamboo.png",
             "text_1": "<p><strong>100% Bamboo</strong></p>",
