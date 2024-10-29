@@ -33,17 +33,7 @@
           aria-labelledby="offcanvas-collection-filters-label">
           {% for filter in collection.filters %}
             <div class="collapse-wrapper" role="listitem">
-              <button
-                id="filters-collapse-btn-{{ forloop.index }}" 
-                class="" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#filters-collapse-{{ forloop.index }}" 
-                aria-expanded="true" 
-                aria-controls="filters-collapse-{{ forloop.index }}">
-                {{ filter.label }}
-                {% render 'svg-icons', icon: 'chevron-down', size: 18 %}
-              </button>
+             
               <div id="filters-collapse-{{ forloop.index }}" class="collapse show">
                 <div class="collapse-inner">
                   {% case filter.type %}
