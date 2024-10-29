@@ -10,14 +10,71 @@
   endfor
 %}
 <style>
-  .collection-filters-bar {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1rem 0;
-    border-bottom: 1px solid #ddd;
-  }
+.collection-filters-bar {
+  padding: 1rem;
+}
+
+.filter-item {
+  position: relative;
+}
+
+.filter-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.filter-label .caret {
+  margin-left: 8px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+}
+
+.filter-label:hover + .filter-dropdown-content,
+.filter-dropdown-content:hover {
+  display: block;
+}
+
+.filter-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  padding: 1rem;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.filter-price-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-price-group .input-group {
+  flex: 1;
+}
+
+.input-group-text {
+  background: #f8f8f8;
+  border-right: 0;
+}
+
+.form-control {
+  border-left: 0;
+}
+
 
 </style>
+
+
 <div class="collection-utilities mb-5 {% unless section.settings.show_product_count %}justify-content-end{% endunless %}">
   {% if section.settings.show_product_count %}
     <p class="collection-product-count small mb-0">
@@ -28,16 +85,19 @@
     id="collection-filters" 
     class="collection-filters">
 <div id="horizontal-collection-filters" class="collection-filters-bar">
-  <form class="collection-filters-form d-flex align-items-center flex-wrap gap-2" >
+  <form class="collection-filters-form d-flex align-items-center flex-wrap gap-2">
     <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
 
     <!-- Loop through each filter to display as a dropdown -->
     {% for filter in collection.filters %}
-      <div class="filter-item">
-        <label class="filter-label">{{ filter.label }}</label>
+      <div class="filter-item dropdown">
+        <label class="filter-label" id="filters-collapse-btn-{{ forloop.index }}">
+          {{ filter.label }} 
+          <span class="caret"></span>
+        </label>
 
         <!-- Filter Options as Dropdowns (CSS-only dropdowns) -->
-        <div id="filters-collapse-{{ forloop.index }}" class="filter-dropdown">
+        <div id="filters-collapse-{{ forloop.index }}" class="filter-dropdown-content">
           <div class="filter-options">
             {% case filter.type %}
               {% when 'boolean' %}
@@ -49,7 +109,6 @@
                       class="form-check-input" 
                       name="{{ filter.param_name }}" 
                       value="{{ filter.true_value.value }}"
-                      
                       {% if filter.true_value.active %}checked{% endif %}
                       {% if filter.true_value.count == 0 and filter.true_value.active == false %}disabled{% endif %}>
                     <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
@@ -63,7 +122,6 @@
                       class="form-check-input" 
                       name="{{ filter.param_name }}" 
                       value="{{ filter.false_value.value }}"
-                      
                       {% if filter.false_value.active %}checked{% endif %}
                       {% if filter.false_value.count == 0 and filter.false_value.active == false %}disabled{% endif %}>
                     <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ filter.false_value.value }}">
@@ -82,7 +140,6 @@
                         class="form-check-input" 
                         name="{{ filter_value.param_name }}" 
                         value="{{ filter_value.value }}"
-                       
                         {% if filter_value.active %}checked{% endif %}
                         {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}>
                       <label class="form-check-label" for="filter-{{ filter.param_name }}-{{ forloop.index }}">
@@ -93,7 +150,7 @@
                 </ul>
 
               {% when 'price_range' %}
-                <div class="filter-price-group">
+                <div class="filter-price-group d-flex align-items-center">
                   <div class="input-group">
                     <span class="input-group-text">{{ cart.currency.symbol }}</span>
                     <input 
@@ -102,9 +159,9 @@
                       type="number" 
                       value="{{ filter_min_value }}" 
                       min="0" 
-      
                       placeholder="{{ 'collection.filters.from' | t }}">
                   </div>
+                  <span class="mx-2">–</span>
                   <div class="input-group">
                     <span class="input-group-text">{{ cart.currency.symbol }}</span>
                     <input 
@@ -113,7 +170,6 @@
                       type="number" 
                       value="{{ filter_max_value }}" 
                       min="0" 
-             
                       placeholder="{{ 'collection.filters.to' | t }}">
                   </div>
                 </div>
@@ -125,6 +181,7 @@
   </form>
 </div>
 </collection-filters>
+
   
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
