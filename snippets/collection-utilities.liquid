@@ -42,11 +42,11 @@
     </li>
 
     <!-- Loop Through Materials -->
-    {% assign materials = "" %}
+
 {% for product in collection.products %}
   {% assign material = product.metafields.shopify.disposable_tableware_material.value %}
   
-  {% if material and materials contains material == false %}
+  {% if materials contains material == false %}
     <li>
       <input 
         type="radio" 
