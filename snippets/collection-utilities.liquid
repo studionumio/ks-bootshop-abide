@@ -45,8 +45,7 @@
 
 {% for product in collection.products %}
   {% assign material = product.metafields.shopify.disposable_tableware_material.value %}
-  
-  {% if materials contains material == false %}
+
     <li>
       <input 
         type="radio" 
@@ -59,7 +58,7 @@
       </label>
     </li>
     {% assign materials = materials | append: material | append: "," %}
-  {% endif %}
+
 {% endfor %}
 
   </ul>
