@@ -236,8 +236,8 @@
         ".product-price * {color: #ffffff; background: #ffffff;}"
       ],
       "settings": {
-        "bg_color": "bg-body",
-        "bg_opacity": 100,
+        "bg_color": "bg-primary",
+        "bg_opacity": 2,
         "bg_gradient": "",
         "bg_left_right_gradients": true,
         "text_color": "text-body",
