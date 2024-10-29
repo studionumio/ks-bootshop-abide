@@ -50,11 +50,7 @@
                             value="{{ filter.true_value.value }}"
                             {% if filter.true_value.active %}checked{% endif %}
                             {% if filter.true_value.count == 0 and filter.true_value.active == false %}disabled{% endif %}>
-                          <label 
-                            class="form-check-label" 
-                            for="filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
-                            {{ filter.true_value.label }} ({{ filter.true_value.count }})
-                          </label>
+                         
                         </li>
                         <li class="form-check">
                           <input 
