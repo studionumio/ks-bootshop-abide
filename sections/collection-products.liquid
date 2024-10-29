@@ -4,8 +4,6 @@
   else
     assign limit = section.settings.limit
   endif
-
-  assign selected_material = request.params.material
 %}
 
 <section 
@@ -28,7 +26,6 @@
   <div 
     class="container"
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
-    
     {% paginate collection.products by limit %}
       {% if collection.products.size == 0 %}
         <p class="alert alert-primary">
@@ -36,8 +33,6 @@
         </p>
       {% else %}
         {% render 'collection-utilities' %}
-
-        <!-- Product List -->
         <div 
           class="
             product-list mx-n4 mx-desktop-n5 mb-0 row 
@@ -46,20 +41,12 @@
             {{ section.settings.breakpoint_desktop | prepend: 'row-cols-desktop-' }}
           " 
           role="list">
-
           {% for product in collection.products %}
-            {% assign product_material = product.metafields.shopify.disposable-tableware-material.value %}
-
-            {% if selected_material == blank or product_material == selected_material %}
-              <div class="p-4 p-desktop-5 mb-4 mb-desktop-5" role="list-item">
-                {% render 'product-card', product: product %}
-              </div>
-            {% endif %}
+            <div class="p-4 p-desktop-5 mb-4 mb-desktop-5" role="list-item">
+              {% render 'product-card', product: product %}
+            </div>
           {% endfor %}
-
         </div>
-
-        <!-- Pagination -->
         <collection-pagination class="collection-pagination"> 
           {% render 'pagination', paginate: paginate %}
         </collection-pagination>
@@ -68,13 +55,9 @@
   </div>
 </section>
 
-<!-- Optional Filters Section -->
 {% if section.settings.show_filters %}
   {% render 'collection-filters' %}
 {% endif %}
-
-
-
 
 {% schema %}
 {
