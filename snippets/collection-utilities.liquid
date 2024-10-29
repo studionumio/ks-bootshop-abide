@@ -140,24 +140,12 @@
         </div>
       </form>
   </collection-filters>
+
+
+  
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
-      {% if section.settings.show_filters %}
-        <button 
-          class="btn btn-sm mx px-4 mx-2 {{ section.settings.filters_btn_color }}" 
-          type="button" 
-          data-bs-toggle="offcanvas" 
-          data-bs-target="#offcanvas-collection-filters"
-          aria-controls="offcanvas-collection-filters">
-          <span class="d-flex align-items-center">
-            {% render 'svg-icons', icon: 'filter', size: 16, class: 'me-3' %}
-            {{ 'collection.filters.btn_text' | t }}
-            {% if active_filter_values > 0 %}
-              ({{ active_filter_values }})
-            {% endif %}
-          </span>
-        </button>
-      {% endif %}
+     
       {% if section.settings.show_sort_by %}
         <sort-by class="sort-by dropdown">
           <button 
