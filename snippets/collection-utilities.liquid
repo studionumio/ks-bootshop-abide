@@ -17,10 +17,10 @@
     </p>
   {% endif %}
   {% if section.settings.show_filters or section.settings.show_sort_by %}
-    <div class="d-flex align-items-center mx-n2 d-desktop-none p-0">
+    <div class="d-flex align-items-center mx-n2 ">
       {% if section.settings.show_filters %}
         <button 
-          class="btn btn-sm mx px-4 mx-2 {{ section.settings.filters_btn_color }}" 
+          class="btn btn-sm mx px-4 mx-2 {{ section.settings.filters_btn_color }} d-desktop-none p-0" 
           type="button" 
           data-bs-toggle="offcanvas" 
           data-bs-target="#offcanvas-collection-filters"
