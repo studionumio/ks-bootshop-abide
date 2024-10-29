@@ -20,9 +20,7 @@
     id="collection-filters" 
     class="collection-filters">
     <div class="offcanvas-header border-0">
-      <h2 id="offcanvas-collection-filters-label" class="offcanvas-title">
-        {{ 'collection.filters.title' | t }}
-      </h2>
+
 
     </div>
 
@@ -50,7 +48,11 @@
                             value="{{ filter.true_value.value }}"
                             {% if filter.true_value.active %}checked{% endif %}
                             {% if filter.true_value.count == 0 and filter.true_value.active == false %}disabled{% endif %}>
-                         
+                          <label 
+                            class="form-check-label" 
+                            for="filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
+                            {{ filter.true_value.label }} ({{ filter.true_value.count }})
+                          </label>
                         </li>
                         <li class="form-check">
                           <input 
@@ -137,20 +139,6 @@
           {% endfor %}
         </div>
       </form>
-
-    <div
-      class="offcanvas-footer border-top px-5 py-4">
-      <button class="btn btn-primary btn-filters-view-results w-100" type="button" data-bs-dismiss="offcanvas">
-        {{ 'collection.filters.view_results' | t: count: collection.products_count }}
-      </button>
-      <button 
-        class="btn btn-link btn-filters-clear-all btn-sm w-100 mt-2 mb-n2" 
-        type="button" 
-        data-bs-dismiss="offcanvas"
-        hidden>
-        {{ 'collection.filters.clear_all' | t }}
-      </button>
-    </div>
   </collection-filters>
   {% if section.settings.show_filters or section.settings.show_sort_by %}
     <div class="d-flex align-items-center mx-n2">
