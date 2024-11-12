@@ -82,7 +82,6 @@
         },
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f": {
           "type": "options",
-          "disabled": true,
           "settings": {
             "options_style": "buttons",
             "color_swatches": "Color, color",
@@ -286,8 +285,7 @@
       "block_order": [
         "s_request_a_quote_hide_price_button_block_e4YU7M"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "20426219-2b04-4ec4-9f23-1ed81a76c181": {
       "type": "separator",
