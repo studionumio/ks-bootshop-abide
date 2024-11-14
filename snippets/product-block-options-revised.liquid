@@ -1,0 +1,79 @@
+
+{% liquid 
+  assign pt = block.settings.pt | prepend: 'pt-'
+  assign pb = block.settings.pb | prepend: 'pb-'
+%}
+
+  </script>
+{% unless product.has_only_default_variant %}
+  <ul 
+    class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
+    aria-label="{{ 'product.product_options' | t }}">
+    {% for option in product.options_with_values %}
+      <li class="py-3">
+        {% if block.settings.options_style == 'buttons' %}
+          <p class="mb-1"> 
+            Select a Quantity!
+       
+          </p>
+          <ul class="size-buttons list-unstyled">
+            {% for value in option.values %}
+              {% assign variant = product.variants | where: 'option1', value | first %}
+              <li>
+                <input 
+                  class="visually-hidden" 
+                  type="radio" 
+                  name="option-{{ option.name | handleize }}" 
+                  id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}checked{% endif %}>
+                <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
+                  
+                  <p style="font-size: 18px; font-weight: bold;">{{ value }}</p>
+                  {% if variant %}
+                    <!-- Show Price and Compare Price for this variant -->
+                    <span class="variant-price">
+                      <!-- Check if the variant is on sale -->
+                      {% if variant.compare_at_price > variant.price %}
+                        <!-- Show sale price and compare at price -->
+                        <span class="abide-product-price-final-sale">
+                          
+                          {{ variant.price | money_without_trailing_zeros }}
+                        </span>
+                        <s class="abide-product-price-compare">
+                          {{ variant.compare_at_price | money_without_trailing_zeros }}
+                        </s>
+                      {% else %}
+                        <!-- Show regular price if not on sale -->
+                        {{ variant.price | money_without_trailing_zeros }}
+                      {% endif %}
+                    </span>
+
+                    <!-- Sale Badge -->
+                    {% if variant.compare_at_price > variant.price %}
+                     <span class="abide-product-sale-badge badge" style="margin-left: 4px;">
+                        {{ 'product.save' | t }}
+                        {% if block.settings.badge_discount_type == 'percentage' %}
+                          {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | append: '%' }}
+                        {% else %}
+                          {{ variant.compare_at_price | minus: variant.price | money_without_trailing_zeros }}
+                        {% endif %}
+                      </span>
+                    {% endif %}
+
+                    <!-- Stock status for this variant -->
+                    {% unless variant.available %}
+                      <span class="abide-badge abide-product-sold-out-badge">
+                        {{ 'product.sold_out' | t }}
+                      </span>
+                    {% endunless %}
+                  {% endif %}
+                </label>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endunless %}
