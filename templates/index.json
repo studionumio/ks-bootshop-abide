@@ -83,17 +83,18 @@
     "featured_collections_n3Br7m": {
       "type": "featured-collections",
       "blocks": {
-        "collection_rznnLq": {
-          "type": "collection",
-          "settings": {
-            "collection": "palm-leaf-products",
-            "title": ""
-          }
-        },
         "collection_KdHXk9": {
           "type": "collection",
           "settings": {
             "collection": "bamboo-products",
+            "title": ""
+          }
+        },
+        "collection_rznnLq": {
+          "type": "collection",
+          "settings": {
+            "collection": "palm-leaf-products",
+            "img": "shopify://shop_images/palm-bowl-square-group_733ffc66-f735-43dd-85c1-260792216ebd.jpg",
             "title": ""
           }
         },
@@ -114,25 +115,17 @@
         "collection_fQ9QDf": {
           "type": "collection",
           "settings": {
-            "collection": "latest",
-            "title": ""
-          }
-        },
-        "collection_kRQqkR": {
-          "type": "collection",
-          "settings": {
-            "collection": "sale",
+            "collection": "paper-products",
             "title": ""
           }
         }
       },
       "block_order": [
-        "collection_rznnLq",
         "collection_KdHXk9",
+        "collection_rznnLq",
         "collection_b7ELCB",
         "collection_XRMXNt",
-        "collection_fQ9QDf",
-        "collection_kRQqkR"
+        "collection_fQ9QDf"
       ],
       "settings": {
         "bg_color": "bg-body",
@@ -156,10 +149,10 @@
         "slider_partial_slides_mobile": false,
         "slider_autoplay": 0,
         "collection_card_text_align": "text-center",
-        "collection_card_img_orientation": "ratio-16x9",
+        "collection_card_img_orientation": "ratio-4x3",
         "collection_card_img_border": "img-thumbnail",
         "collection_card_show_title": true,
-        "collection_card_title_font_size": "fs-md",
+        "collection_card_title_font_size": "fs-xl",
         "collection_card_title_position": "collection-card-title-normal",
         "collection_card_show_product_count": true,
         "breakpoint_mobile": 1,
