@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ba94d905-ea2f-4198-8472-5296b1853fb5": {
@@ -12,11 +21,10 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "header_title": "Contact form",
+        "header_title": "Contact Us",
         "header_title_font_size": "h1",
-        "header_description": "<p>Add on optional description for this section<\/p>",
+        "header_description": "<p>Reach out to us if you have any questions, and we’d be happy to help!</p><p></p><p><strong>SALES & SUPPORT:<br/></strong> <a href=\"mailto:hello@abidehawaii.com\" title=\"mailto:hello@abidehawaii.com\">hello@abidehawaii.com</a> or <a href=\"tel:+18089098118\" title=\"tel:+18089098118\">(808) 909-8118</a></p>",
         "header_description_font_size": "",
-        "img": "shopify:\/\/shop_images\/product-1_d69f3fea-71ab-46c3-a095-43b62ba2a441.jpg",
         "img_orientation": "ratio-3x4",
         "img_border": "img-thumbnail",
         "pt": 10,
@@ -38,6 +46,7 @@
     },
     "9b5ef318-8d23-40cd-a163-d1f62c2d0834": {
       "type": "richtext",
+      "disabled": true,
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -51,10 +60,10 @@
         "text_align": "text-center",
         "title": "Looking for FAQs?",
         "title_font_size": "h3",
-        "description": "<p>View answers to some of the most common questions.<\/p>",
+        "description": "<p>View answers to some of the most common questions.</p>",
         "description_font_size": "",
         "btn_primary_text": "Read FAQs",
-        "btn_primary_url": "shopify:\/\/pages\/faqs",
+        "btn_primary_url": "shopify://pages/faqs",
         "btn_primary_color": "btn-outline-primary",
         "btn_secondary_text": "",
         "btn_secondary_url": "",
