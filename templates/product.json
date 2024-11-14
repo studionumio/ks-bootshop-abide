@@ -59,7 +59,6 @@
         },
         "productselection_aBb4rm": {
           "type": "productselection",
-          "disabled": true,
           "settings": {
             "options_style": "buttons",
             "color_swatches": "Color, color",
@@ -97,7 +96,7 @@
           "type": "options",
           "settings": {
             "options_style": "buttons",
-            "color_swatches": "Color, color",
+            "color_swatches": "",
             "pt": 0,
             "pb": 3
           }
