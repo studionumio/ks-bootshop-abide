@@ -287,7 +287,7 @@
             "description": "<p>Abide Hawaii started with the vision to create eco-friendly products for the people of Hawaii. Now based in downtown Ohahu, our growing team is dedicated to producing and supplying new, eco-concious products for this beautiful place we call home.</p>",
             "description_font_size": "fs-md",
             "btn_primary_text": "Learn more about us",
-            "btn_primary_url": "shopify://pages/abotu-us-revised",
+            "btn_primary_url": "shopify://pages/about",
             "btn_primary_color": "btn-primary",
             "btn_secondary_text": "",
             "btn_secondary_url": "",
