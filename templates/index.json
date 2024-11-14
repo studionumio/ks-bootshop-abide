@@ -157,7 +157,7 @@
         "collection_card_show_product_count": true,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 3,
+        "breakpoint_desktop": 4,
         "pt": 11,
         "pb": 11
       }
