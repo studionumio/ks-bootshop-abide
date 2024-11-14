@@ -80,6 +80,19 @@
             "pb": 3
           }
         },
+        "richtext_M8Hcxy": {
+          "type": "richtext",
+          "settings": {
+            "title": "Richtext Title",
+            "title_font_size": "h6",
+            "description": "<p>Richtext description goes here</p>",
+            "description_font_size": "fs-md",
+            "product_description": false,
+            "description_classes": "",
+            "pt": 0,
+            "pb": 0
+          }
+        },
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f": {
           "type": "options",
           "settings": {
@@ -117,6 +130,7 @@
         },
         "08894b72-c532-44db-9228-5f14c9841895": {
           "type": "trust_icons",
+          "disabled": true,
           "settings": {
             "label": "What we promise",
             "max_width": "450",
@@ -141,7 +155,7 @@
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
-            "description": "<p>A brief description will go here</p>",
+            "description": "",
             "product_description": true,
             "description_font_size": "fs-md",
             "border_top_width": 1,
@@ -235,6 +249,7 @@
         "liquid_WBYdaW",
         "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
+        "richtext_M8Hcxy",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
