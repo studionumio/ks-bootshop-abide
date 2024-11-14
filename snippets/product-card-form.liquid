@@ -25,7 +25,7 @@
         aria-label="{{ 'product.select_variant' | t }}">
         {% for variant in product.variants %}
           <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
-            {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
+            {{ variant.title }} 
           </option>
         {% endfor %}
       </select>
