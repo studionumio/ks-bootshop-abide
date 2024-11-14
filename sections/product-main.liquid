@@ -1,6 +1,28 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const variantSelect = document.querySelector('[name="id"]');
+    const metafieldDiv = document.getElementById('variant-metafield');
+
+    if (variantSelect) {
+      variantSelect.addEventListener('change', function() {
+        const selectedVariantId = this.value;
+
+        // Update the metafield display by fetching the new variant's metafield
+        const selectedVariant = window.ShopifyAnalytics.meta.product.variants.find(variant => variant.id == selectedVariantId);
+
+        if (selectedVariant && selectedVariant.metafields && selectedVariant.metafields.custom) {
+          metafieldDiv.innerText = selectedVariant.metafields.custom.ct_pk || '';
+        } else {
+          metafieldDiv.innerText = '';
+        }
+      });
+    }
+  });
+</script>
+
 
 <section 
   id="product-main{{ product.id }}" 
