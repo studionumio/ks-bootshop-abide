@@ -57,39 +57,12 @@
             "pb": 0
           }
         },
-        "productselection_aBb4rm": {
-          "type": "productselection",
+        "liquid_EKXG33": {
+          "type": "liquid",
           "settings": {
-            "options_style": "buttons",
-            "color_swatches": "Color, color",
-            "pt": 0,
-            "pb": 2
-          }
-        },
-        "bf49a5ff-d625-4485-a09c-44d883547f90": {
-          "type": "richtext",
-          "settings": {
-            "title": "",
-            "title_font_size": "h6",
-            "description": "<p>{{ product.metafields.descriptors.subtitle.value }}</p>",
-            "description_font_size": "",
-            "product_description": false,
-            "description_classes": "opacity-70",
-            "pt": 0,
+            "liquid": "{% if product.selected_or_first_available_variant.metafields.custom.ct_pk != blank %}\n  <div id=\"variant-metafield\">\n    {{ product.selected_or_first_available_variant.metafields.custom.ct_pk }}\n  </div>\n{% endif %}",
+            "pt": 3,
             "pb": 3
-          }
-        },
-        "richtext_M8Hcxy": {
-          "type": "richtext",
-          "settings": {
-            "title": "Richtext Title",
-            "title_font_size": "h6",
-            "description": "<p>Richtext description goes here</p>",
-            "description_font_size": "fs-md",
-            "product_description": false,
-            "description_classes": "",
-            "pt": 0,
-            "pb": 0
           }
         },
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f": {
@@ -246,9 +219,7 @@
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "richtext_PhWyaB",
         "liquid_WBYdaW",
-        "productselection_aBb4rm",
-        "bf49a5ff-d625-4485-a09c-44d883547f90",
-        "richtext_M8Hcxy",
+        "liquid_EKXG33",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
