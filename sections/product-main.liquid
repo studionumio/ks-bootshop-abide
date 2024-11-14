@@ -1,6 +1,7 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
+
 <section 
   id="product-main{{ product.id }}" 
   class="
@@ -18,8 +19,6 @@
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
   ">
-
-  
   <div 
     class="container" 
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
@@ -36,7 +35,7 @@
           {% render 'product-block-media-gallery' %}
         </div>
         <div class="col-desktop-9">
-          <div id="product-inner-{{ product.id }}" style="width: 100%; float: left;">
+          <div id="product-inner-{{ product.id }}">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
                 <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
@@ -47,10 +46,8 @@
                         render 'product-block-title', block: block
                       when 'price'
                         render 'product-block-price', block: block, form: form
-                      when 'productselection'
-                        render 'product-block-productselection', block: block, form: form
-                      when 'subscription'
-                        render 'product-block-subscription', block: block, form: form
+                      when 'options'
+                        render 'product-block-options', block: block, form: form
                       when 'atc_button'
                         render 'product-block-atc-button', block: block, form: form
                       when 'richtext'
@@ -73,7 +70,6 @@
               {% endform %}
             </product-form>
           </div>
-              
         </div>
       </div>
     </div>
@@ -81,9 +77,6 @@
 </section>
 
 {% schema %}
-
-
-  
 {
   "name": "Product main",
   "settings": [
@@ -480,60 +473,6 @@
         }
       ]
     },
-      {
-      "type": "productselection",
-      "name": "Product Selection",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "select",
-          "id": "options_style",
-          "label": "Options style",
-          "options": [
-            { "value": "buttons", "label": "Buttons" },
-            { "value": "select",  "label": "Select" }
-          ],
-          "default": "buttons"
-        },
-        {
-          "type": "text",
-          "id": "color_swatches",
-          "label": "Color swatches",
-          "default": "Color, color",
-          "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
-        },
-        {
-          "type": "header",
-          "content": "Spacing"
-        },
-        {
-          "type": "range",
-          "id": "pt",
-          "label": "Top",
-          "min": 0,
-          "max": 20,
-          "step": 1,
-          "default": 4
-        },
-        {
-          "type": "range",
-          "id": "pb",
-          "label": "Bottom",
-          "min": 0,
-          "max": 20,
-          "step": 1,
-          "default": 4
-        }
-      ]
-    },
-       {
-      "type": "subscription",
-      "name": "Subscriptions",
-      "limit": 1,
-      "settings": [
-        
-      ]
-       },
     {
       "type": "atc_button",
       "name": "Add to cart button",
@@ -1198,6 +1137,4 @@
     }
   ]
 }
-
-  
 {% endschema %}
