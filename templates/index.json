@@ -15,7 +15,8 @@
         "slide_Q4UPQq": {
           "type": "slide",
           "settings": {
-            "img_desktop": "shopify://shop_images/P1633641.jpg",
+            "img_mobile": "shopify://shop_images/abide-hawaii-home.jpg",
+            "img_desktop": "shopify://shop_images/abide-hawaii-home.jpg",
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "overlay_blur": 5,
