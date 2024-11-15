@@ -44,15 +44,6 @@
             "pb": 0
           }
         },
-        "productselection_aBb4rm": {
-          "type": "productselection",
-          "settings": {
-            "options_style": "buttons",
-            "color_swatches": "Color, color",
-            "pt": 0,
-            "pb": 2
-          }
-        },
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
           "type": "richtext",
           "settings": {
@@ -205,7 +196,6 @@
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "liquid_WBYdaW",
-        "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
@@ -255,8 +245,7 @@
       "block_order": [
         "s_request_a_quote_hide_price_button_block_e4YU7M"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "featured_products_VqgxgC": {
       "type": "featured-products",
@@ -271,9 +260,7 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "products": [
-
-        ],
+        "products": [],
         "collection": "",
         "limit": 8,
         "recommended_mode": true,
@@ -333,10 +320,10 @@
             "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
-            "subtitle": "Fiber Takeout Containers",
-            "title": "Eco-Friendly",
+            "subtitle": "Plant Fiber {{ product.metafields.custom.product_type.value }}",
+            "title": "Made from Natural Plant Fiber",
             "title_font_size": "h2",
-            "description": "<p>This plastic-free and tree-free sugarcane clamshell take-out box is made from 100% natural bagasse plant fiber, which is compostable and recyclable. Our products are certified by <a href=\"https://bpiworld.org/\" target=\"_blank\" title=\"https://bpiworld.org/\"><em>BPI</em></a><em> (USA & CA), </em><a href=\"https://en.tuv.at/ok-compost-home-en/\" target=\"_blank\" title=\"https://en.tuv.at/ok-compost-home-en/\"><em>OK Compostable </em></a><em>(AU), the FDA, and </em><a href=\"https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en\" target=\"_blank\" title=\"https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en\"><em>REACH </em></a>(<em>EU</em>).</p>",
+            "description": "<p>This plastic-free and tree-free sugarcane {{ product.metafields.custom.product_type.value }} are made from 100% natural bagasse plant fiber, which is compostable and recyclable. Our products are certified by <a href=\"https://bpiworld.org/\" target=\"_blank\" title=\"https://bpiworld.org/\"><em>BPI</em></a><em> (USA & CA), </em><a href=\"https://en.tuv.at/ok-compost-home-en/\" target=\"_blank\" title=\"https://en.tuv.at/ok-compost-home-en/\"><em>OK Compostable </em></a><em>(AU), the FDA, and </em><a href=\"https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en\" target=\"_blank\" title=\"https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en\"><em>REACH </em></a>(<em>EU</em>).</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
@@ -370,10 +357,10 @@
             "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
-            "subtitle": "FIBER TAKE-OUT CONTAINERS",
-            "title": "Sog-Resistant, Microwave Safe",
+            "subtitle": "Plant Fiber {{ product.metafields.custom.product_type.value }}",
+            "title": "Sog-Resistant and Microwave Safe",
             "title_font_size": "h2",
-            "description": "<p>Our <strong>sugarcane clamshell box</strong> can also be heated in a  microwave oven and kept fresh in the refrigerator.  Bagasse Clamshell is specially designed to hold greasy foods without having liquids seeping through.   It is ideal for hot meals, hamburgers and sanwhiches.</p>",
+            "description": "<p>Our plant fiber {{ product.metafields.custom.product_type.value }} can also be heated in a  microwave oven and kept fresh in the refrigerator.  Bagasse Clamshell is specially designed to hold greasy foods without having liquids seeping through.   It is ideal for hot meals, hamburgers and sandwiches.</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
@@ -387,6 +374,7 @@
         },
         "row_ea3DeU": {
           "type": "row",
+          "disabled": true,
           "settings": {
             "bg_color": "bg-primary",
             "bg_opacity": 9,
@@ -410,7 +398,7 @@
             "subtitle": "Fiber Take-out Containers",
             "title": "Sturdy and Secure",
             "title_font_size": "h2",
-            "description": "<p>This disposable container is designed with a reinforced lip along its edge to minimize spills. This feature enhances the seal between the lid and the container, providing better protection compared to standard foam or cardboard take-out boxes.</p>",
+            "description": "<p>Our plant fiber {{ product.metafields.custom.product_type.value }}are designed to minimize spills. This feature enhances the seal between the lid and the container, providing better protection compared to standard foam or cardboard take-out boxes.</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
