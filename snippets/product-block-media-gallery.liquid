@@ -10,6 +10,8 @@
   endif
 %}
 
+ {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+
 {% if product == nil %}
   {{ 'image' | placeholder_svg_tag: 'img-thumbnail' }}
 {% elsif block != nil %}
