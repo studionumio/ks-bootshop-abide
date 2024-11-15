@@ -214,7 +214,7 @@ class ProductMediaGallery extends HTMLElement {
   }
 
   listenVariantChange () {
-    window.addEventListener('selectedVariant.id', (event) => {
+    window.addEventListener('kt.product.variant.change', (event) => {
       const selectedVariant = event.detail
 
       if (selectedVariant.featured_media) {
