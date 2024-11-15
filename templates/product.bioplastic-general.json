@@ -357,7 +357,7 @@
             "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
-            "subtitle": "Bioplastic",
+            "subtitle": "Bioplastic {{ product.metafields.custom.product_type.value }}",
             "title": "Non-Toxic, Chemical-Free",
             "title_font_size": "h2",
             "description": "<p>Traditional plastics often contain chemicals, like BPA and phthalates, which can leach into food and pose health risks. Our cornstarch-based bioplastics are free of these harmful additives, making them a safer option for consumers and the environment. When disposed of, they won’t release toxic substances, helping to ensure a healthier ecosystem for both wildlife and humans.</p>",
