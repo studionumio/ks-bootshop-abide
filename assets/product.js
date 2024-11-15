@@ -19,6 +19,7 @@ class ProductForm extends HTMLElement {
 
     this.buyBtn?.addEventListener('click', event => this.onClickBuyBtn(event))
   }
+  
 Array.from(optionSelectors).forEach(el => {
             selectedOptions.push(el.value);
         });
@@ -38,7 +39,20 @@ Array.from(optionSelectors).forEach(el => {
         });
 
         console.log(selectedVariant);
-  
+  async onChangeProductOption (event) {
+    event.preventDefault()
+
+    const selectedOptions = []
+
+    this.productOptions.forEach(elem => {
+      if (elem.type === 'radio' && elem.checked) {
+        selectedOptions.push(elem.value)
+      } else if (elem.type === 'select-one') {
+        selectedOptions.push(elem.value)
+      }
+    })
+
+    // console.log(selectedOptions)
 
     const selectedVariant = JSON.parse(this.form.dataset.variants).find(variant =>
       JSON.stringify(variant.options) === JSON.stringify(selectedOptions)
