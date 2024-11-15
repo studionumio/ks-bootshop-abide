@@ -298,6 +298,44 @@
     "media_with_text_xGFhyq": {
       "type": "media-with-text",
       "blocks": {
+        "row_ea3DeU": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-primary",
+            "bg_opacity": 9,
+            "bg_gradient": "",
+            "text_color": "text-body",
+            "border_top_width": 0,
+            "border_bottom_width": 0,
+            "border_color": "border-body",
+            "border_opacity": 100,
+            "media_align_desktop": "flex-desktop-row-reverse",
+            "media_border": "rounded",
+            "img": "shopify://shop_images/palm-leaf-assortment.jpg",
+            "img_orientation": "ratio-4x3",
+            "video_ratio": "adapt",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "external_video": "",
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-start",
+            "subtitle": "Palm Leaf {{ product.metafields.custom.product_type.value }}",
+            "title": "Every Piece is Beautiful and Unique",
+            "title_font_size": "h2",
+            "description": "<p>Our Palm Leaf collection offers a sustainable, eco-friendly alternative to traditional dining options, with a wide variety of shapes and sizes tailored to suit any occasion—from intimate gatherings to large events. Each piece in our collection serves more than just your dining needs; it reflects our deep commitment to environmental responsibility, allowing you to enjoy high-quality tableware while supporting a greener planet. With Palm Leaf, you don’t have to choose between style, functionality, and sustainability—our products bring all three to your table.</p>",
+            "description_font_size": "fs-lg",
+            "btn_primary_text": "",
+            "btn_primary_url": "",
+            "btn_primary_color": "btn-primary",
+            "btn_secondary_text": "",
+            "btn_secondary_url": "",
+            "btn_secondary_color": "btn-secondary",
+            "pt": 10,
+            "pb": 10
+          }
+        },
         "row_Khn4FE": {
           "type": "row",
           "settings": {
@@ -373,49 +411,12 @@
             "pt": 5,
             "pb": 5
           }
-        },
-        "row_ea3DeU": {
-          "type": "row",
-          "settings": {
-            "bg_color": "bg-primary",
-            "bg_opacity": 9,
-            "bg_gradient": "",
-            "text_color": "text-body",
-            "border_top_width": 0,
-            "border_bottom_width": 0,
-            "border_color": "border-body",
-            "border_opacity": 100,
-            "media_align_desktop": "flex-desktop-row-reverse",
-            "media_border": "img-thumbnail",
-            "img_orientation": "adapt",
-            "video_ratio": "adapt",
-            "video_autoplay": true,
-            "video_loop": true,
-            "video_muted": true,
-            "video_controls": true,
-            "external_video": "",
-            "text_align_mobile": "text-center",
-            "text_align_desktop": "text-desktop-start",
-            "subtitle": "Palm Leaf {{ product.metafields.custom.product_type.value }}",
-            "title": "Every Piece is Beautiful and Unique",
-            "title_font_size": "h2",
-            "description": "<p>Our Palm Leaf collection offers a sustainable, eco-friendly alternative to traditional dining options, with a wide variety of shapes and sizes tailored to suit any occasion—from intimate gatherings to large events. Each piece in our collection serves more than just your dining needs; it reflects our deep commitment to environmental responsibility, allowing you to enjoy high-quality tableware while supporting a greener planet. With Palm Leaf, you don’t have to choose between style, functionality, and sustainability—our products bring all three to your table.</p>",
-            "description_font_size": "fs-lg",
-            "btn_primary_text": "",
-            "btn_primary_url": "",
-            "btn_primary_color": "btn-primary",
-            "btn_secondary_text": "",
-            "btn_secondary_url": "",
-            "btn_secondary_color": "btn-secondary",
-            "pt": 10,
-            "pb": 10
-          }
         }
       },
       "block_order": [
+        "row_ea3DeU",
         "row_Khn4FE",
-        "row_WKtbKU",
-        "row_ea3DeU"
+        "row_WKtbKU"
       ],
       "settings": {
         "container_max_width": ""
