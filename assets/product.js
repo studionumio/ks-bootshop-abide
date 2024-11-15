@@ -41,8 +41,6 @@ class ProductForm extends HTMLElement {
 
     console.log(selectedVariant)
 
-    this.adjustPricing(selectedVariant)
-    this.adjustButtons(selectedVariant)
 
     if (selectedVariant) {
       this.querySelector('[name="id"]').value = selectedVariant.id
