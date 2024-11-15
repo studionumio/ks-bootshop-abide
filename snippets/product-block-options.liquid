@@ -17,7 +17,7 @@
             {% for value in option.values %}
               <li>
                 <input 
-                  class="visually-hidden" 
+                  class="visually-hidden variant-selector" 
                   type="radio" 
                   name="option-{{ option.name | handleize }}" 
                   id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
@@ -36,7 +36,7 @@
           <select
             id="option-{{ option.name | handleize }}"
             name="option-{{ option.name | handleize }}"
-            class="form-select">
+            class="form-select variant-selector">
             {% for value in option.values %}
               <option 
                 value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>
