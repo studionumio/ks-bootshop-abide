@@ -28,6 +28,19 @@
             "full_screen_effect": "slide"
           }
         },
+        "richtext_dHx4QR": {
+          "type": "richtext",
+          "settings": {
+            "title": "",
+            "title_font_size": "h6",
+            "description": "<p><strong>{{ product.metafields.my_fields.product_type.value }}</strong> Products</p>",
+            "description_font_size": "fs-md",
+            "product_description": false,
+            "description_classes": "text-white rounded p-4",
+            "pt": 0,
+            "pb": 0
+          }
+        },
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1": {
           "type": "title",
           "settings": {
@@ -38,6 +51,7 @@
         },
         "liquid_WBYdaW": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "liquid": "<div class=\"product-sku\">\nSKU <span id=\"variant-sku\"></span>\n  </div>",
             "pt": 0,
@@ -47,13 +61,13 @@
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
           "type": "richtext",
           "settings": {
-            "title": "",
+            "title": "{{ product.metafields.custom.ct_pk.value }}",
             "title_font_size": "h6",
-            "description": "<p>{{ product.metafields.descriptors.subtitle.value }}</p>",
+            "description": "",
             "description_font_size": "",
             "product_description": false,
             "description_classes": "opacity-70",
-            "pt": 0,
+            "pt": 3,
             "pb": 3
           }
         },
@@ -79,6 +93,7 @@
         },
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554": {
           "type": "atc_button",
+          "disabled": true,
           "settings": {
             "show_qty_field": true,
             "show_dynamic_buttons": false,
@@ -194,6 +209,7 @@
       },
       "block_order": [
         "8abeac2d-7b60-4697-891c-4d6201789d31",
+        "richtext_dHx4QR",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "liquid_WBYdaW",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
