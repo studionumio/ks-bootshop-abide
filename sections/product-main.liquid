@@ -1,13 +1,6 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
-{% liquid 
-  if current_variant.featured_image
-    assign initial_slide = product.selected_or_first_available_variant.featured_media.position | minus: 1
-  else
-    assign initial_slide = 0
-  endif
-%}
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const variantSelect = document.querySelector('[name="id"]');
