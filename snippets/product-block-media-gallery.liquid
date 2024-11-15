@@ -18,7 +18,8 @@
     data-product-id="{{ product.id }}"
     data-initial-slide="{{ initial_slide }}"
     data-speed="{{ block.settings.speed }}"
-    data-thumbs-per-view="{{ block.settings.thumbs_per_view }}">
+    data-thumbs-per-view="{{ block.settings.thumbs_per_view }}"
+    data-variants="{{ product.variants | json }}">
     <div class="swiper-main-wrapper {{ block.settings.img_border }}">
       <div 
         class="swiper-main swiper"
@@ -74,3 +75,8 @@
     </div>
   </product-media-gallery>
 {% endif %}
+
+{% liquid 
+  assign pt = block.settings.pt | prepend: 'pt-'
+  assign pb = block.settings.pb | prepend: 'pb-'
+%}
