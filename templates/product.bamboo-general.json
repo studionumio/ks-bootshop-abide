@@ -38,6 +38,7 @@
         },
         "liquid_WBYdaW": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "liquid": "<div class=\"product-sku\">\nSKU <span id=\"variant-sku\"></span>\n  </div>",
             "pt": 0,
@@ -47,13 +48,13 @@
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
           "type": "richtext",
           "settings": {
-            "title": "",
+            "title": "{{ product.metafields.custom.ct_pk.value }}",
             "title_font_size": "h6",
-            "description": "<p>{{ product.metafields.descriptors.subtitle.value }}</p>",
+            "description": "",
             "description_font_size": "",
             "product_description": false,
-            "description_classes": "opacity-70",
-            "pt": 0,
+            "description_classes": "",
+            "pt": 5,
             "pb": 3
           }
         },
