@@ -59,43 +59,7 @@ class ProductForm extends HTMLElement {
     }
   }
 
-  adjustPricing (selectedVariant) {
-    if (!selectedVariant) return
-
-    const comparePrice = this.form.querySelector('.product-price-compare')
-    const finalPrice = this.form.querySelector('.product-price-final')
-    const compareBadge = this.form.querySelector('.product-sale-badge')
-    const soldOutBadge = this.form.querySelector('.product-sold-out-badge')
-
-    if (selectedVariant.compare_at_price > selectedVariant.price) {
-      comparePrice.textContent = window.Shopify.formatMoney(selectedVariant.compare_at_price)
-      comparePrice.removeAttribute('hidden')
-      finalPrice.innerHTML = `<span class="visually-hidden">${window.theme.locales.product.sale_price}}</span>${window.Shopify.formatMoney(selectedVariant.price)}`
-      finalPrice.classList.add('product-price-final-sale')
-      compareBadge.removeAttribute('hidden')
-      if (compareBadge.dataset.discountType === 'percentage') {
-        const savings = 100 - (Math.round(selectedVariant.price / selectedVariant.compare_at_price * 100)) + '%'
-        compareBadge.textContent = `${window.theme.locales.product.save} ${savings}`
-      } else {
-        const savings = window.Shopify.formatMoney(selectedVariant.compare_at_price - selectedVariant.price)
-        compareBadge.textContent = `${window.theme.locales.product.save} ${savings}`
-      }
-    } else {
-      comparePrice.textContent = ''
-      comparePrice.setAttribute('hidden', 'hidden')
-      finalPrice.innerHTML = window.Shopify.formatMoney(selectedVariant.price)
-      finalPrice.classList.remove('product-price-final-sale')
-      compareBadge.textContent = ''
-      compareBadge.setAttribute('hidden', 'hidden')
-    }
-
-    if (selectedVariant.available) {
-      soldOutBadge.setAttribute('hidden', 'hidden')
-    } else {
-      soldOutBadge.removeAttribute('hidden')
-    }
-  }
-
+ 
   adjustButtons (selectedVariant) {
     if (selectedVariant) {
       if (selectedVariant.available) {
