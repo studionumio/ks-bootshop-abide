@@ -105,6 +105,11 @@
           "multiply_price_with_quantity": true,
           "show_price_in_frequency_dropdown": true
         }
+      },
+      "11469127169306096870": {
+        "type": "shopify://apps/s-request-a-quote-hide-price/blocks/embed-app/dac9aba2-251e-4c25-abc3-9fc57dbf7885",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
