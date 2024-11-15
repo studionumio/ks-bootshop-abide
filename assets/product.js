@@ -20,20 +20,6 @@ class ProductForm extends HTMLElement {
     this.buyBtn?.addEventListener('click', event => this.onClickBuyBtn(event))
   }
 
-
-        // Get selected variant based on selected options
-        let selectedVariant;
-        const variantsJSON = JSON.parse(el.closest('.product').dataset.variantsJson);
-
-        let selected = document.getElementById('option-select-size').value;
-
-        variantsJSON.forEach(el => {
-            if (el.title == selected) {
-                selectedVariant = el;
-            }
-        });
-
-        console.log(selectedVariant);
   async onChangeProductOption (event) {
     event.preventDefault()
 
@@ -234,7 +220,7 @@ class ProductMediaGallery extends HTMLElement {
       if (selectedVariant.featured_media) {
         this.main.slideTo(selectedVariant.featured_media.position - 1)
       }
-    }, false)
+    }, true)
   }
 }
 customElements.define('product-media-gallery', ProductMediaGallery)
