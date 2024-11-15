@@ -320,7 +320,7 @@
             "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
-            "subtitle": "Bamboo Straws",
+            "subtitle": "Bamboo {{ product.metafields.custom.product_type.value }}",
             "title": "Naturally Durable and Eco-Friendly",
             "title_font_size": "h2",
             "description": "<p>Our bamboo {{ product.metafields.custom.product_type.value }} are a great choice for those looking to make a sustainable switch without compromising on quality. Bamboo is naturally durable, allowing it to withstand daily use while remaining lightweight and easy to carry. Unlike plastic, which can take hundreds of years to break down, bamboo biodegrades much faster, making it a perfect choice for eco-conscious consumers.</p>",
