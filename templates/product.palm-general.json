@@ -45,7 +45,7 @@
             "description": "<p><strong>{{ product.metafields.my_fields.product_type.value }}</strong> Products </p>",
             "description_font_size": "fs-md",
             "product_description": false,
-            "description_classes": "bg-primary text-white rounded p-4",
+            "description_classes": "text-white rounded p-4",
             "pt": 0,
             "pb": 5
           }
@@ -234,7 +234,8 @@
         "separator_cWJNG3"
       ],
       "custom_css": [
-        ".product-price * {color: #ffffff; background: #ffffff;}"
+        ".product-price * {color: #ffffff; background: #ffffff;}",
+        ".description.rte.mb-0.fs-md.text-white.rounded.p-4 {width: 40%; background: grey;}"
       ],
       "settings": {
         "bg_color": "bg-body",
