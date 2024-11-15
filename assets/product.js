@@ -214,7 +214,7 @@ class ProductMediaGallery extends HTMLElement {
   }
 
   listenVariantChange () {
-    window.addEventListener('kt.product.variant.change', (event) => {
+    window.addEventListener('selectedVariant.id', (event) => {
       const selectedVariant = event.detail
 
       if (selectedVariant.featured_media) {
@@ -233,3 +233,5 @@ const adjustShopifySubscriptionsStyling = () => {
 }
 adjustShopifySubscriptionsStyling()
 window.addEventListener('kt.product.quick_view.modal_shown', adjustShopifySubscriptionsStyling)
+
+
