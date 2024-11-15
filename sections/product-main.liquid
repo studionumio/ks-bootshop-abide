@@ -1,28 +1,6 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const variantSelect = document.querySelector('[name="id"]');
-    const metafieldDiv = document.getElementById('variant-metafield');
-
-    if (variantSelect) {
-      variantSelect.addEventListener('change', function() {
-        const selectedVariantId = this.value;
-
-        // Update the metafield display by fetching the new variant's metafield
-        const selectedVariant = window.ShopifyAnalytics.meta.product.variants.find(variant => variant.id == selectedVariantId);
-
-        if (selectedVariant && selectedVariant.metafields && selectedVariant.metafields.custom) {
-          metafieldDiv.innerText = selectedVariant.metafields.custom.ct_pk || '';
-        } else {
-          metafieldDiv.innerText = '';
-        }
-      });
-    }
-  });
-</script>
-
 
 <section 
   id="product-main{{ product.id }}" 
@@ -53,10 +31,10 @@
         {{ 'general.accessibility.skip_product_content' | t }}
       </a>      
       <div class="row">
-        <div class="col-desktop-7 mb-5 mb-desktop-0">
+        <div class="col-desktop-9 mb-5 mb-desktop-0">
           {% render 'product-block-media-gallery' %}
         </div>
-        <div class="col-desktop-10">
+        <div class="col-desktop-9">
           <div id="product-inner-{{ product.id }}">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
