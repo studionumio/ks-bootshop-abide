@@ -321,7 +321,7 @@
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
             "subtitle": "Bioplastic {{ product.metafields.custom.product_type.value }}",
-            "title": "Eco-Friendly & Biodegradable",
+            "title": "Made from Natural, Biodegradable Corn Starch",
             "title_font_size": "h2",
             "description": "<p>Our bioplastic {{ product.metafields.custom.product_type.value }} are made using cornstarch, a renewable plant-based resource that reduces reliance on fossil fuels and minimizes carbon emissions. Unlike traditional plastics, which can take hundreds of years to decompose, cornstarch-based bioplastics are biodegradable and break down naturally without leaving harmful microplastics behind. This makes them an excellent choice for reducing waste in landfills and supporting a more sustainable ecosystem.</p>",
             "description_font_size": "fs-lg",
