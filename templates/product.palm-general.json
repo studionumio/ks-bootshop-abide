@@ -97,7 +97,6 @@
         },
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554": {
           "type": "atc_button",
-          "disabled": true,
           "settings": {
             "show_qty_field": true,
             "show_dynamic_buttons": false,
@@ -159,7 +158,6 @@
         },
         "price_bPXD4X": {
           "type": "price",
-          "disabled": true,
           "settings": {
             "font_size": "fs-lg",
             "badge_discount_type": "percentage",
