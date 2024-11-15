@@ -79,7 +79,7 @@
           "type": "options",
           "settings": {
             "options_style": "buttons",
-            "color_swatches": "Color, color",
+            "color_swatches": "",
             "pt": 0,
             "pb": 3
           }
