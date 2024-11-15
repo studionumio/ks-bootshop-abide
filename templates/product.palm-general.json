@@ -44,15 +44,6 @@
             "pb": 0
           }
         },
-        "productselection_aBb4rm": {
-          "type": "productselection",
-          "settings": {
-            "options_style": "buttons",
-            "color_swatches": "Color, color",
-            "pt": 0,
-            "pb": 2
-          }
-        },
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
           "type": "richtext",
           "settings": {
@@ -205,7 +196,6 @@
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "liquid_WBYdaW",
-        "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
@@ -255,8 +245,7 @@
       "block_order": [
         "s_request_a_quote_hide_price_button_block_e4YU7M"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "featured_products_VqgxgC": {
       "type": "featured-products",
@@ -271,9 +260,7 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "products": [
-
-        ],
+        "products": [],
         "collection": "",
         "limit": 8,
         "recommended_mode": true,
@@ -432,6 +419,41 @@
       "settings": {
         "container_max_width": ""
       }
+    },
+    "featured_products_E663it": {
+      "type": "featured-products",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "",
+        "limit": 8,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "Similar Products",
+        "header_title_font_size": "h2",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 4,
+        "pt": 10,
+        "pb": 10
+      }
     }
   },
   "order": [
@@ -439,6 +461,7 @@
     "1710322973d29fae05",
     "featured_products_VqgxgC",
     "20426219-2b04-4ec4-9f23-1ed81a76c181",
-    "media_with_text_xGFhyq"
+    "media_with_text_xGFhyq",
+    "featured_products_E663it"
   ]
 }
