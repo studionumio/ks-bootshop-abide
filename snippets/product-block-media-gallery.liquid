@@ -3,8 +3,8 @@
 
   assign current_variant = product.selected_or_first_available_variant
 
-  if current_variant.featured_media
-    assign initial_slide = current_variant.featured_media.position | minus: 1
+  if current_variant.featured_image
+    assign initial_slide = product.selected_or_first_available_variant.featured_media.position | minus: 1
   else
     assign initial_slide = 0
   endif
@@ -18,8 +18,7 @@
     data-product-id="{{ product.id }}"
     data-initial-slide="{{ initial_slide }}"
     data-speed="{{ block.settings.speed }}"
-    data-thumbs-per-view="{{ block.settings.thumbs_per_view }}"
-    data-variants="{{ product.variants | json }}">
+    data-thumbs-per-view="{{ block.settings.thumbs_per_view }}">
     <div class="swiper-main-wrapper {{ block.settings.img_border }}">
       <div 
         class="swiper-main swiper"
@@ -32,7 +31,7 @@
                 assign media_loading = 'lazy' 
               endif
             %}
-            <div class="swiper-slide" lazy="{% if media_loading == 'lazy' %}true{% endif %}" data-media-id="{{ media.id }}">
+            <div class="swiper-slide" lazy="{% if media_loading == 'lazy' %}true{% endif %}">
               {% case media.media_type %}
                 {% when 'image' %}
                   {% render 'image-url', img: media, size: 800, orientation: block.settings.img_orientation, loading: media_loading, class: '' %}
@@ -75,8 +74,3 @@
     </div>
   </product-media-gallery>
 {% endif %}
-
-{% liquid 
-  assign pt = block.settings.pt | prepend: 'pt-'
-  assign pb = block.settings.pb | prepend: 'pb-'
-%}
