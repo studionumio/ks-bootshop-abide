@@ -397,7 +397,7 @@
             "subtitle": "Bioplastic",
             "title": "Durable and Versatile",
             "title_font_size": "h2",
-            "description": "<p>Our cornstarch-based bioplastic utensils and tableware are crafted to be sturdy and heat-resistant, offering reliable performance for various dining needs. They come in a range of styles and finishes, providing versatility for any occasion without compromising on sustainability. Ideal for single-use or short-term reuse, they’re a convenient and eco-conscious choice for both casual and formal settings.</p>",
+            "description": "<p>Our cornstarch-based bioplastic {{ product.metafields.custom.product_type.value }} are crafted to be sturdy and heat-resistant, offering reliable performance for various dining needs. They come in a range of styles and finishes, providing versatility for any occasion without compromising on sustainability. Ideal for single-use or short-term reuse, they’re a convenient and eco-conscious choice for both casual and formal settings.</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
