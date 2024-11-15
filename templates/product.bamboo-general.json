@@ -311,6 +311,7 @@
             "border_opacity": 100,
             "media_align_desktop": "",
             "media_border": "img-thumbnail",
+            "img": "shopify://shop_images/bamboo-kazuend-LVdiXyu2eTc-unsplash.jpg",
             "img_orientation": "ratio-4x3",
             "video_ratio": "adapt",
             "video_autoplay": true,
