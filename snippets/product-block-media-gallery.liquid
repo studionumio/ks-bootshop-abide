@@ -9,8 +9,7 @@
     assign initial_slide = 0
   endif
 %}
-{% assign current_variant = product.selected_or_first_available_variant %}
-{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
 {% if product == nil %}
   {{ 'image' | placeholder_svg_tag: 'img-thumbnail' }}
 {% elsif block != nil %}
