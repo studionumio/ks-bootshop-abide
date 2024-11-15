@@ -220,7 +220,7 @@ class ProductMediaGallery extends HTMLElement {
       if (selectedVariant.featured_media) {
         this.main.slideTo(selectedVariant.featured_media.position - 1)
       }
-    }, true)
+    }, false)
   }
 }
 customElements.define('product-media-gallery', ProductMediaGallery)
