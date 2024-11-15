@@ -44,15 +44,6 @@
             "pb": 0
           }
         },
-        "productselection_aBb4rm": {
-          "type": "productselection",
-          "settings": {
-            "options_style": "buttons",
-            "color_swatches": "Color, color",
-            "pt": 0,
-            "pb": 2
-          }
-        },
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
           "type": "richtext",
           "settings": {
@@ -205,7 +196,6 @@
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "liquid_WBYdaW",
-        "productselection_aBb4rm",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
@@ -255,8 +245,7 @@
       "block_order": [
         "s_request_a_quote_hide_price_button_block_e4YU7M"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "featured_products_VqgxgC": {
       "type": "featured-products",
@@ -271,9 +260,7 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "products": [
-
-        ],
+        "products": [],
         "collection": "",
         "limit": 8,
         "recommended_mode": true,
@@ -333,10 +320,10 @@
             "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
-            "subtitle": "Paper Cups",
+            "subtitle": "Paper {{ product.metafields.custom.product_type.value }}",
             "title": "Compostable and Eco-Friendly",
             "title_font_size": "h2",
-            "description": "<p>Our paper cups are made from 100% wood, a renewable and sustainable resource that fully decomposes after use, contributing zero waste to the environment. These cups are 100% compostable, breaking down naturally and quickly, making them an eco-friendly choice for reducing landfill waste. By choosing our paper cups, you’re actively supporting a cleaner, greener planet.</p>",
+            "description": "<p>Our paper {{ product.metafields.custom.product_type.value }} are made from 100% wood, a renewable and sustainable resource that fully decomposes after use, contributing zero waste to the environment. These cups are 100% compostable, breaking down naturally and quickly, making them an eco-friendly choice for reducing landfill waste. By choosing our paper cups, you’re actively supporting a cleaner, greener planet.</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
@@ -370,10 +357,10 @@
             "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
-            "subtitle": "Paper Cups",
+            "subtitle": "Paper {{ product.metafields.custom.product_type.value }}",
             "title": "Durable and Versatile for Every Beverage",
             "title_font_size": "h2",
-            "description": "<p>Designed for strength and comfort, our paper cups hold up well to a variety of hot and cold drinks without compromising on quality. Their natural, clean appearance makes them ideal for any occasion, from casual events to upscale gatherings. By choosing our eco-friendly paper cups, you’re making a stylish, sustainable choice that aligns with your commitment to the environment.</p>",
+            "description": "<p>Designed for strength and comfort, our paper {{ product.metafields.custom.product_type.value }}hold up well in any environment. Their natural, clean appearance makes them ideal for any occasion, from casual events to upscale gatherings. By choosing our eco-friendly paper {{ product.metafields.custom.product_type.value }}, you’re making a stylish, sustainable choice that aligns with your commitment to the environment.</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
@@ -407,10 +394,10 @@
             "external_video": "",
             "text_align_mobile": "text-center",
             "text_align_desktop": "text-desktop-start",
-            "subtitle": "Paper Cups",
+            "subtitle": "Paper {{ product.metafields.custom.product_type.value }}",
             "title": "BPA-Free and Chemical-free",
             "title_font_size": "h2",
-            "description": "<p>Our paper cups are free of plastics, BPA, dyes, bleach, and other harmful chemicals, ensuring a pure, organic material that’s safe for consumers and the environment. They’re also FDA-compliant, meeting the highest standards for food contact safety, so you can enjoy peace of mind with every sip. With no chemical additives, our cups maintain the integrity and taste of your beverages.</p>",
+            "description": "<p>Our paper n{{ product.metafields.custom.product_type.value }} are free of plastics, BPA, dyes, bleach, and other harmful chemicals, ensuring a pure, organic material that’s safe for consumers and the environment. They’re also FDA-compliant, meeting the highest standards for food contact safety, so you can enjoy peace of mind with every sip. With no chemical additives, our {{ product.metafields.custom.product_type.value }} maintain the integrity and taste of your beverages.</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
