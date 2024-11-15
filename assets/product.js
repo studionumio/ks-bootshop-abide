@@ -19,21 +19,26 @@ class ProductForm extends HTMLElement {
 
     this.buyBtn?.addEventListener('click', event => this.onClickBuyBtn(event))
   }
+Array.from(optionSelectors).forEach(el => {
+            selectedOptions.push(el.value);
+        });
 
-  async onChangeProductOption (event) {
-    event.preventDefault()
+        console.log(el.value);
 
-    const selectedOptions = []
+        // Get selected variant based on selected options
+        let selectedVariant;
+        const variantsJSON = JSON.parse(el.closest('.product').dataset.variantsJson);
 
-    this.productOptions.forEach(elem => {
-      if (elem.type === 'radio' && elem.checked) {
-        selectedOptions.push(elem.value)
-      } else if (elem.type === 'select-one') {
-        selectedOptions.push(elem.value)
-      }
-    })
+        let selected = document.getElementById('option-select-size').value;
 
-    // console.log(selectedOptions)
+        variantsJSON.forEach(el => {
+            if (el.title == selected) {
+                selectedVariant = el;
+            }
+        });
+
+        console.log(selectedVariant);
+  
 
     const selectedVariant = JSON.parse(this.form.dataset.variants).find(variant =>
       JSON.stringify(variant.options) === JSON.stringify(selectedOptions)
@@ -233,18 +238,5 @@ const adjustShopifySubscriptionsStyling = () => {
 }
 adjustShopifySubscriptionsStyling()
 window.addEventListener('kt.product.quick_view.modal_shown', adjustShopifySubscriptionsStyling)
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const variantSkuElement = document.getElementById('variant-sku');
-  const variantSelector = document.querySelector('[name="id"]'); // This is the variant selector (dropdown or buttons)
-
-  if (variantSelector) {
-    variantSelector.addEventListener('change', function() {
-      const selectedVariant = this.options[this.selectedIndex].dataset.sku;
-      variantSkuElement.textContent = selectedVariant || 'N/A'; // Replace with the selected variant SKU
-    });
-  }
-});
 
 
