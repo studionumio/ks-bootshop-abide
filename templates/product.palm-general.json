@@ -466,7 +466,7 @@
         "products": [],
         "collection": "palm-leaf-products",
         "limit": 8,
-        "recommended_mode": true,
+        "recommended_mode": false,
         "recommended_mode_intent": "related",
         "header_title": "Similar Products",
         "header_title_font_size": "h2",
