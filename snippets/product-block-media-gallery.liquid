@@ -9,16 +9,18 @@
     assign initial_slide = 0
   endif
 %}
-
- {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+{% liquid 
+  assign block = section.blocks | where: 'type', 'media_gallery' | first
+  assign featured_media = product.selected_or_first_available_variant.featured_media
+%}
 
 {% if product == nil %}
   {{ 'image' | placeholder_svg_tag: 'img-thumbnail' }}
 {% elsif block != nil %}
-  <product-media-gallery
+
+ <product-media-gallery
     class="product-media-gallery"
     data-product-id="{{ product.id }}"
-    data-initial-slide="{{ initial_slide }}"
     data-speed="{{ block.settings.speed }}"
     data-thumbs-per-view="{{ block.settings.thumbs_per_view }}">
     <div class="swiper-main-wrapper {{ block.settings.img_border }}">
@@ -26,22 +28,20 @@
         class="swiper-main swiper"
         style="--swiper-theme-color: {{ block.settings.controls_color | prepend: 'var(--bs-' | append: '-rgb)' }}">
         <div class="swiper-wrapper">
-          {% for media in product.media %}
-            {% liquid 
-              assign media_loading = 'eager' 
-              if forloop.index > 2
-                assign media_loading = 'lazy' 
-              endif
-            %}
-            <div class="swiper-slide" lazy="{% if media_loading == 'lazy' %}true{% endif %}">
-              {% case media.media_type %}
+          {%- if featured_media -%}
+            <div class="swiper-slide">
+              {% case featured_media.media_type %}
                 {% when 'image' %}
-                  {% render 'image-url', img: media, size: 800, orientation: block.settings.img_orientation, loading: media_loading, class: '' %}
+                  <img 
+                    src="{{ featured_media | image_url: '800x800' }}" 
+                    alt="{{ featured_media.alt | escape }}" 
+                    class="{{ block.settings.img_orientation }}" 
+                    loading="eager" />
                 {% when 'video' %}
-                  {{ media | video_tag: controls: true, image_size: '800x', loading: media_loading, class: 'bg-black w-100' }}
+                  {{ featured_media | video_tag: controls: true, image_size: '800x', class: 'bg-black w-100' }}
               {% endcase %}
             </div>
-          {% endfor %}
+          {%- endif -%}
         </div>
         <div class="swiper-controls">
           <div class="swiper-pagination"></div>
