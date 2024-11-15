@@ -157,7 +157,7 @@
         "liquid_ECW43U": {
           "type": "liquid",
           "settings": {
-            "liquid": "<a style=\"text-decoration: none;\" href=\"mailto:hello@abidehawaii.com?subject=Product Inquiry: {{ product.title }}\" class=\"bg-primary text-white rounded p-6\">Email for Availability</a> <a style=\"margin-left: 10px; text-decoration: none;\" href=\"href=\"tel:+18089098118\" class=\"bg-secondary text-white rounded p-6\">Call for Availability</a>",
+            "liquid": "<a style=\"text-decoration: none;\" href=\"mailto:hello@abidehawaii.com?subject=Product Inquiry: {{ product.title }}&body=Hello Abide Hawaii, Can you send me more information regarding the  {{ product.title }}?\" class=\"bg-primary text-white rounded p-6\">Email for Availability</a> <a style=\"margin-left: 10px; text-decoration: none;\" href=\"href=\"tel:+18089098118\" class=\"bg-secondary text-white rounded p-6\">Call for Availability</a>",
             "pt": 7,
             "pb": 3
           }
