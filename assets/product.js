@@ -19,12 +19,7 @@ class ProductForm extends HTMLElement {
 
     this.buyBtn?.addEventListener('click', event => this.onClickBuyBtn(event))
   }
-  
-Array.from(optionSelectors).forEach(el => {
-            selectedOptions.push(el.value);
-        });
 
-        console.log(el.value);
 
         // Get selected variant based on selected options
         let selectedVariant;
