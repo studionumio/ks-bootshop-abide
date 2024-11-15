@@ -28,6 +28,19 @@
             "full_screen_effect": "slide"
           }
         },
+        "richtext_ArkEJe": {
+          "type": "richtext",
+          "settings": {
+            "title": "",
+            "title_font_size": "h6",
+            "description": "<p><strong>{{ product.metafields.my_fields.product_type.value }}</strong> Products</p>",
+            "description_font_size": "fs-md",
+            "product_description": false,
+            "description_classes": "text-white rounded p-4",
+            "pt": 0,
+            "pb": 3
+          }
+        },
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1": {
           "type": "title",
           "settings": {
@@ -196,6 +209,7 @@
       },
       "block_order": [
         "8abeac2d-7b60-4697-891c-4d6201789d31",
+        "richtext_ArkEJe",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "liquid_WBYdaW",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
