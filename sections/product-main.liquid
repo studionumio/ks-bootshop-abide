@@ -1,6 +1,29 @@
 {% liquid
   assign variants_json = product.variants | json
 %}
+
+<script>
+  document.querySelectorAll('.variant-selector').forEach(selector => {
+    selector.addEventListener('change', () => {
+      const selectedVariant = {{ product.variants | json }}.find(variant => {
+        return variant.options.every((option, index) => {
+          const selectedValue = document.querySelector(`input[name="option-${option.name | handleize}"]:checked`)?.value || 
+            document.querySelector(`#option-${option.name | handleize}`)?.value;
+          return option === selectedValue;
+        });
+      });
+
+      if (selectedVariant) {
+        const mediaId = selectedVariant.featured_media ? selectedVariant.featured_media.id : {{ product.media.first.id }};
+        const activeSlide = document.querySelector(`.swiper-slide[data-media-id="${mediaId}"]`);
+        if (activeSlide) {
+          activeSlide.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    });
+  });
+</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const variantSelect = document.querySelector('[name="id"]');
