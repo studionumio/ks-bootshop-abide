@@ -234,8 +234,7 @@
         "separator_cWJNG3"
       ],
       "custom_css": [
-        ".product-price * {color: #ffffff; background: #ffffff;}",
-        ".description.rte.mb-0.fs-md.text-white.rounded.p-4 {width: 40%; background: grey;}"
+        ".product-price * {color: #ffffff; background: #ffffff;}"
       ],
       "settings": {
         "bg_color": "bg-body",
