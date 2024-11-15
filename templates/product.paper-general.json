@@ -155,6 +155,7 @@
         },
         "9ecd1e68-8c4b-4330-ac14-7459a1896521": {
           "type": "collapse",
+          "disabled": true,
           "settings": {
             "icon_size": 20,
             "title": "Shipping Information",
@@ -176,6 +177,7 @@
         },
         "0f571c64-329e-4ea3-9c76-ebf86266226a": {
           "type": "collapse",
+          "disabled": true,
           "settings": {
             "icon_size": 20,
             "title": "Returns & Warranty",
