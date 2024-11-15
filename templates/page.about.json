@@ -76,8 +76,8 @@
             "btn_primary_text": "",
             "btn_primary_url": "",
             "btn_primary_color": "btn-primary",
-            "btn_secondary_text": "",
-            "btn_secondary_url": "",
+            "btn_secondary_text": "Read more about Jenny's Story",
+            "btn_secondary_url": "shopify://pages/our-founders-story",
             "btn_secondary_color": "btn-secondary",
             "pt": 5,
             "pb": 5
