@@ -416,7 +416,7 @@
     "html_Y7Cp8x": {
       "type": "html",
       "settings": {
-        "liquid": "<iframe class=\"rounded\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.601432948028!2d-157.865291282655!3d21.3004602603448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c006e0c6cfa6295%3A0xe0caa35881349aad!2s433%20Ala%20Moana%20Blvd%2C%20Honolulu%2C%20HI%2096813!5e0!3m2!1sen!2sus!4v1731620897419!5m2!1sen!2sus\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "liquid": "<iframe class=\"rounded\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.21078489419!2d-157.86648402433494!3d21.302685878313078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c006e0c1172faad%3A0xdb3627b73980d023!2sHomer%20A.%20Maxey%20International%20Trade%20Resource%20Center!5e0!3m2!1sen!2sus!4v1731950654626!5m2!1sen!2sus\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
