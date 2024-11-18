@@ -39,7 +39,6 @@
       "blocks": {
         "8b92bb0f-7aaa-4462-8660-b6a23bd9c31c": {
           "type": "menu",
-          "disabled": true,
           "settings": {
             "menu": "",
             "title_font_size": "fs-xl",
@@ -48,7 +47,6 @@
         },
         "79b0b9d4-1bf4-4490-a48e-94be1aecf12a": {
           "type": "menu",
-          "disabled": true,
           "settings": {
             "menu": "",
             "title_font_size": "fs-xl",
