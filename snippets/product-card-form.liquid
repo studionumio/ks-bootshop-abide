@@ -13,9 +13,7 @@
 {% liquid 
   assign btn_color = btn_color | default: settings.product_card_atc_btn_color
 %}
-
-<product-form>
-  {% assign label_btn = "Request a quote" %}
+{% assign label_btn = "Request a quote" %}
 {% if shop.metafields.storeifyquote %}
     {% assign locale_current = shop.locale %}
     {% assign storeify_quote_mode = shop.metafields.storeifyquote.quote_settings.mode %}
@@ -45,4 +43,3 @@
     storeifyRequestaquote.collections['{{product.id}}'] = {{ productCollections | json }};
 </script>
 </div>
-</product-form>
