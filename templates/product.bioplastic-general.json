@@ -101,6 +101,27 @@
             "pb": 6
           }
         },
+        "11016cfc-fdff-46f2-9b6b-26a6e68b7653": {
+          "type": "collapse",
+          "settings": {
+            "icon_size": 20,
+            "title": "Product Details",
+            "title_font_family": "heading",
+            "title_font_size": "fs-md",
+            "title_text_transform": "text-capitalize",
+            "title_letter_spacing": 1,
+            "description": "<p>A brief description will go here</p>",
+            "product_description": true,
+            "description_font_size": "fs-md",
+            "border_top_width": 1,
+            "border_bottom_width": 0,
+            "border_color": "border-body",
+            "border_opacity": 100,
+            "open_by_default": true,
+            "pt": 0,
+            "pb": 0
+          }
+        },
         "08894b72-c532-44db-9228-5f14c9841895": {
           "type": "trust_icons",
           "settings": {
@@ -122,7 +143,7 @@
           "type": "shopify://apps/s-request-a-quote-hide-price/blocks/button_block/dac9aba2-251e-4c25-abc3-9fc57dbf7885",
           "settings": {
             "font_size": 16,
-            "color_text": "#FFFFFF",
+            "color_text": "#ffffff",
             "bg_button": "#0a733b",
             "label_btn": "Add to Quote",
             "multi_lang": false,
@@ -137,28 +158,6 @@
             "liquid": "{% assign current_variant = product.selected_or_first_available_variant %}<a style=\"text-decoration: none;\" href=\"mailto:hello@abidehawaii.com?subject=Product Inquiry: {{ current_variant.sku }}, {{ product.title }} &body=Hello Abide Hawaii, Can you send me more information regarding the  {{ product.title }} (SKU {{ current_variant.sku }})?\" class=\"bg-primary text-white rounded p-6\">Email for Availability</a> <a style=\"margin-left: 10px; text-decoration: none;\" href=\"tel:+18089098118\" class=\"bg-secondary text-white rounded p-6\">Call for Availability</a>",
             "pt": 3,
             "pb": 3
-          }
-        },
-        "11016cfc-fdff-46f2-9b6b-26a6e68b7653": {
-          "type": "collapse",
-          "disabled": true,
-          "settings": {
-            "icon_size": 20,
-            "title": "Product Details",
-            "title_font_family": "heading",
-            "title_font_size": "fs-md",
-            "title_text_transform": "text-capitalize",
-            "title_letter_spacing": 1,
-            "description": "<p>A brief description will go here</p>",
-            "product_description": true,
-            "description_font_size": "fs-md",
-            "border_top_width": 1,
-            "border_bottom_width": 0,
-            "border_color": "border-body",
-            "border_opacity": 100,
-            "open_by_default": true,
-            "pt": 0,
-            "pb": 0
           }
         },
         "price_bPXD4X": {
@@ -236,10 +235,10 @@
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
+        "11016cfc-fdff-46f2-9b6b-26a6e68b7653",
         "08894b72-c532-44db-9228-5f14c9841895",
         "s_request_a_quote_hide_price_button_block_kX4DfJ",
         "liquid_YJQmix",
-        "11016cfc-fdff-46f2-9b6b-26a6e68b7653",
         "price_bPXD4X",
         "9ecd1e68-8c4b-4330-ac14-7459a1896521",
         "0f571c64-329e-4ea3-9c76-ebf86266226a",
