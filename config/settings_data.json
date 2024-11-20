@@ -117,7 +117,8 @@
   "platform_customizations": {
     "custom_css": [
       ".card {border-radius: 20px;}",
-      ".description.rte.mb-0.fs-md.text-white.rounded.p-4 {width: 40%; background: grey;}"
+      ".description.rte.mb-0.fs-md.text-white.rounded.p-4 {width: 40%; background: grey;}",
+      ".storeifybtn {margin-left: 0px !important; float: left;}"
     ]
   }
 }
