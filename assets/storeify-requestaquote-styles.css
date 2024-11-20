@@ -330,6 +330,7 @@ button#storeify-contactform-sendbtn {
     text-align: center;
     color: #dedede;
     font-size: 12px;
+  display: none;
 }
 
 
