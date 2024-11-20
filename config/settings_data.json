@@ -118,7 +118,7 @@
     "custom_css": [
       ".card {border-radius: 20px;}",
       ".description.rte.mb-0.fs-md.text-white.rounded.p-4 {width: 40%; background: grey;}",
-      ".storeifybtn {width: 50%;}"
+      ".storeifybtn {width: 50%; float: left;}"
     ]
   }
 }
