@@ -49,7 +49,7 @@
 			    {% assign lable_btn = quote_lang.default.btn_addquote  %}
 			{% endif %}
 		{% endif %}
-		<div class="ify-hide ify-quote-group ify-quote-group-{{product.id}}" data-targetid="{{product.id}}" data-targethandle="{{product.handle}}">
+		<div class="ify-quote-group ify-quote-group-{{product.id}}" data-targetid="{{product.id}}" data-targethandle="{{product.handle}}">
 <button type="button" class="storeify-quote-btn-trigger-popup btn button button--primary ify-button-code" data-product="{{ product.handle }}">{{ lable_btn }}</button>
 {% assign productCollections = product.collections | map:'id' %}
 <script id="ify_script_item_{{product.id}}">
