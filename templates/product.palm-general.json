@@ -157,7 +157,7 @@
             "bg_button": "#0a733b",
             "label_btn": "Add to Quote",
             "multi_lang": false,
-            "class_button": "btn btn-atc btn-sm rounded p-6 storeifybtn",
+            "class_button": "btn btn-atc btn-sm rounded p-5 storeifybtn",
             "form_id": ""
           }
         },
