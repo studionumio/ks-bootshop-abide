@@ -43,18 +43,7 @@
     {% render 'product-rating-badge', product: product %}
     {% render 'product-card-price', product: product %}
   </a>
-
-{% assign lable_btn = "Add to Quote" %}
-		
-			    {% assign lable_btn = quote_lang.default.btn_addquote  %}
-		
-		<div class="ify-hide ify-quote-group ify-quote-group-{{product.id}}" data-targetid="{{product.id}}" data-targethandle="{{product.handle}}">
-<button type="button" class="storeify-quote-btn-trigger-popup btn button button--primary ify-button-code" data-product="{{ product.handle }}">{{ lable_btn }}</button>
-{% assign productCollections = product.collections | map:'id' %}
-<script id="ify_script_item_{{product.id}}">
-	storeifyRequestaquote.productdata = storeifyRequestaquote.productdata || {};
-	storeifyRequestaquote.productdata['{{product.id}}'] = {"id":{{ product.id }},"title":`{{ product.title }}`,"handle":"{{ product.handle }}","available":{{ product.available }},"vendor":"{{ product.vendor }}","type":"{{ product.type }}","tags":{{ product.tags | json }}};
-	storeifyRequestaquote.collections['{{product.id}}'] = {{ productCollections | json }};
-</script>
-</div>
+  {% if settings.product_card_show_atc_form %}
+    {% render 'product-card-form', product: product %}
+  {% endif %}
 </div>
