@@ -36,7 +36,7 @@
       name="add"
       {% unless product.available %}disabled{% endunless %}>
       {% if product.available %}
-        {{ 'product.add_to_cart' | t }}
+       {% render 'storeify-quote',product: product_card_product %}
       {% else %}
         {{ 'product.sold_out' | t }}
       {% endif %}
