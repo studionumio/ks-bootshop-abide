@@ -361,7 +361,7 @@
             "subtitle": "Bioplastic {{ product.metafields.custom.product_type.value }}",
             "title": "Made From Plants",
             "title_font_size": "h2",
-            "description": "<p>Our Bioplastic {{ product.metafields.custom.product_type.value }} are made using plants such as corn and sweet potato to reduce reliance on fossil fuels and minimize carbon emissions. Unlike traditional plastics, which can take hundreds of years to decompose, plant-based bioplastics are biodegradable and break down naturally without leaving harmful microplastics behind. This makes them an excellent choice for reducing waste in landfills and supporting a more sustainable ecosystem.</p>",
+            "description": "<p>Our Bioplastic {{ product.metafields.custom.product_type.value }} are made using plants such as corn and sweet potato to reduce reliance on fossil fuels and minimize carbon emissions. Unlike traditional plastics, which can take hundreds of years to decompose, plant-based bioplastics are biodegradable and break down in a commercial compostable facility without leaving harmful microplastics behind. This makes them an excellent choice for reducing waste in landfills and supporting a more sustainable ecosystem.</p>",
             "description_font_size": "fs-lg",
             "btn_primary_text": "",
             "btn_primary_url": "",
