@@ -10,19 +10,10 @@
   {% render 'product-card-form' product: product  %}
 {% endcomment %}
 
-
-      <link rel="stylesheet" href="{{ 'storeify-requestaquote-styles.css' | asset_url }}" media="print" onload="this.media='all'">
-            <link rel="stylesheet" href="{{ 'storeify-requestaquote-hidden.css' | asset_url }}" media="print" onload="this.media='all'">
-
-      <script src="{{ 'storeify-requestaquote-script.js' | asset_url }}" defer="async"></script>
-            <script src="{{ 'storeify-requestaquote-json.js' | asset_url }}" defer="async"></script>
-
-      
-
 {% liquid 
   assign btn_color = btn_color | default: settings.product_card_atc_btn_color
 %}
- 
+
 <product-form>
   {% form 'product', product, data-productid: product.id %}
     {% if product.has_only_default_variant %}
@@ -39,24 +30,16 @@
         {% endfor %}
       </select>
     {% endif %}
-{% assign lable_btn = "Add to Quote" %}
-		{% if shop.metafields.storeifyquote %}
-			{% assign locale_current = shop.locale %}
-			{% assign quote_lang = shop.metafields.storeifyquote.quote_lang %}
-			{% if  quote_lang contains locale_current %}
-				{% assign lable_btn = quote_lang[locale_current].btn_addquote  %}
-			{% else %}
-			    {% assign lable_btn = quote_lang.default.btn_addquote  %}
-			{% endif %}
-		{% endif %}
-		<div class="ify-quote-group ify-quote-group-{{product.id}}" data-targetid="{{product.id}}" data-targethandle="{{product.handle}}">
-<button type="button" class="storeify-quote-btn-trigger-popup btn button button--primary ify-button-code" data-product="{{ product.handle }}">{{ lable_btn }}</button>
-{% assign productCollections = product.collections | map:'id' %}
-<script id="ify_script_item_{{product.id}}">
-	storeifyRequestaquote.productdata = storeifyRequestaquote.productdata || {};
-	storeifyRequestaquote.productdata['{{product.id}}'] = {"id":{{ product.id }},"title":`{{ product.title }}`,"handle":"{{ product.handle }}","available":{{ product.available }},"vendor":"{{ product.vendor }}","type":"{{ product.type }}","tags":{{ product.tags | json }}};
-	storeifyRequestaquote.collections['{{product.id}}'] = {{ productCollections | json }};
-</script>
-</div>
+    <button
+      class="btn btn-atc btn-sm {{ btn_color }}"
+      type="submit"
+      name="add"
+      {% unless product.available %}disabled{% endunless %}>
+      {% if product.available %}
+        {{ 'product.add_to_cart' | t }}
+      {% else %}
+        {{ 'product.sold_out' | t }}
+      {% endif %}
+    </button>
   {% endform %}
 </product-form>
