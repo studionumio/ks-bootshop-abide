@@ -9,8 +9,7 @@
   Usage:
   {% render 'product-card-form' product: product  %}
 {% endcomment %}
-      <link rel="stylesheet" href="{{ 'storeify-requestaquote-styles.css' | asset_url }}" media="print" onload="this.media='all'">
-            <link rel="stylesheet" href="{{ 'storeify-requestaquote-hidden.css' | asset_url }}" media="print" onload="this.media='all'">
+
 {% liquid 
   assign btn_color = btn_color | default: settings.product_card_atc_btn_color
 %}
@@ -51,7 +50,7 @@
     {% endif %}
 {% endif %}
 <div class="ify-hide ify-quote-group ify-quote-group-{{product.id}}" data-targetid="{{product.id}}" data-targethandle="{{product.handle}}">
-<button type="button" class="storeify-quote-btn-trigger-popup btn button button--primary ify-button-code" data-product="{{ product.handle }}">{{ label_btn }}</button>
+<button type="button" class="storeify-quote-btn-trigger-popup btn button button--primary btn btn-atc btn-sm {{ btn_color }} ify-button-code" data-product="{{ product.handle }}">{{ label_btn }}</button>
 {% assign productCollections = product.collections | map:'id' %}
 <script id="ify_script_item_{{product.id}}">
     var storeifyRequestaquote = storeifyRequestaquote || {};
@@ -63,3 +62,6 @@
 </div>
   {% endform %}
 </product-form>
+
+
+
