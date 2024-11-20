@@ -44,6 +44,6 @@
     {% render 'product-card-price', product: product %}
   </a>
   {% if settings.product_card_show_atc_form %}
-    {% render 'product-card-form', product: product %}
+    {% render 'storeify-quote',product: card_product %}
   {% endif %}
 </div>
