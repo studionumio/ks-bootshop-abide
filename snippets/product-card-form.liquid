@@ -30,16 +30,6 @@
         {% endfor %}
       </select>
     {% endif %}
-    <button
-      class="btn btn-atc btn-sm {{ btn_color }}"
-      type="submit"
-      name="add"
-      {% unless product.available %}disabled{% endunless %}>
-      {% if product.available %}
-        {{ 'product.add_to_cart' | t }}
-      {% else %}
-        {{ 'product.sold_out' | t }}
-      {% endif %}
-    </button>
+{% render 'storeify-quote',product: card_product %}
   {% endform %}
 </product-form>
