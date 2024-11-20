@@ -31,7 +31,11 @@
   {{ content_for_header }}
 
   {% render 'styles-scripts' %}
+
+    {% include 'storeifyapps.quote.header' %}
+
 </head>
+  
 <script></script>
 <body class="{{ request.page_type | prepend: 'page-type-' }}">
   <a class="visually-hidden-focusable" href="#main">
@@ -56,6 +60,8 @@
     render 'modal-localization'
     render 'rich-snippets'
   %}
+    {% include 'storeifyapps.quote.footer' %}
+
 </body>
 </html>
     
