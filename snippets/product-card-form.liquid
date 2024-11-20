@@ -13,7 +13,24 @@
 {% liquid 
   assign btn_color = btn_color | default: settings.product_card_atc_btn_color
 %}
-{% assign label_btn = "Request a quote" %}
+
+<product-form>
+  {% form 'product', product, data-productid: product.id %}
+    {% if product.has_only_default_variant %}
+      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.first_available_variant.id }}">
+    {% else %}
+      <select 
+        class="form-select form-select-sm mb-3"
+        name="id" 
+        aria-label="{{ 'product.select_variant' | t }}">
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+            {{ variant.title }} 
+          </option>
+        {% endfor %}
+      </select>
+    {% endif %}
+    {% assign label_btn = "Request a quote" %}
 {% if shop.metafields.storeifyquote %}
     {% assign locale_current = shop.locale %}
     {% assign storeify_quote_mode = shop.metafields.storeifyquote.quote_settings.mode %}
@@ -43,3 +60,5 @@
     storeifyRequestaquote.collections['{{product.id}}'] = {{ productCollections | json }};
 </script>
 </div>
+  {% endform %}
+</product-form>
