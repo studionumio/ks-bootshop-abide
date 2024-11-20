@@ -16,7 +16,24 @@
 {% liquid 
   assign btn_color = btn_color | default: settings.product_card_atc_btn_color
 %}
- {% assign lable_btn = "Add to Quote" %}
+ 
+<product-form>
+  {% form 'product', product, data-productid: product.id %}
+    {% if product.has_only_default_variant %}
+      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.first_available_variant.id }}">
+    {% else %}
+      <select 
+        class="form-select form-select-sm mb-3"
+        name="id" 
+        aria-label="{{ 'product.select_variant' | t }}">
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+            {{ variant.title }} 
+          </option>
+        {% endfor %}
+      </select>
+    {% endif %}
+{% assign lable_btn = "Add to Quote" %}
 		{% if shop.metafields.storeifyquote %}
 			{% assign locale_current = shop.locale %}
 			{% assign quote_lang = shop.metafields.storeifyquote.quote_lang %}
@@ -35,32 +52,5 @@
 	storeifyRequestaquote.collections['{{product.id}}'] = {{ productCollections | json }};
 </script>
 </div>
-<product-form>
-  {% form 'product', product, data-productid: product.id %}
-    {% if product.has_only_default_variant %}
-      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.first_available_variant.id }}">
-    {% else %}
-      <select 
-        class="form-select form-select-sm mb-3"
-        name="id" 
-        aria-label="{{ 'product.select_variant' | t }}">
-        {% for variant in product.variants %}
-          <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
-            {{ variant.title }} 
-          </option>
-        {% endfor %}
-      </select>
-    {% endif %}
-    <button
-      class="btn btn-atc btn-sm {{ btn_color }}"
-      type="submit"
-      name="add"
-      {% unless product.available %}disabled{% endunless %}>
-      {% if product.available %}
-        {{ 'product.add_to_cart' | t }}
-      {% else %}
-        {{ 'product.sold_out' | t }}
-      {% endif %}
-    </button>
   {% endform %}
 </product-form>
