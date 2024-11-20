@@ -12,6 +12,12 @@
 
 
       <link rel="stylesheet" href="{{ 'storeify-requestaquote-styles.css' | asset_url }}" media="print" onload="this.media='all'">
+            <link rel="stylesheet" href="{{ 'storeify-requestaquote-hidden.css' | asset_url }}" media="print" onload="this.media='all'">
+
+      <script src="{{ 'storeify-requestaquote-script.js' | asset_url }}" defer="async"></script>
+            <script src="{{ 'storeify-requestaquote-json.js' | asset_url }}" defer="async"></script>
+
+      
 
 {% liquid 
   assign btn_color = btn_color | default: settings.product_card_atc_btn_color
