@@ -163,6 +163,7 @@
         },
         "liquid_ECW43U": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "liquid": "{% assign current_variant = product.selected_or_first_available_variant %}<a style=\"text-decoration: none;\" href=\"mailto:hello@abidehawaii.com?subject=Product Inquiry: {{ current_variant.sku }}, {{ product.title }} &body=Hello Abide Hawaii, Can you send me more information regarding the  {{ product.title }} (SKU {{ current_variant.sku }})?\" class=\"bg-primary text-white rounded p-6\">Email for Availability</a> <a style=\"margin-left: 10px; text-decoration: none;\" href=\"tel:+18089098118\" class=\"bg-secondary text-white rounded p-6\">Call for Availability</a>",
             "pt": 7,
