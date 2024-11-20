@@ -2455,7 +2455,7 @@ body.sm-pageAnimated>:not(.sm-wrapper){
     order: 9;
     width: 100%;
     overflow: hidden;
-    text-align: center;
+    text-align: left;
     display: inline-block;
   margin-top: 30px;
   padding-top: 3%;
@@ -2471,9 +2471,9 @@ body.sm-pageAnimated>:not(.sm-wrapper){
     order: 9;
     width: 50%;
     overflow: hidden;
-    text-align: center;
+    text-align: left;
     display: inline-block;
     margin-top: -20px;
-  padding: 2%;
+
 }
 }
