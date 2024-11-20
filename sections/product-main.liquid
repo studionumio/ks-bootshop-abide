@@ -69,7 +69,9 @@
                   endfor
                 %}
               {% endform %}
-              {% assign lable_btn = "Add to Quote" %}
+              
+            </product-form>
+            {% assign lable_btn = "Add to Quote" %}
 		{% if shop.metafields.storeifyquote %}
 			{% assign locale_current = shop.locale %}
 			{% assign quote_lang = shop.metafields.storeifyquote.quote_lang %}
@@ -88,7 +90,6 @@
 	storeifyRequestaquote.collections['{{product.id}}'] = {{ productCollections | json }};
 </script>
 </div>
-            </product-form>
           </div>
         </div>
       </div>
