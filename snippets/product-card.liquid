@@ -45,13 +45,9 @@
   </a>
 
 {% assign lable_btn = "Add to Quote" %}
-			{% assign locale_current = shop.locale %}
-			{% assign quote_lang = shop.metafields.storeifyquote.quote_lang %}
-			{% if  quote_lang contains locale_current %}
-				{% assign lable_btn = quote_lang[locale_current].btn_addquote  %}
-			{% else %}
+		
 			    {% assign lable_btn = quote_lang.default.btn_addquote  %}
-		{% endif %}
+		
 		<div class="ify-hide ify-quote-group ify-quote-group-{{product.id}}" data-targetid="{{product.id}}" data-targethandle="{{product.handle}}">
 <button type="button" class="storeify-quote-btn-trigger-popup btn button button--primary ify-button-code" data-product="{{ product.handle }}">{{ lable_btn }}</button>
 {% assign productCollections = product.collections | map:'id' %}
