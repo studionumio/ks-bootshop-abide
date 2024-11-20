@@ -35,11 +35,7 @@
       type="submit"
       name="add"
       {% unless product.available %}disabled{% endunless %}>
-      {% if product.available %}
-       {% render 'storeify-quote',product: product_card_product %}
-      {% else %}
-        {{ 'product.sold_out' | t }}
-      {% endif %}
+      {% render 'storeify-quote',product: product_card_product %}
     </button>
   {% endform %}
 </product-form>
