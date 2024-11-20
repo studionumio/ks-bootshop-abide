@@ -5,7 +5,7 @@
     assign limit = section.settings.limit
   endif
 %}
-
+{% render 'storeify-quote',product: product_card_product %}
 <section 
   id="collection-products-{{ collection.id }}" 
   class="
