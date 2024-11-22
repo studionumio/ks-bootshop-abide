@@ -186,7 +186,7 @@
         "btn_primary_url": "shopify://collections/all-wholesale-items",
         "btn_primary_color": "btn-primary",
         "btn_secondary_text": "Retail Products",
-        "btn_secondary_url": "shopify://collections/retail-items",
+        "btn_secondary_url": "shopify://collections/retail",
         "btn_secondary_color": "btn-secondary",
         "pt": 12,
         "pb": 12
