@@ -76,7 +76,7 @@
             "title_font_size": "fs-xl",
             "description": "<p><strong>Abide Hawaii</strong> creates eco-friendly disposable products for Food Service and Retail companies across the Hawaii Islands. </p>",
             "btn_primary_text": "Food Service Products",
-            "btn_primary_url": "shopify://collections/all-wholesale-items",
+            "btn_primary_url": "shopify://collections/food-service",
             "btn_primary_color": "btn-primary",
             "btn_secondary_text": "Retail Products",
             "btn_secondary_url": "shopify://collections/retail",

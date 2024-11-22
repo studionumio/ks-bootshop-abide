@@ -183,7 +183,7 @@
         "description": "<p><strong>Abide Hawaii</strong> creates eco-friendly, high quality household essentials shipped right to your door. Our products are made with sustainable materials such as bamboo, wood, sugarcane, and virgin fiber so you can shop responsibly and with peace-of-mind.</p>",
         "description_font_size": "fs-xl",
         "btn_primary_text": "Food Service Products",
-        "btn_primary_url": "shopify://collections/all-wholesale-items",
+        "btn_primary_url": "shopify://collections/food-service",
         "btn_primary_color": "btn-primary",
         "btn_secondary_text": "Retail Products",
         "btn_secondary_url": "shopify://collections/retail",
